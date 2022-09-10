@@ -24,7 +24,7 @@ export default function Home({products}) {
   
 
   return (
-    <div className='w-screen'>
+    <div className='w-screen z-0'>
       <Nav />
       <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[160px] md:pb-[80px] pt-20 pb-10'>
         <div className="w-full h-full max-w-[1400px] inline-grid md:grid-cols-5 md:gap-20 grid-cols-1 md:grid-rows-6 px-10 z-10">

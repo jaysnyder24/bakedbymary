@@ -11,7 +11,7 @@ export default function Nav() {
     const { items } = useContext(CartContext);
 
     return (
-        <div className='w-screen fixed top-0 z-50 bg-white md:bg-transparent'>
+        <div className='w-screen absolute top-0 z-30 bg-white md:bg-transparent'>
             <nav className='w-full max-w-[1400px] flex flex-row justify-between items-center mx-auto px-10 py-5'>
                 <Link href="/" passHref={true}><a className='font-bold text-pink-500'>baked by<span className='font-serif font-normal text-black text-3xl leading-0 ml-2'>Mary</span></a></Link>
                 <Cart />

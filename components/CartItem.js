@@ -14,7 +14,7 @@ export default function CartItem(props) {
     return (
         <div className='grid grid-cols-4 grid-rows-3 w-full gap-2'>
             <Link href="#" passHref={true}>
-                <a className='col-span-1 row-span-3 relative rounded-xl overflow-clip'>
+                <a className='col-span-1 row-span-3 relative rounded-xl overflow-clip aspect-square'>
                     <Image src='/images/cookieDefault.jpeg' layout="fill" objectFit='cover' objectPosition="center" alt='cookie' />
                 </a>
             </Link>
