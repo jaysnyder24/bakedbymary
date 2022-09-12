@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react'
 import CartContext from '../context/CartContext'
 import CartItem from '../components/CartItem'
 import { loadStripe } from '@stripe/stripe-js'
+
 export default function Cart() {
 
   let [isOpen, setIsOpen] = useState(false)
@@ -70,7 +71,7 @@ export default function Cart() {
                     Your Cookie Cart
                     </Dialog.Title>
                     <div className='flex flex-col justify-start items-start space-y-5 mb-5 sm:mb-10'>
-                        {items.length > 0 ? items.map((item, index) => <CartItem key={index} index={index} name={item.name} price={item.price} quantity={item.quantity} />) : <span className='text-gray-400'>You have no items in your cart.</span>}
+                        {items.length > 0 ? items.map((item, index) => <CartItem key={index} index={index} name={item.name} price={item.price} quantity={item.quantity} image={item.image} />) : <span className='text-gray-400'>You have no items in your cart.</span>}
                         <span className='text-gray-400 text-lg'>Total ${total}</span>
                     </div>
                     <form action="/api/checkout_sessions" method="POST">

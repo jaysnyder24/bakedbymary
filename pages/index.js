@@ -52,12 +52,12 @@ export default function Home({products}) {
             </div>
           </div>
           <div className='w-full h-full grid sm:grid-cols-2 grid-cols-1 gap-4 md:col-span-3 md:row-span-6 col-span-1 row-span-5'>
-            {products.map((product) => <HeroItem key={product.id} name={product.name} price={product.default_price.id} value={product.default_price.unit_amount_decimal / 100} images={[product.metadata.imageOne, product.metadata.imageTwo, product.metadata.imageThree]} description={product.description} />)}
+            {products.map((product) => <HeroItem key={product.id} name={product.name} price={product.default_price.id} value={product.default_price.unit_amount_decimal / 100} image={product.metadata.imageUnique} description={product.description} />)}
 
           </div>
         </div>
-        <div className='md:w-5/12 md:h-[95%] h-1/6 w-full md:flex md:mx-0 mx-auto absolute bottom-0 md:top-0 md:right-0 md:bottom-auto sm:top-auto sm:right-auto z-0 overflow-clip md:rounded-bl-2xl md:rounded-t-none rounded-t-2xl'>
-          <Image src='/images/heroImage.jpg' layout='fill' objectFit='cover' objectPosition="center" priority size="42vw" alt='cookie' />
+        <div className='md:w-5/12 md:h-[95%] h-1/6 w-full md:flex md:mx-0 mx-auto absolute bottom-0 md:top-0 md:right-0 md:bottom-auto sm:top-auto sm:right-auto z-0 overflow-clip md:rounded-bl-2xl md:rounded-t-none rounded-t-2xl bg-pink-200'>
+          
         </div>
       </main>
     </div>

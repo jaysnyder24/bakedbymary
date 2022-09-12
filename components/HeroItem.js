@@ -19,7 +19,7 @@ export default function HeroItem(props) {
   }
 
   const [count, setCount] = useState(1);
-  const [image, setImage] = useState((props.images[0]))
+  const [image, setImage] = useState(props.image)
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function HeroItem(props) {
             <span className='font-bold font-serif text-lg md:text-2xl lg:text-3xl text-pink-600'>{props.name}</span>
             <span className='font-bold font-serif text-lg md:text-xl lg:text-2xl text-pink-600'>${props.value}</span>
         </div>
-        <Image src={'/images/' + props.images[0]} className="z-10 group-hover:scale-125 transition-all duration-300" layout="fill" objectFit='cover' objectPosition="center" size="10vw" priority alt='cookie'/>
+        <Image src={'/images/' + props.image + 'Default.jpg'} className="z-10 group-hover:scale-125 transition-all duration-300" layout="fill" objectFit='cover' objectPosition="center" size="10vw" priority alt='cookie'/>
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -59,18 +59,18 @@ export default function HeroItem(props) {
                 <Dialog.Panel className="flex flex-col justify-start items-start space-y-5 w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-10 text-left align-middle shadow-xl transition-all relative">
                   <div className='grid grid-cols-6 grid-rows-3 w-full min-h-20 gap-4'>
                     <div className='relative rounded-xl md:aspect-square aspect-video overflow-clip col-span-6 row-span-2 md:col-span-4 md:row-span-3'>
-                      <Image src={"/images/" + image} layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookies'/>
+                      <Image src={"/images/" + props.image + image} layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookies'/>
                     </div>
-                    <div onMouseEnter={() => setImage("cookieDefault.jpeg")} className='relative rounded-xl overflow-clip col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
-                      <Image src={"/images/" + props.images[0]} layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
+                    <div onMouseEnter={() => setImage("Default.jpg")} className='relative rounded-xl overflow-clip col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
+                      <Image src={"/images/" + props.image + "Default.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
                       <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300 placeholder="blur'></div>
                     </div>
-                    <div onMouseEnter={() => setImage("cookieOne.jpg")} className='relative rounded-xl overflow-clip col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
-                      <Image src={"/images/" + props.images[1]} layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
+                    <div onMouseEnter={() => setImage("One.jpg")} className='relative rounded-xl overflow-clip col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
+                      <Image src={"/images/" + props.image + "One.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
                       <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300'></div>
                     </div>
-                    <div onMouseEnter={() => setImage("cookieTwo.jpg")} className='relative rounded-xl overflow-clip col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
-                      <Image src={"/images/" + props.images[2]} layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
+                    <div onMouseEnter={() => setImage("Two.jpg")} className='relative rounded-xl overflow-clip col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
+                      <Image src={"/images/" + props.image + "Two.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
                       <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300'></div>
                     </div>
                   </div>
@@ -81,10 +81,10 @@ export default function HeroItem(props) {
                   <div className='inline-grid grid-cols-5 gap-5 w-full'>
                     <div className='flex flex-row justify-between items-center col-span-5 sm:col-span-2'>
                       <button onClick={() => (count > 0 ? setCount((count) => count - 1) : setCount(0))} className='rounded bg-pink-50 hover:bg-pink-100 active:bg-pink-200 ring-1 ring-pink-200 p-2 transition-all'><MinusIcon className='text-pink-500 h-4 w-4' /></button>
-                      <span className='px-4 text-lg'>{count} dozen</span>
+                      <span className='px-4 text-base'>{count} half dozen</span>
                       <button onClick={() => setCount((count) => count + 1)} className='rounded bg-pink-50 hover:bg-pink-100 active:bg-pink-200 ring-1 ring-pink-200 p-2 transition-all'><PlusIcon className='text-pink-500 h-4 w-4' /></button>
                     </div>
-                    <button onClick={() => addToCart(props.name, props.price, props.value, count)} className='flex flex-row justify-center items-center px-4 py-2 text-pink-600 bg-pink-100 font-bold text-lg rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all ring-1 ring-pink-200 col-span-5 sm:col-span-3'>Add To Cart</button>
+                    <button onClick={() => addToCart(props.name, props.price, props.value, count, props.image)} className='flex flex-row justify-center items-center px-4 py-2 text-pink-600 bg-pink-100 font-bold text-lg rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all ring-1 ring-pink-200 col-span-5 sm:col-span-3'>Add To Cart</button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

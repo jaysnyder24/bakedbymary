@@ -12,17 +12,18 @@ export default function CartItem(props) {
     const item = {...items[props.index]};
 
     return (
-        <div className='grid grid-cols-4 grid-rows-3 w-full gap-2'>
+        <div className='grid grid-cols-4 grid-rows-4 w-full gap-2 shrink'>
             <Link href="#" passHref={true}>
-                <a className='col-span-1 row-span-3 relative rounded-xl overflow-clip aspect-square'>
-                    <Image src='/images/cookieDefault.jpeg' layout="fill" objectFit='cover' objectPosition="center" alt='cookie' />
+                <a className='col-span-1 row-span-4 relative rounded-xl overflow-clip'>
+                    <Image src={'/images/' + item.image + 'Default.jpg'} layout="fill" objectFit='cover' objectPosition="center" alt='cookie' />
                 </a>
             </Link>
-            <span className='col-span-3 row-span-1 pl-4 font-bold'>{item.name} | ${item.value * item.quantity}</span>
+            <span className='col-span-3 row-span-1 pl-4 font-bold'>{item.name}</span>
+            <span className='col-span-3 row-span-1 pl-4 font-bold text-pink-500'>Totale Cost | ${item.value * item.quantity}</span>
             <span className='col-span-3 row-span-1 pl-4'>
                 <div className='flex flex-row justify-start items-center'>
                     <button onClick={() => (item.quantity > 1 ? decreaseQuantity(props.index) : removeFromCart(item.name))} className='rounded bg-pink-50 hover:bg-pink-100 active:bg-pink-200 ring-1 ring-pink-200 p-2 transition-all'><MinusIcon className='text-pink-500 h-2 w-2' /></button>
-                    <span className='px-4'>{item.quantity} dozen</span>
+                    <span className='px-4'>{item.quantity} half dozen</span>
                     <button onClick={() => increaseQuantity(props.index)} className='rounded bg-pink-50 hover:bg-pink-100 active:bg-pink-200 ring-1 ring-pink-200 p-2 transition-all'><PlusIcon className='text-pink-500 h-2 w-2' /></button>
                 </div>
             </span>

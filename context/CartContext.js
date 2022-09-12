@@ -6,7 +6,7 @@ export function CartProvider({children}) {
 
     const [items, setItems] = useState([]);
 
-    const addToCart = ( name, price, value, quantity ) => {
+    const addToCart = ( name, price, value, quantity, image ) => {
         let duplicateIndex = items.findIndex((item) => item.name == name);
 
         switch (true) {
@@ -18,7 +18,7 @@ export function CartProvider({children}) {
                 break;
 
             case (duplicateIndex == -1):
-                setItems(( prevState ) => [...prevState, {name: name, price: price, value: value, quantity: quantity}]);
+                setItems(( prevState ) => [...prevState, {name: name, price: price, value: value, quantity: quantity, image: image}]);
                 console.log("added item");
                 break;
         
