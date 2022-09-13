@@ -5,11 +5,14 @@ import { useContext, useEffect } from 'react'
 import CartContext from '../context/CartContext'
 import CartItem from '../components/CartItem'
 import { loadStripe } from '@stripe/stripe-js'
+import { handleCheckout } from '../checkout'
 
 export default function Cart() {
 
   let [isOpen, setIsOpen] = useState(false)
   const { items } = useContext(CartContext);
+  const [checkoutItems, setCheckoutItems] = useState([]);
+  const [enoughItems, setEnoughItems] = useState(false);
 
   function closeModal() {
     setIsOpen(false)
@@ -23,9 +26,18 @@ export default function Cart() {
 
   useEffect(() => {
     setTotal(0)
+    setCheckoutItems([])
     items.forEach((item) => {
         setTotal((prevTotal) => prevTotal + (item.value * item.quantity));
+        setCheckoutItems([...checkoutItems, {price: item.price, quantity: item.quantity}])
     })
+
+    if (checkoutItems.length > 0) {
+      setEnoughItems(true);
+    } else {
+      setEnoughItems(false);
+    }
+
   }, [items])
 
   const stripePromise = loadStripe(
@@ -66,7 +78,7 @@ export default function Cart() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-visible rounded-2xl bg-white p-10 text-left align-middle shadow-xl transition-all relative">
+                <Dialog.Panel className="w-full max-w-lg transform overflow-visible rounded-2xl bg-white p-10 text-left align-middle shadow-xl transition-all relative">
                     <Dialog.Title as="h3" className="text-xl sm:text-2xl font-bold text-gray-900 mb-5 sm:mb-10 font-serif">
                     Your Cookie Cart
                     </Dialog.Title>
@@ -75,10 +87,8 @@ export default function Cart() {
                         <span className='text-gray-400 text-lg'>Total ${total}</span>
                     </div>
                     <form action="/api/checkout_sessions" method="POST">
-                        <section>
-                            {items.length > 0 ? items.map((item, index) => <input key={index} type="hidden" name={"items[]"} value={JSON.stringify({price: item.price, quantity: item.quantity})} />) : ""}
-                            <button type="submit" role="link" className='flex flex-row justify-center items-center rounded-lg bg-pink-50 ring-1 ring-pink-200 text-pink-500 w-full px-6 py-4 text-lg sm:text-xl font-bold shadow-md hover:shadow-lg hover:-translate-y-1 transition-all active:bg-pink-200 hover:bg-pink-100 active:translate-y-1 active:shadow-sm'>Checkout</button>
-                        </section>
+                      <input type="hidden" name="items" value={JSON.stringify(checkoutItems)} />
+                      <button type='submit' role='link' className='flex flex-row justify-center items-center rounded-lg disabled:bg-gray-50 disabled:ring-gray-200 disabled:text-gray-500 bg-pink-50 ring-1 ring-pink-200 text-pink-500 w-full px-6 py-4 text-lg sm:text-xl font-bold shadow-md hover:shadow-lg hover:-translate-y-1 transition-all active:bg-pink-200 hover:bg-pink-100 active:translate-y-1 active:shadow-sm' disabled={items.length > 0 ? false : true} >Checkout</button>
                     </form>
                 </Dialog.Panel>
               </Transition.Child>

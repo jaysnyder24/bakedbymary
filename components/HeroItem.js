@@ -19,16 +19,16 @@ export default function HeroItem(props) {
   }
 
   const [count, setCount] = useState(1);
-  const [image, setImage] = useState(props.image)
+  const [image, setImage] = useState("Default.jpg")
 
   return (
     <>
-      <button onClick={() => openModal()} className='aspect-video sm:aspect-auto flex flex-col justify-end items-center rounded-2xl shadow-md relative overflow-clip transition-all group'>
+      <button onClick={() => openModal()} className='aspect-video sm:aspect-auto flex flex-col justify-end items-center rounded-2xl shadow-md relative overflow-hidden transition-all group'>
         <div className={'w-full h-full bg-pink-50 bg-opacity-0 opacity-0 absolute top-0 left-0 z-20 group-hover:opacity-100 group-hover:bg-opacity-90 transition-all duration-200 p-7 flex-col justify-center items-center space-y-5 ' + (isOpen ? 'hidden' : 'flex')}>
-            <span className='font-bold font-serif text-lg md:text-2xl lg:text-3xl text-pink-600'>{props.name}</span>
-            <span className='font-bold font-serif text-lg md:text-xl lg:text-2xl text-pink-600'>${props.value}</span>
+            <span className='font-bold font-serif text-lg md:text-2xl text-pink-600'>{props.name}</span>
+            <span className='font-bold font-serif text-lg md:text-xl text-pink-600'>${props.value}</span>
         </div>
-        <Image src={'/images/' + props.image + 'Default.jpg'} className="z-10 group-hover:scale-125 transition-all duration-300" layout="fill" objectFit='cover' objectPosition="center" size="10vw" priority alt='cookie'/>
+        <Image src={'/images/' + props.image + 'Default.jpg'} className="z-10 group-hover:scale-125 transition-all duration-300" layout="fill" objectFit='cover' objectPosition="center" size="25vw" priority alt='cookie'/>
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -58,18 +58,18 @@ export default function HeroItem(props) {
               >
                 <Dialog.Panel className="flex flex-col justify-start items-start space-y-5 w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-10 text-left align-middle shadow-xl transition-all relative">
                   <div className='grid grid-cols-6 grid-rows-3 w-full min-h-20 gap-4'>
-                    <div className='relative rounded-xl md:aspect-square aspect-video overflow-clip col-span-6 row-span-2 md:col-span-4 md:row-span-3'>
+                    <div className='relative rounded-xl md:aspect-square aspect-video overflow-hidden col-span-6 row-span-2 md:col-span-4 md:row-span-3'>
                       <Image src={"/images/" + props.image + image} layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookies'/>
                     </div>
-                    <div onMouseEnter={() => setImage("Default.jpg")} className='relative rounded-xl overflow-clip col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
+                    <div onMouseEnter={() => setImage("Default.jpg")} className='relative rounded-xl overflow-hidden col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
                       <Image src={"/images/" + props.image + "Default.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
                       <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300 placeholder="blur'></div>
                     </div>
-                    <div onMouseEnter={() => setImage("One.jpg")} className='relative rounded-xl overflow-clip col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
+                    <div onMouseEnter={() => setImage("One.jpg")} className='relative rounded-xl overflow-hidden col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
                       <Image src={"/images/" + props.image + "One.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
                       <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300'></div>
                     </div>
-                    <div onMouseEnter={() => setImage("Two.jpg")} className='relative rounded-xl overflow-clip col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
+                    <div onMouseEnter={() => setImage("Two.jpg")} className='relative rounded-xl overflow-hidden col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
                       <Image src={"/images/" + props.image + "Two.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
                       <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300'></div>
                     </div>

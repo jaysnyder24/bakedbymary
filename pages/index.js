@@ -4,34 +4,20 @@ import Link from 'next/link'
 import { ArrowRightIcon, EyeIcon, PlusIcon } from "@heroicons/react/solid"
 import Nav from "../components/Nav"
 import HeroItem from '../components/HeroItem'
-import { loadStripe } from '@stripe/stripe-js'
-import { Elements } from '@stripe/react-stripe-js'
 import { GetServerSideProps } from 'next'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Home({products}) {
-
-  useEffect(() => {
-    const query = new URLSearchParams(window.location.search);
-    if (query.get('success')) {
-      console.log('Order placed! You will receive an email confirmation.');
-    }
-
-    if (query.get('canceled')) {
-      console.log("Order canceled -- continue to shop around and checkout when you're ready.");
-    }
-  }, [])
-  
 
   return (
     <div className='w-screen z-0'>
       <Nav />
       <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[160px] md:pb-[80px] pt-20 pb-10'>
-        <div className="w-full h-full max-w-[1400px] inline-grid md:grid-cols-5 md:gap-20 grid-cols-1 md:grid-rows-6 px-10 z-10">
-          <div className='w-full flex flex-col justify-start items-start md:col-span-2 col-span-1 md:row-span-6 py-5 mb-5 md:mb-0'>
+        <div className="w-full h-full max-w-[1400px] inline-grid md:grid-cols-5 md:gap-20 grid-cols-2 md:grid-rows-6 px-10 z-10">
+          <div className='w-full flex flex-col justify-start items-start md:col-span-2 col-span-2 md:row-span-6 py-5 mb-5 md:mb-0'>
             <div className='w-full flex flex-col justify-center items-start flex-wrap'>
               <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-5'>Check out this month's <span className='text-pink-500'>homemade cookies!</span></h1>
-              <p className='w-full text-black text-base hidden md:flex mb-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+              <p className='w-full text-black text-base flex mb-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
               <div className='md:flex flex-row justify-start items-center w-full hidden'>
                 <Link href={'#'} passHref={true}>
                   <a className='p-4 rounded-full overflow-clip bg-pink-500 mr-5 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all'>
@@ -51,12 +37,16 @@ export default function Home({products}) {
               </div>
             </div>
           </div>
-          <div className='w-full h-full grid sm:grid-cols-2 grid-cols-1 gap-4 md:col-span-3 md:row-span-6 col-span-1 row-span-5'>
+          <div className='w-full h-full grid sm:grid-cols-2 grid-cols-2 gap-4 md:col-span-3 md:row-span-6 col-span-2 row-span-5'>
             {products.map((product) => <HeroItem key={product.id} name={product.name} price={product.default_price.id} value={product.default_price.unit_amount_decimal / 100} image={product.metadata.imageUnique} description={product.description} />)}
 
           </div>
         </div>
-        <div className='md:w-5/12 md:h-[95%] h-1/6 w-full md:flex md:mx-0 mx-auto absolute bottom-0 md:top-0 md:right-0 md:bottom-auto sm:top-auto sm:right-auto z-0 overflow-clip md:rounded-bl-2xl md:rounded-t-none rounded-t-2xl bg-pink-200'>
+        <div className='md:w-5/12 md:h-[95%] h-1/6 w-full hidden md:flex md:mx-0 mx-auto absolute bottom-0 md:top-0 md:right-0 md:bottom-auto sm:top-auto sm:right-auto z-0 overflow-clip md:rounded-bl-2xl md:rounded-t-none rounded-t-2xl bg-pink-200'>
+          <div className='relative w-full h-full'>
+            <Image src={'/images/assortOne.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" />
+            <div className='w-full h-full bg-pink-400 bg-opacity-80 z-10 absolute top-0 right-0'></div>
+          </div>
           
         </div>
       </main>
