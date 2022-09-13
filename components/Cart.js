@@ -38,7 +38,7 @@ export default function Cart() {
       setEnoughItems(false);
     }
 
-  }, [items])
+  }, [items, checkoutItems])
 
   const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
