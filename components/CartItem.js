@@ -19,7 +19,7 @@ export default function CartItem(props) {
                 </a>
             </Link>
             <span className='col-span-3 row-span-1 pl-4 font-bold'>{item.name}</span>
-            <span className='col-span-3 row-span-1 pl-4 font-bold text-pink-500'>Totale Cost | ${item.value * item.quantity}</span>
+            <span className='col-span-3 row-span-1 pl-4 font-bold text-pink-500'>Total Cost | ${item.value * item.quantity}</span>
             <span className='col-span-3 row-span-1 pl-4'>
                 <div className='flex flex-row justify-start items-center'>
                     <button onClick={() => (item.quantity > 1 ? decreaseQuantity(props.index) : removeFromCart(item.name))} className='rounded bg-pink-50 hover:bg-pink-100 active:bg-pink-200 ring-1 ring-pink-200 p-2 transition-all'><MinusIcon className='text-pink-500 h-2 w-2' /></button>

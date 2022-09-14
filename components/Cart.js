@@ -5,14 +5,16 @@ import { useContext, useEffect } from 'react'
 import CartContext from '../context/CartContext'
 import CartItem from '../components/CartItem'
 import { loadStripe } from '@stripe/stripe-js'
-import { handleCheckout } from '../checkout'
 
 export default function Cart() {
 
-  let [isOpen, setIsOpen] = useState(false)
   const { items } = useContext(CartContext);
+
+  let [isOpen, setIsOpen] = useState(false)
+  
   const [checkoutItems, setCheckoutItems] = useState([]);
   const [enoughItems, setEnoughItems] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
 
   function closeModal() {
     setIsOpen(false)
@@ -25,20 +27,17 @@ export default function Cart() {
   const [total, setTotal] = useState(null);
 
   useEffect(() => {
+    
     setTotal(0)
     setCheckoutItems([])
     items.forEach((item) => {
-        setTotal((prevTotal) => prevTotal + (item.value * item.quantity));
-        setCheckoutItems([...checkoutItems, {price: item.price, quantity: item.quantity}])
+      setTotal((prevTotal) => prevTotal + (item.value * item.quantity))
+      setCheckoutItems((prevItems) => [...prevItems, {price: item.price, quantity: item.quantity}])
     })
 
-    if (checkoutItems.length > 0) {
-      setEnoughItems(true);
-    } else {
-      setEnoughItems(false);
-    }
+    console.log(checkoutItems);
 
-  }, [items, checkoutItems])
+  }, [items])
 
   const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
