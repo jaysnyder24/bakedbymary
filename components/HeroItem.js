@@ -23,12 +23,12 @@ export default function HeroItem(props) {
 
   return (
     <>
-      <button onClick={() => openModal()} className='aspect-video sm:aspect-auto flex flex-col justify-end items-center rounded-2xl shadow-md relative overflow-hidden transition-all group'>
+      <button onClick={() => openModal()} className='aspect-square sm:aspect-auto flex flex-col justify-end items-center rounded-2xl shadow-md relative overflow-hidden transition-all group'>
         <div className={'w-full h-full bg-pink-50 bg-opacity-0 opacity-0 absolute top-0 left-0 z-20 group-hover:opacity-100 group-hover:bg-opacity-90 transition-all duration-200 p-7 flex-col justify-center items-center space-y-5 ' + (isOpen ? 'hidden' : 'flex')}>
             <span className='font-bold font-serif text-lg md:text-2xl text-pink-600'>{props.name}</span>
             <span className='font-bold font-serif text-lg md:text-xl text-pink-600'>${props.value}</span>
         </div>
-        <Image src={'/images/' + props.image + 'Default.jpg'} className="z-10 group-hover:scale-125 transition-all duration-300" layout="fill" objectFit='cover' objectPosition="center" size="25vw" priority alt='cookie'/>
+        <Image src={'/images/' + props.image + 'Default.jpg'} className="z-10 group-hover:scale-125 transition-all duration-300" layout="fill" objectFit='cover' objectPosition="center" size="15vw" priority alt='cookie'/>
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
