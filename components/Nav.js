@@ -1,7 +1,4 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
-import { ShoppingCartIcon } from "@heroicons/react/solid"
 import { useContext } from 'react'
 import CartContext from '../context/CartContext'
 import Cart from '../components/Cart'

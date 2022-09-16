@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import { MinusIcon, PlusIcon } from '@heroicons/react/solid'
+import { MinusIcon, PlusIcon, XIcon } from '@heroicons/react/solid'
 import { useContext, useEffect } from 'react'
 import CartContext from '../context/CartContext'
 import Image from 'next/image'
@@ -75,8 +75,9 @@ export default function HeroItem(props) {
                     </div>
                   </div>
                   <Dialog.Title as="h3" className="text-2xl font-bold text-gray-900 font-serif">
-                    {props.name}<span className='text-pink-500 font-normal'> | ${props.value} per dozen</span>
+                    {props.name}
                   </Dialog.Title>
+                  <span className='text-pink-500 font-serif text-2xl font-normal'>${props.value} per half dozen</span>
                   <p>{props.description}</p>
                   <div className='inline-grid grid-cols-5 gap-5 w-full'>
                     <div className='flex flex-row justify-between items-center col-span-5 sm:col-span-2'>
@@ -86,6 +87,7 @@ export default function HeroItem(props) {
                     </div>
                     <button onClick={() => addToCart(props.name, props.price, props.value, count, props.image)} className='flex flex-row justify-center items-center px-4 py-2 text-pink-600 bg-pink-100 font-bold text-lg rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all ring-1 ring-pink-200 col-span-5 sm:col-span-3'>Add To Cart</button>
                   </div>
+                  <button onClick={() => closeModal()} className='h-5 w-5 absolute top-0 right-5'><XIcon className='text-pink-500' /></button>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

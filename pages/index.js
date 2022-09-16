@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRightIcon, EyeIcon, PlusIcon } from "@heroicons/react/solid"
 import Nav from "../components/Nav"
 import HeroItem from '../components/HeroItem'
-import { useEffect, useState } from 'react'
 
 export default function Home({products}) {
 

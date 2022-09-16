@@ -1,8 +1,7 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { PlusIcon, MinusIcon } from "@heroicons/react/solid"
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import CartContext from '../context/CartContext'
 
 export default function CartItem(props) {
@@ -14,7 +13,7 @@ export default function CartItem(props) {
     return (
         <div className='grid grid-cols-4 grid-rows-4 w-full gap-2 shrink'>
             <Link href="#" passHref={true}>
-                <a className='col-span-1 row-span-4 relative rounded-xl overflow-clip'>
+                <a className='col-span-1 row-span-4 relative rounded-xl overflow-hidden'>
                     <Image src={'/images/' + item.image + 'Default.jpg'} layout="fill" objectFit='cover' objectPosition="center" alt='cookie' />
                 </a>
             </Link>

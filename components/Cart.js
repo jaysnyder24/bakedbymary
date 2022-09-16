@@ -89,6 +89,7 @@ export default function Cart() {
                       <input type="hidden" name="items" value={JSON.stringify(checkoutItems)} />
                       <button type='submit' role='link' className='flex flex-row justify-center items-center rounded-lg disabled:bg-gray-50 disabled:ring-gray-200 disabled:text-gray-500 bg-pink-50 ring-1 ring-pink-200 text-pink-500 w-full px-6 py-4 text-lg sm:text-xl font-bold shadow-md hover:shadow-lg hover:-translate-y-1 transition-all active:bg-pink-200 hover:bg-pink-100 active:translate-y-1 active:shadow-sm' disabled={items.length > 0 ? false : true} >Checkout</button>
                     </form>
+                    <button onClick={() => closeModal()} className='h-5 w-5 absolute top-5 right-5'><XIcon className='text-pink-500' /></button>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
