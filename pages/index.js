@@ -17,7 +17,7 @@ export default function Home({products}) {
           <div className='w-full h-full flex flex-col justify-start items-start md:col-span-2 col-span-2 md:row-span-6 py-5 mb-5 md:mb-0'>
             <div className='w-full flex flex-col justify-start items-start flex-wrap grow md:pt-10'>
               <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-5'>Check out this month's <span className='text-pink-500'>homemade cookies!</span></h1>
-              <span className='w-full text-black text-base inline-block mb-5'>All our cookies are made from scratch a day prior to this month's pickup date, and are topped day of. <strong>Delivery is not available</strong> at this time and the pickup location is in Ankeny, Iowa, so take this into account when placing your order. Shortly after your order, you will recieve an email with the shipping address.</span>
+              <span className='w-full text-black text-base inline-block mb-5'>All our cookies are made from scratch a day prior to this month's pickup date, and are topped day of. <strong>Delivery is not available</strong> at this time and the pickup location is in Ankeny, Iowa, so take this into account when placing your order. Shortly after your order, you will recieve an email with the pickup address.</span>
               <p className='w-full text-black text-base flex mb-10'><span className='text-pink-500 font-bold mr-2'>October's Order Pickup Date:</span> October 17th, 2022</p>
               {/*<div className='md:flex flex-row justify-start items-center w-full hidden'>
                 <Link href={'#'} passHref={true}>
