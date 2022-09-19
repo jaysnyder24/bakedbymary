@@ -15,11 +15,11 @@ export default function Home({products}) {
       <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[160px] md:pb-[80px] pt-20 pb-10'>
         <div className="w-full h-full max-w-[1400px] inline-grid md:grid-cols-5 md:gap-20 grid-cols-2 md:grid-rows-6 px-10 z-10">
           <div className='w-full h-full flex flex-col justify-start items-start md:col-span-2 col-span-2 md:row-span-6 py-5 mb-5 md:mb-0'>
-            <div className='w-full flex flex-col justify-center items-start flex-wrap grow'>
+            <div className='w-full flex flex-col justify-start items-start flex-wrap grow md:pt-10'>
               <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-5'>Check out this month's <span className='text-pink-500'>homemade cookies!</span></h1>
-              <p className='w-full text-black text-base flex mb-5'>All our cookies are made from scratch a day prior to this month's pickup date, and are topped day of. Delivery is not available at this time and the pickup location is in Ankeny, Iowa, so take this into account when placing your order. The pickup address will be provided with your receipt.</p>
-              <p className='w-full text-black text-base flex mb-10'><strong className='text-pink-500'>October's Order Pickup Date:</strong> October XXst, 2022</p>
-              <div className='md:flex flex-row justify-start items-center w-full hidden'>
+              <span className='w-full text-black text-base inline-block mb-5'>All our cookies are made from scratch a day prior to this month's pickup date, and are topped day of. <strong>Delivery is not available</strong> at this time and the pickup location is in Ankeny, Iowa, so take this into account when placing your order. Shortly after your order, you will recieve an email with the shipping address.</span>
+              <p className='w-full text-black text-base flex mb-10'><span className='text-pink-500 font-bold mr-2'>October's Order Pickup Date:</span> October 17th, 2022</p>
+              {/*<div className='md:flex flex-row justify-start items-center w-full hidden'>
                 <Link href={'#'} passHref={true}>
                   <a className='p-4 rounded-full overflow-clip bg-pink-500 mr-5 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all'>
                     <svg className='h-5 w-5 fill-white' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
@@ -35,7 +35,7 @@ export default function Home({products}) {
                     <svg className='h-5 w-5 fill-white' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
                   </a>
                 </Link>
-              </div>
+              </div>*/}
             </div>
           </div>
           <div className='w-full h-full grid sm:grid-cols-2 grid-cols-2 gap-4 md:col-span-3 md:row-span-6 col-span-2 row-span-5'>
