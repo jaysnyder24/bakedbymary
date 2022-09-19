@@ -28,7 +28,7 @@ export default function HeroItem(props) {
             <span className='font-bold font-serif text-lg md:text-2xl text-pink-600'>{props.name}</span>
             <span className='font-bold font-serif text-lg md:text-xl text-pink-600'>${props.value}</span>
         </div>
-        <Image src={'/images/' + props.image + 'Default.jpg'} className="z-10 group-hover:scale-125 transition-all duration-300" layout="fill" objectFit='cover' objectPosition="center" size="15vw" priority alt='cookie'/>
+        <Image src={'/images/' + props.image + 'Default.jpg'} className="z-10 group-hover:scale-125 transition-all duration-300" layout="fill" objectFit='cover' objectPosition="center" size="15vw" priority alt='cookie' quality={50} />
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>

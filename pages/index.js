@@ -45,7 +45,7 @@ export default function Home({products}) {
         </div>
         <div className='md:w-5/12 md:h-[95%] h-1/6 w-full hidden md:flex md:mx-0 mx-auto absolute bottom-0 md:top-0 md:right-0 md:bottom-auto sm:top-auto sm:right-auto z-0 overflow-clip md:rounded-bl-2xl md:rounded-t-none rounded-t-2xl bg-pink-200'>
           <div className='relative w-full h-full'>
-            <Image src={'/images/assortOne.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' />
+            <Image src={'/images/assortOne.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' quality={50} />
             <div className='w-full h-full bg-pink-400 bg-opacity-80 z-10 absolute top-0 right-0'></div>
           </div>
           
