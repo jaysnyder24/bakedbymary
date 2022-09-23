@@ -11,14 +11,14 @@ export default function Home({products}) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Nav />
+      <Nav products={products.length > 0 ? true : false} />
       <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[160px] md:pb-[80px] pt-20 pb-10'>
         <div className="w-full h-full max-w-[1400px] inline-grid md:grid-cols-5 md:gap-20 grid-cols-2 md:grid-rows-6 px-10 z-10">
           <div className='w-full h-full flex flex-col justify-start items-start md:col-span-2 col-span-2 md:row-span-6 py-5 mb-5 md:mb-0'>
             <div className='w-full flex flex-col justify-start items-start flex-wrap grow md:pt-10'>
-              <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-5'>Check out this month's <span className='text-pink-500'>homemade cookies!</span></h1>
-              <span className='w-full text-black text-base inline-block mb-5'>All our cookies are made from scratch a day prior to this month's pickup date, and are topped day of. <strong>Delivery is not available</strong> at this time and the pickup location is in Ankeny, Iowa, so take this into account when placing your order. Shortly after your order, you will recieve an email with the pickup address.</span>
-              <p className='w-full text-black text-base flex mb-10'><span className='text-pink-500 font-bold mr-2'>October's Order Pickup Date:</span> October 17th, 2022</p>
+              {products.length > 0 ? <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-5'>Check out this month's <span className='text-pink-500'>homemade cookies!</span></h1> : <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-5'>Well crumbs... <br></br><span className='text-pink-500'>you missed out!</span></h1>}
+              {products.length > 0 ? <span className='w-full text-black text-base inline-block mb-5'>All our cookies are made from scratch a day prior to this month's pickup date, and are topped day of. <strong>Delivery is not available</strong> at this time and the pickup location is in Ankeny, Iowa, so take this into account when placing your order. Shortly after your order, you will recieve an email with the pickup address.</span> : <span className='w-full text-black text-base inline-block mb-5'>Don't fret! Mary will be back with a new curated bundle of delicious, seasonally relevant cookies in just a few weeks. If you can't wait that long and would like to place a bulk order or have feedback on the site or cookies you can send those requests and comments to <a href="mailto:jaysnyder23@gmail.com" className='text-pink-500 font-bold'>our email</a>. We also have a newsletter and social media profiles in the works to keep all of you up-to-date on what cookies we have coming. Thank you!</span>}
+              {products.lenght > 0 ? <p className='w-full text-black text-base flex mb-10'><span className='text-pink-500 font-bold mr-2'>October's Order Pickup Date:</span> October 17th, 2022</p> : ""}
               {/*<div className='md:flex flex-row justify-start items-center w-full hidden'>
                 <Link href={'#'} passHref={true}>
                   <a className='p-4 rounded-full overflow-clip bg-pink-500 mr-5 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all'>
@@ -39,7 +39,14 @@ export default function Home({products}) {
             </div>
           </div>
           <div className='w-full h-full grid sm:grid-cols-2 grid-cols-2 gap-4 md:col-span-3 md:row-span-6 col-span-2 row-span-5'>
-            {products.map((product) => <HeroItem key={product.id} name={product.name} price={product.default_price.id} value={product.default_price.unit_amount_decimal / 100} image={product.metadata.imageUnique} description={product.description} />)}
+            {products.length > 0 ?  
+            
+            products.map((product) => <HeroItem key={product.id} name={product.name} price={product.default_price.id} value={product.default_price.unit_amount_decimal / 100} image={product.metadata.imageUnique} description={product.description} />)
+            :
+            <div className='col-span-2 h-full w-full rounded-2xl overflow-hidden relative shadow-md'>
+              <Image src="/images/crumbs.jpg" layout='fill' objectFit='cover' objectPosition="left" size="40vw" priority alt="cookie crumbs" />
+            </div>
+            }
 
           </div>
         </div>
