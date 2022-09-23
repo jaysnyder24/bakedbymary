@@ -43,7 +43,7 @@ export default function Home({products}) {
             
             products.map((product) => <HeroItem key={product.id} name={product.name} price={product.default_price.id} value={product.default_price.unit_amount_decimal / 100} image={product.metadata.imageUnique} description={product.description} />)
             :
-            <div className='col-span-2 h-full w-full rounded-2xl overflow-hidden relative shadow-md'>
+            <div className='col-span-2 h-full w-full rounded-2xl overflow-hidden relative shadow-md aspect-square sm:aspect-auto'>
               <Image src="/images/crumbs.jpg" layout='fill' objectFit='cover' objectPosition="left" size="40vw" priority alt="cookie crumbs" />
             </div>
             }
