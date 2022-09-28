@@ -3,6 +3,7 @@ import { useContext, useState } from 'react'
 import CartContext from '../context/CartContext'
 import Cart from '../components/Cart'
 import { useEffect } from 'react'
+import SubscribeForm from './Form'
 
 export default function Nav(props) {
 
@@ -41,10 +42,7 @@ export default function Nav(props) {
 
                 </div>
                 <div onSubmit={handleSubmit} className='flex flex-row justify-end items-center space-x-4'>
-                    <form className='md:flex flex-row justify-end items-center bg-white px-1 py-1 rounded-full hidden'>
-                        <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} className='outline-none placeholder:text-slate-300 text-pink-600 mx-3 w-44 text-sm' placeholder="janedoe@gmail.com"></input>
-                        <button type="submit" className='px-3 py-1 bg-pink-600 text-white rounded-full text-sm'>subscribe</button>
-                    </form>
+                    <SubscribeForm />
                     {props.products ? <Cart /> : ""}
                 </div>
             </nav>
