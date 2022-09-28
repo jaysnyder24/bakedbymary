@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Nav from "../components/Nav"
 import HeroItem from '../components/HeroItem'
 
-export default function Home({products}) {
+export default function AboutUs({products}) {
 
   return (
     <div className='w-screen z-0'>
@@ -59,7 +59,7 @@ export async function getServerSideProps() {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
   const resProducts = await stripe.products.list({
-    active: false,
+    active: true,
     expand: ['data.default_price'],
   });
 
