@@ -13,12 +13,17 @@ export default function Home({products}) {
       </Head>
       <Nav products={products.length > 0 ? true : false} />
       <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[140px] md:pb-[80px] pt-20 pb-10'>
-        <div className="w-full h-full max-w-[1400px] inline-grid md:grid-cols-5 md:gap-20 grid-cols-2 md:grid-rows-6 px-10 z-10">
-          <div className='w-full h-full flex flex-col justify-start items-start md:col-span-2 col-span-2 md:row-span-6 mb-5 md:mb-0'>
+        <div className="w-full h-full max-w-[1400px] inline-grid md:grid-cols-6 md:gap-20 grid-cols-2 md:grid-rows-6 px-10 z-10">
+          <div className='w-full h-full flex flex-col justify-start items-start md:col-span-3 col-span-2 md:row-span-6 mb-5 md:mb-0'>
             <div className='w-full flex flex-col justify-start items-start flex-wrap grow md:pt-10'>
-              {products.length > 0 ? <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-10'>Check out this month's <span className='text-pink-500'>homemade cookies!</span></h1> : <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-10'>Well crumbs... <br></br><span className='text-pink-500'>you missed out!</span></h1>}
-              {products.length > 0 ? <span className='w-full text-black text-base inline-block mb-5'>All our cookies are made from scratch a day prior to this month's pickup date, and are topped day of. <strong>Delivery is not available</strong> at this time and the pickup location is in Ankeny, Iowa, so take this into account when placing your order. Shortly after your order, you will recieve an email with the pickup address.</span> : <span className='w-full text-black text-base inline-block mb-5'>Don't fret! Mary will be back with a new curated bundle of delicious, seasonally relevant cookies in just a few weeks. If you can't wait that long and would like to place a bulk order or have feedback on the site or cookies you can send those requests and comments to <a href="mailto:jaysnyder23@gmail.com" className='text-pink-500 font-bold'>our email</a>. We also have a newsletter and social media profiles in the works to keep all of you up-to-date on what cookies we have coming. See you soon!</span>}
-              {products.length > 0 ? <p className='w-full text-black text-base flex mb-10'><span className='text-pink-500 font-bold mr-2'>October's Order Pickup Date:</span> October 17th, 2022</p> : ""}
+              <div className='w-full relative h-[20vh] md:hidden mb-10 rounded-xl overflow-hidden'>
+                <Image src="/images/aboutUsPhoto.jpg" layout='fill' objectFit='cover' objectPosition="center" priority />
+              </div>
+              <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-10'>About Mary <span className='text-pink-500'>& The Snyder Family</span></h1>
+              <span className='w-full text-black text-base inline-block mb-5'>Mary's mother instilled a love for desserts and an even bigger heart for seeing others take joy in her passions. Whether it was providing sweets for Thanksgiving dinner or baked goods for a school fundraiser, Mary's mom showed her that gift that's shared is a gift well-used.</span>
+              <span className='w-full text-black text-base inline-block mb-5'>Another key inspiration for Mary was her grandmother, Ruth, who she remembers watching work her magic in the kitchen for hours making treats for everyone at the family gathering. Ruth, like Colette, showed Mary that baking can bring people together like few things can.</span>
+              <span className='w-full text-black text-base inline-block mb-5'>When she isn't baking, Mary loves spending time at her full-time job as a stay-at-home mom for her three kids and her husband, Jay. The kids love "helping" make Mary's creative confections and Jay enjoys his role in the company as Quality Control Specialist.</span>
+
               {/*<div className='md:flex flex-row justify-start items-center w-full hidden'>
                 <Link href={'#'} passHref={true}>
                   <a className='p-4 rounded-full overflow-clip bg-pink-500 mr-5 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all'>
@@ -38,22 +43,10 @@ export default function Home({products}) {
               </div>*/}
             </div>
           </div>
-          <div className='w-full h-full grid sm:grid-cols-2 grid-cols-2 gap-4 md:col-span-3 md:row-span-6 col-span-2 row-span-5'>
-            {products.length > 0 ?  
-            
-            products.map((product) => <HeroItem key={product.id} name={product.name} price={product.default_price.id} value={product.default_price.unit_amount_decimal / 100} image={product.metadata.imageUnique} description={product.description} />)
-            :
-            <div className='col-span-2 h-full w-full rounded-2xl overflow-hidden relative shadow-md aspect-square sm:aspect-auto'>
-              <Image src="/images/crumbs.jpg" layout='fill' objectFit='cover' objectPosition="left" size="40vw" priority alt="cookie crumbs" />
-            </div>
-            }
-
-          </div>
         </div>
         <div className='md:w-5/12 md:h-[95%] h-1/6 w-full hidden md:flex md:mx-0 mx-auto absolute bottom-0 md:top-0 md:right-0 md:bottom-auto sm:top-auto sm:right-auto z-0 overflow-clip md:rounded-bl-2xl md:rounded-t-none rounded-t-2xl bg-pink-200'>
           <div className='relative w-full h-full'>
-            <Image src={'/images/assortOne.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' quality={50} />
-            <div className='w-full h-full bg-pink-400 bg-opacity-80 z-10 absolute top-0 right-0'></div>
+            <Image src={'/images/aboutUsPhoto.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' />
           </div>
           
         </div>
@@ -66,9 +59,8 @@ export async function getServerSideProps() {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
   const resProducts = await stripe.products.list({
-    active: true,
+    active: false,
     expand: ['data.default_price'],
-    limit: 4,
   });
 
   const products = resProducts.data;

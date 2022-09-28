@@ -12,11 +12,9 @@ export default function CartItem(props) {
 
     return (
         <div className='grid grid-cols-4 grid-rows-4 w-full gap-2 shrink'>
-            <Link href="#" passHref={true}>
-                <a className='col-span-1 row-span-4 relative rounded-xl overflow-hidden'>
-                    <Image src={'/images/' + item.image + 'Default.jpg'} layout="fill" objectFit='cover' objectPosition="center" alt='cookie' />
-                </a>
-            </Link>
+            <div className='col-span-1 row-span-4 relative rounded-xl overflow-hidden'>
+                <Image src={'/images/' + item.image + 'Default.jpg'} layout="fill" objectFit='cover' objectPosition="center" alt='cookie' />
+            </div>
             <span className='col-span-3 row-span-1 pl-4 font-bold'>{item.name}</span>
             <span className='col-span-3 row-span-1 pl-4 font-bold text-pink-500'>Total Cost | ${item.value * item.quantity}</span>
             <span className='col-span-3 row-span-1 pl-4'>

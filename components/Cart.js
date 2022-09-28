@@ -25,17 +25,20 @@ export default function Cart() {
   }
 
   const [total, setTotal] = useState(null);
+  const [cartQuantity, setCartQuantity] = useState(0);
 
   useEffect(() => {
     
     setTotal(0)
     setCheckoutItems([])
+    setCartQuantity(0)
     items.forEach((item) => {
       setTotal((prevTotal) => prevTotal + (item.value * item.quantity))
       setCheckoutItems((prevItems) => [...prevItems, {price: item.price, quantity: item.quantity}])
+      setCartQuantity((prevQuantity) => prevQuantity + item.quantity)
     })
 
-    console.log(checkoutItems);
+    
 
   }, [items])
 
@@ -46,9 +49,9 @@ export default function Cart() {
   return (
     <>
       <div className="flex items-center justify-center">
-        <button onClick={() => openModal()} className={'h-10 w-10 bg-pink-500 rounded-full flex flex-row justify-center items-center pr-[1px] pt-[1px] hover:bg-pink-500 active:bg-pink-600 transition-all group relative ' + (isOpen ? "opacity-0" : "")}>
+        <button onClick={() => openModal()} className={'h-10 w-10 bg-pink-600 rounded-full flex flex-row justify-center items-center pr-[1px] pt-[1px] hover:bg-pink-600 active:bg-pink-700 transition-all group relative ' + (isOpen ? "opacity-0" : "")}>
             <ShoppingCartIcon className='h-5 w-5 text-white group-hover:text-white transition-all' />
-            <div className='h-5 w-5 flex flex-row justify-center items-center absolute -top-2 -right-2 bg-pink-50 text-pink-600  group-hover:bg-white group-hover:text-pink-500 text-xs rounded-full aspect-square transition-all'>{items.length}</div>
+            <div className='h-5 w-5 flex flex-row justify-center items-center absolute -top-2 -right-2 bg-pink-50 text-pink-700  group-hover:bg-white group-hover:text-pink-600 text-xs rounded-full aspect-square transition-all'>{cartQuantity}</div>
         </button>
       </div>
 
@@ -63,7 +66,7 @@ export default function Cart() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-pink-400 bg-opacity-40 z-40" />
+            <div className="fixed inset-0 bg-pink-400 bg-opacity-40 z-40 backdrop-blur-sm" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto z-50">

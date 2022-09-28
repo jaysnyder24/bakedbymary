@@ -24,9 +24,9 @@ export default function HeroItem(props) {
   return (
     <>
       <button onClick={() => openModal()} className='aspect-square sm:aspect-auto flex flex-col justify-end items-center rounded-2xl shadow-md relative overflow-hidden transition-all group'>
-        <div className={'w-full h-full bg-pink-50 bg-opacity-0 opacity-0 absolute top-0 left-0 z-20 group-hover:opacity-100 group-hover:bg-opacity-90 transition-all duration-200 p-7 flex-col justify-center items-center space-y-5 ' + (isOpen ? 'hidden' : 'flex')}>
-            <span className='font-bold font-serif text-lg md:text-2xl text-pink-600'>{props.name}</span>
-            <span className='font-bold font-serif text-lg md:text-xl text-pink-600'>${props.value}</span>
+        <div className={'w-full h-full backdrop-blur-sm bg-pink-50 bg-opacity-0 opacity-0 absolute top-0 left-0 z-20 group-hover:opacity-100 group-hover:bg-opacity-90 transition-all duration-200 p-7 flex-col justify-center items-center space-y-5 ' + (isOpen ? 'hidden' : 'flex')}>
+            <span className='font-bold font-serif text-xl md:text-2xl text-pink-600'>{props.name}</span>
+            <span className='font-bold font text-lg md:text-xl text-pink-600'>${props.value}</span>
         </div>
         <Image src={'/images/' + props.image + 'Default.jpg'} className="z-10 group-hover:scale-125 transition-all duration-300" layout="fill" objectFit='cover' objectPosition="center" size="15vw" priority alt='cookie' quality={50} />
       </button>
@@ -42,7 +42,7 @@ export default function HeroItem(props) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-pink-400 bg-opacity-40 z-40" />
+            <div className="fixed inset-0 bg-pink-400 bg-opacity-40 z-40 backdrop-blur-sm" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto z-50">
@@ -77,7 +77,7 @@ export default function HeroItem(props) {
                   <Dialog.Title as="h3" className="text-2xl font-bold text-gray-900 font-serif">
                     {props.name}
                   </Dialog.Title>
-                  <span className='text-pink-500 font-serif text-2xl font-normal'>${props.value} per half dozen</span>
+                  <span className='text-pink-500 text-xl font-bold'>${props.value} per half dozen</span>
                   <p>{props.description}</p>
                   <div className='inline-grid grid-cols-5 gap-5 w-full'>
                     <div className='flex flex-row justify-between items-center col-span-5 sm:col-span-2'>
