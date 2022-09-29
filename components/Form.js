@@ -52,7 +52,7 @@ export default function SubscribeForm() {
                     <Dialog.Title as="h3" className="text-xl sm:text-2xl font-bold text-gray-900 mb-5 sm:mb-10 font-serif">
                     Subscribe To Cookie Club
                     </Dialog.Title>
-                    <p className='mb-5'>Welcome to Cookie Club! If you want to be the first to know when new cookies are available from Baked By Mary, and other fun things we have going on, fill out the form below!</p>
+                    <p>Welcome to Cookie Club! If you want to be the first to know when new cookies are available from Baked By Mary, and other fun things we have going on, fill out the form below!</p>
                     <iframe className='w-full h-[460px]' src="https://cdn.forms-content.sg-form.com/4e7e6d4c-3ee8-11ed-8807-ea89ab535263"/>
                     <button onClick={() => closeModal()} className='h-5 w-5 absolute top-5 right-5'><XIcon className='text-pink-500' /></button>
                 </Dialog.Panel>
