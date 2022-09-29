@@ -10,6 +10,7 @@ export default function AboutUs({products}) {
     <div className='w-screen z-0'>
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <title>Baked By Mary | About Mary & The Rest Of The Snyders</title>
       </Head>
       <Nav products={products.length > 0 ? true : false} />
       <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[140px] md:pb-[80px] pt-20 pb-10'>
@@ -17,7 +18,7 @@ export default function AboutUs({products}) {
           <div className='w-full h-full flex flex-col justify-start items-start md:col-span-3 col-span-2 md:row-span-6 mb-5 md:mb-0'>
             <div className='w-full flex flex-col justify-start items-start flex-wrap grow md:pt-10'>
               <div className='w-full relative h-[20vh] md:hidden mb-10 rounded-xl overflow-hidden'>
-                <Image src="/images/aboutUsPhoto.jpg" layout='fill' objectFit='cover' objectPosition="center" priority />
+                <Image src="/images/aboutUsPhoto.jpg" layout='fill' objectFit='cover' objectPosition="center" alt="mary and jay snyder smiling into camera" priority />
               </div>
               <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-10'>About Mary <span className='text-pink-500'>& The Snyder Family</span></h1>
               <span className='w-full text-black text-base inline-block mb-5'>Mary's mother instilled a love for desserts and an even bigger heart for seeing others take joy in her passions. Whether it was providing sweets for Thanksgiving dinner or baked goods for a school fundraiser, Mary's mom showed her that gift that's shared is a gift well-used.</span>

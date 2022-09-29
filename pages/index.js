@@ -10,6 +10,7 @@ export default function Home({products}) {
     <div className='w-screen z-0'>
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <title>Baked By Mary | Local, Specialty Cookies In Ankeny, Iowa</title>
       </Head>
       <Nav products={products.length > 0 ? true : false} />
       <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[140px] md:pb-[80px] pt-20 pb-10'>
