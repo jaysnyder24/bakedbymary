@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import { ShoppingCartIcon, XIcon } from '@heroicons/react/solid'
+import { MailIcon, XIcon } from '@heroicons/react/solid'
 import { useContext, useEffect } from 'react'
 import CartContext from '../context/CartContext'
 import CartItem from '../components/CartItem'
@@ -20,8 +20,9 @@ export default function SubscribeForm() {
 
   return (
     <>
-        <button onClick={() => openModal()} className={'hidden font-bold text-sm text-pink-600 ring-2 ring-pink-100 bg-white rounded-full md:flex flex-row justify-center items-center hover:ring-3 hover:ring-pink-400 active:ring-pink-600 transition-all group relative px-6 py-2 ' + (isOpen ? "opacity-0" : "")}>
-            join cookie club
+        <button onClick={() => openModal()} className={'flex flex-row justify-start items-center p-3 md:px-5 md:py-4 rounded-full overflow-clip bg-pink-500 hover:bg-pink-600 active:bg-pink-700 transition-all group relative ' + (isOpen ? "opacity-0" : "")}>
+          <span className='font-bold text-white text-xs mr-4 hidden md:inline-block'>join the cookie club</span>
+          <MailIcon className='h-5 w-5 text-white' />
         </button>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative" onClose={closeModal}>

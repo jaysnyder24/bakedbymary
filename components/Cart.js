@@ -49,9 +49,9 @@ export default function Cart() {
   return (
     <>
       <div className="flex items-center justify-center">
-        <button onClick={() => openModal()} className={'h-10 w-10 bg-pink-600 rounded-full flex flex-row justify-center items-center pr-[1px] pt-[1px] hover:bg-pink-600 active:bg-pink-700 transition-all group relative ' + (isOpen ? "opacity-0" : "")}>
-            <ShoppingCartIcon className='h-5 w-5 text-white group-hover:text-white transition-all' />
-            <div className='h-5 w-5 flex flex-row justify-center items-center absolute -top-2 -right-2 bg-pink-50 text-pink-700  group-hover:bg-white group-hover:text-pink-600 text-xs rounded-full aspect-square transition-all'>{cartQuantity}</div>
+        <button onClick={() => openModal()} className={'p-3 md:p-4 bg-pink-500 rounded-full flex flex-row justify-center items-center hover:bg-pink-600 active:bg-pink-700 transition-all group relative ' + (isOpen ? "opacity-0" : "")}>
+            <ShoppingCartIcon className='h-5 w-5 text-white group-hover:text-white transition-all mr-[1px] mt-[1px]' />
+            <div className='h-5 w-5 md:h-6 md:w-6 flex flex-row justify-center items-center absolute -top-2 -right-2 bg-pink-50 text-pink-700  group-hover:bg-white group-hover:text-pink-600 text-xs rounded-full aspect-square transition-all'>{cartQuantity}</div>
         </button>
       </div>
 

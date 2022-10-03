@@ -13,7 +13,7 @@ export default function AboutUs({products}) {
         <title>Baked By Mary | About Mary & The Rest Of The Snyders</title>
       </Head>
       <Nav products={products.length > 0 ? true : false} />
-      <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[140px] md:pb-[80px] pt-20 pb-10'>
+      <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[140px] md:pb-[80px] pt-24 pb-10'>
         <div className="w-full h-full max-w-[1400px] inline-grid md:grid-cols-6 md:gap-20 grid-cols-2 md:grid-rows-6 px-10 z-10">
           <div className='w-full h-full flex flex-col justify-start items-start md:col-span-3 col-span-2 md:row-span-6 mb-5 md:mb-0'>
             <div className='w-full flex flex-col justify-start items-start flex-wrap grow md:pt-10'>
