@@ -12,6 +12,7 @@ export default function Home({products}) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <title>Baked By Mary | Local, Specialty Cookies In Ankeny, Iowa</title>
+        <meta name="google-site-verification" content="RacIvNUCbJG4QsD9IqqfYjj9KR3j0DJHcDHEm-TmQD8" />
       </Head>
       <Nav products={products.length > 0 ? true : false} />
       <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[140px] md:pb-[80px] pt-24 pb-10'>
