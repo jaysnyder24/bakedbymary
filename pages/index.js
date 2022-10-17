@@ -4,8 +4,10 @@ import Link from 'next/link'
 import Nav from "../components/Nav"
 import HeroItem from '../components/HeroItem'
 import SubscribeForm from '../components/Form'
+import { useContext, useEffect, useState } from 'react'
+import ProductContext from '../context/ProductContext'
 
-export default function Home({products}) {
+export default function Home({active, inactive}) {
 
   return (
     <div className='w-screen z-0'>
@@ -14,14 +16,14 @@ export default function Home({products}) {
         <title>Baked By Mary | Local, Specialty Cookies In Ankeny, Iowa</title>
         <meta name="google-site-verification" content="RacIvNUCbJG4QsD9IqqfYjj9KR3j0DJHcDHEm-TmQD8" />
       </Head>
-      <Nav products={products.length > 0 ? true : false} />
-      <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[140px] md:pb-[80px] pt-24 pb-10'>
+      <Nav activeProducts={active} inactiveProducts={inactive} />
+      <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[120px] md:pb-[80px] pt-24 pb-10'>
         <div className="w-full h-full max-w-[1400px] inline-grid md:grid-cols-5 md:gap-20 grid-cols-2 md:grid-rows-6 px-10 z-10">
           <div className='w-full h-full flex flex-col justify-start items-start md:col-span-2 col-span-2 md:row-span-6 mb-5 md:mb-0'>
             <div className='w-full flex flex-col justify-start items-start flex-wrap grow md:pt-10'>
-              {products.length > 0 ? <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-10'>Check out this month's <span className='text-pink-500'>homemade cookies!</span></h1> : <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-10'>Well crumbs... <br></br><span className='text-pink-500'>you missed out!</span></h1>}
-              {products.length > 0 ? <span className='w-full text-black text-base inline-block mb-5'>All our cookies are made from scratch a day prior to this month's pickup date, and are topped day of. <strong>Delivery is not available</strong> at this time and the pickup location is in Ankeny, Iowa, so take this into account when placing your order. Shortly after your order, you will recieve an email with the pickup address.</span> : <><span className='w-full text-black text-base inline-block mb-5'>Don't fret! Mary will be back with a new curated bundle of delicious, seasonally relevant cookies in just a few weeks. If you can't wait that long and would like to place a bulk order or have feedback on the site or cookies you can send those requests and comments to <a href="mailto:jaysnyder23@gmail.com" className='text-pink-500 font-bold'>our email</a>. We also have a newsletter and social media profiles in the works to keep all of you up-to-date on what cookies we have coming. See you soon!</span><span className='w-full text-black text-base md:inline-block mb-5 hidden'>Follow us on social or join the cookie club below to stay up-to-date on next month's cookies and other stuff we have going on!</span></>}
-              {products.length > 0 ? <p className='w-full text-black text-base flex mb-10'><span className='text-pink-500 font-bold mr-2'>October's Order Pickup Date:</span> October 17th, 2022</p> : ""}
+              {active.length > 0 ? <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-10'>Check out this month's <span className='text-pink-500'>homemade cookies!</span></h1> : <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-10'>Well crumbs... <br></br><span className='text-pink-500'>you missed out!</span></h1>}
+              {active.length > 0 ? <span className='w-full text-black text-base inline-block mb-5'>All our cookies are made from scratch a day prior to this month's pickup date, and are topped day of. <strong>Delivery is not available</strong> at this time and the pickup location is in Ankeny, Iowa, so take this into account when placing your order. Shortly after your order, you will recieve an email with the pickup address.</span> : <><span className='w-full text-black text-base inline-block mb-5'>Don't fret! Mary will be back with a new curated bundle of delicious, seasonally relevant cookies in just a few weeks. If you can't wait that long and would like to place a bulk order or have feedback on the site or cookies you can send those requests and comments to <a href="mailto:jaysnyder23@gmail.com" className='text-pink-500 font-bold'>our email</a>. We also have a newsletter and social media profiles in the works to keep all of you up-to-date on what cookies we have coming. See you soon!</span><span className='w-full text-black text-base md:inline-block mb-5 hidden'>Follow us on social or join the cookie club below to stay up-to-date on next month's cookies and other stuff we have going on!</span></>}
+              {active.length > 0 ? <p className='w-full text-black text-base flex mb-10'><span className='text-pink-500 font-bold mr-2'>Next Order Pickup Date:</span> November 14th, 2022</p> : ""}
               <div className='md:flex flex-row justify-start items-center w-full hidden space-x-5'>
                 <SubscribeForm />
                 {/*<Link href={'#'} passHref={true}>
@@ -43,9 +45,9 @@ export default function Home({products}) {
             </div>
           </div>
           <div className='w-full h-full grid sm:grid-cols-2 grid-cols-2 gap-4 md:col-span-3 md:row-span-6 col-span-2 row-span-5'>
-            {products.length > 0 ?  
+            {active.length > 0 ?  
             
-            products.map((product) => <HeroItem key={product.id} name={product.name} price={product.default_price.id} value={product.default_price.unit_amount_decimal / 100} image={product.metadata.imageUnique} description={product.description} />)
+            active.map((product) => <HeroItem key={product.id} name={product.name} price={product.default_price.id} value={product.default_price.unit_amount_decimal / 100} image={product.metadata.imageUnique} description={product.description} />)
             :
             <div className='col-span-2 h-full w-full rounded-2xl overflow-hidden relative shadow-md aspect-square sm:aspect-auto'>
               <Image src="/images/crumbs.jpg" layout='fill' objectFit='cover' objectPosition="left" size="40vw" priority alt="cookie crumbs" />
@@ -69,17 +71,24 @@ export default function Home({products}) {
 export async function getServerSideProps() {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-  const resProducts = await stripe.products.list({
+  const reqActiveProducts = await stripe.products.list({
     active: true,
     expand: ['data.default_price'],
-    limit: 4,
   });
 
-  const products = resProducts.data;
+  const activeProducts = reqActiveProducts.data;
+
+  const reqInactiveProducts = await stripe.products.list({
+    active: false,
+    expand: ['data.default_price'],
+  });
+
+  const inactiveProducts = reqInactiveProducts.data;
 
   return {
     props: {
-      products: products
+      active: activeProducts,
+      inactive: inactiveProducts,
     }
   }
 }

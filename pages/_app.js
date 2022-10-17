@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import { CartProvider } from '../context/CartContext'
+import { ProductProvider } from '../context/ProductContext'
 import Script from 'next/script'
 import Head from 'next/head'
 
@@ -17,10 +18,11 @@ function MyApp({ Component, pageProps }) {
             gtag('config', 'G-QDQ49V35MB');`
           }
         </Script>
-
-      <CartProvider>
-        <Component {...pageProps} />
-      </CartProvider>
+      <ProductProvider>
+        <CartProvider>
+          <Component {...pageProps} />
+        </CartProvider>
+      </ProductProvider>
     </>
 )
 }

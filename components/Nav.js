@@ -1,49 +1,117 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { useContext, useState } from 'react'
 import CartContext from '../context/CartContext'
 import Cart from '../components/Cart'
 import { useEffect } from 'react'
 import SubscribeForm from './Form'
+import { Menu, Transition, Fragment } from '@headlessui/react'
+import ProductContext from '../context/ProductContext'
+import { ChevronDownIcon } from '@heroicons/react/solid'
+import { useRouter } from 'next/router'
 
 export default function Nav(props) {
 
-    const [email, setEmail] = useState("");
+    const firstFour = props.inactiveProducts.filter((product, index) => index <= 3);
+    const nextFour = props.inactiveProducts.filter((product, index) => index >= 4 && index <= 7);
     
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-          const res = await fetch("/api/addContact", {
-            body: JSON.stringify({
-                "contacts": {
-                    "email": email,
-                }
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-            method: "PUT",
-            url: `/v3/marketing/contacts`,
-          });
-    
-          const { error } = await res.json();
-          if (error) {
-            console.log(error);
-            return;
-          }
-        console.log(email);
-      };
-
     return (
         <div className='w-screen absolute top-0 z-30 bg-white md:bg-transparent'>
-            <nav className='w-full max-w-[1400px] flex flex-row justify-between items-center mx-auto px-10 py-5'>
+            <nav className='w-full max-w-[1400px] flex flex-row justify-between items-center mx-auto px-10 py-5 relative'>
                 <div className='flex flex-row justify-start items-end'>
                     <Link href="/" passHref={true}><a className='font-bold text-pink-500 mr-10'>baked by<span className='font-serif font-normal text-black text-3xl leading-0 ml-2'>Mary</span></a></Link>
-                    <Link href="/about-us" passHref={true}><a className='hidden md:flex h-full hover:underline hover:decoration-pink-500 hover:underline-offset-4 transition-all'>about us</a></Link>
-
+                    <Link href="/about-us" passHref={true}><a className='hidden md:flex h-full hover:underline hover:decoration-pink-500 hover:underline-offset-4 transition-all mr-5'>about us</a></Link>
+                    <Menu as="div" className="text-left whitespace-nowrap">
+                      <div className='text-amber-800 transition-all ease-in-out group'>
+                      <Menu.Button className="hidden md:flex text-black flex-row justify-start items-center h-full hover:underline hover:decoration-pink-500 hover:underline-offset-4 transition-all mr-5">
+                          cookies
+                          <ChevronDownIcon
+                          className="ml-1 h-4 w-4 text-pink-500 group-hover:text-pink-600"
+                          aria-hidden="true"
+                          />
+                      </Menu.Button>
+                      </div>
+                      <Transition 
+                      className={"absolute w-full left-0 px-10 z-[200]"}
+                      as={Fragment}
+                      enter="transition ease-out duration-200 delay-200"
+                      enterFrom="transform opacity-0 -translate-x-10"
+                      enterTo="transform opacity-100 -translate-x-0"
+                      leave="transition ease-in duration-200"
+                      leaveFrom="transform opacity-100 -translate-x-0"
+                      leaveTo="transform opacity-0 -translate-x-10"
+                      >
+                      <Menu.Items className="mt-5 w-full rounded-2xl bg-white shadow-lg ring-1 ring-pink-200 p-5 flex flex-row justify-between items-center space-x-5">
+                        <div className='flex flex-row justify-start items-start space-x-5 w-3/4 h-full'>
+                          {!props.activeProducts.length ?
+                            firstFour.map((product) => 
+                            <Menu.Item key={product.id}>
+                              {({ active }) => (
+                                <Link href={"/cookies/" + product.metadata.slug} passHref={true}>
+                                  <a className="aspect-square w-full h-full relative rounded-lg overflow-hidden group transition-all">
+                                    <div className='w-full h-full z-[202] absolute flex justify-center items-center top-0 opacity-0 group-hover:opacity-100 bg-pink-600 bg-opacity-0 group-hover:bg-opacity-60 transition-all ease-in-out flex-wrap p-5'>
+                                      <span className='text-white font-serif font-bold text-2xl whitespace-pre-wrap text-center'>{product.name}</span>
+                                    </div>
+                                    <Image src={"/images/" + product.metadata.imageUnique + "Two.jpg"} alt="cookie" className="group-hover:scale-110 group-hover:blur-sm transition-all ease-in-out z-[201]" layout="fill" objectFit='cover' objectPosition={"center"} sizes={'20vw'} />
+                                  </a>
+                                </Link>
+                              )}
+                            </Menu.Item>
+                            )
+                            :
+                            props.activeProducts.map((product) => 
+                            <Menu.Item key={product.id}>
+                              {({ active }) => (
+                                <Link href={"/cookies/" + product.metadata.slug} passHref={true}>
+                                  <a className="aspect-square w-full shrink relative rounded-lg overflow-hidden group transition-all">
+                                    <div className='w-full h-full z-[202] absolute flex justify-center items-center top-0 opacity-0 group-hover:opacity-100 bg-pink-600 bg-opacity-0 group-hover:bg-opacity-60 transition-all ease-in-out flex-wrap p-5'>
+                                      <span className='text-white font-serif font-bold text-2xl whitespace-pre-wrap text-center'>{product.name}</span>
+                                    </div>
+                                    <Image src={"/images/" + product.metadata.imageUnique + "Two.jpg"} alt="cookie" className="group-hover:scale-110 group-hover:blur-sm transition-all ease-in-out z-[201]" layout="fill" objectFit='cover' objectPosition={"center"} sizes={'20vw'} />
+                                  </a>
+                                </Link>
+                              )}
+                            </Menu.Item>
+                            )
+                          }
+                        </div>
+                        <div className='flex flex-col justify-between items-start'>
+                         {props.activeProducts.length > 0 ?
+                         firstFour.map((product) => 
+                         <Menu.Item key={product.id}>
+                         {({ active }) => (
+                             <Link href={"/cookies/" + product.metadata.slug} passHref={true}>
+                               <a className='flex flex-row justify-start items-center w-full h-full p-2 rounded-lg hover:bg-pink-100 bg-white transition-all'>
+                                 <div className='aspect-square h-10 rounded-lg overflow-hidden relative mr-4'>
+                                   <Image src={"/images/" + product.metadata.imageUnique + "One.jpg"} alt="cookie" layout="fill" objectFit='cover' sizes="5vw" objectPosition={"center"} />
+                                 </div>
+                                 <span className='text-lg'>{product.name}</span>
+                               </a>
+                             </Link>
+                         )}
+                         </Menu.Item>)
+                         :
+                         nextFour.map((product) => 
+                          <Menu.Item key={product.id}>
+                          {({ active }) => (
+                              <Link href={"/cookies/" + product.metadata.slug} passHref={true}>
+                                <a className='flex flex-row justify-start items-center w-full h-full p-2 rounded-lg hover:bg-pink-100 bg-white transition-all'>
+                                  <div className='aspect-square h-10 rounded-lg overflow-hidden relative mr-4'>
+                                    <Image src={"/images/" + product.metadata.imageUnique + "One.jpg"} alt="cookie" layout="fill" objectFit='cover' sizes="5vw" objectPosition={"center"} />
+                                  </div>
+                                  <span className='text-xl font-light'>{product.name}</span>
+                                </a>
+                              </Link>
+                          )}
+                          </Menu.Item>)}
+                        </div>
+                      </Menu.Items>
+                    </Transition>
+                  </Menu>
                 </div>
-                <div onSubmit={handleSubmit} className='flex flex-row justify-end items-center space-x-4'>
+                <div className='flex flex-row justify-end items-center space-x-4'>
                     <SubscribeForm />
-                    {props.products ? <Cart /> : ""}
+                    {props.activeProducts.length > 0 ? <Cart /> : ""}
                 </div>
             </nav>
         </div>

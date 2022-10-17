@@ -3,8 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Nav from "../components/Nav"
 import HeroItem from '../components/HeroItem'
+import { useContext, useEffect } from 'react'
+import ProductContext from '../context/ProductContext'
 
-export default function AboutUs({products}) {
+export default function AboutUs({active, inactive}) {
 
   return (
     <div className='w-screen z-0'>
@@ -12,8 +14,8 @@ export default function AboutUs({products}) {
         <link rel="icon" href="/favicon.ico" />
         <title>Baked By Mary | About Mary & The Rest Of The Snyders</title>
       </Head>
-      <Nav products={products.length > 0 ? true : false} />
-      <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[140px] md:pb-[80px] pt-24 pb-10'>
+      <Nav activeProducts={active} inactiveProducts={inactive} />
+      <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative md:pt-[120px] md:pb-[80px] pt-24 pb-10'>
         <div className="w-full h-full max-w-[1400px] inline-grid md:grid-cols-6 md:gap-20 grid-cols-2 md:grid-rows-6 px-10 z-10">
           <div className='w-full h-full flex flex-col justify-start items-start md:col-span-3 col-span-2 md:row-span-6 mb-5 md:mb-0'>
             <div className='w-full flex flex-col justify-start items-start flex-wrap grow md:pt-10'>
@@ -59,16 +61,24 @@ export default function AboutUs({products}) {
 export async function getServerSideProps() {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-  const resProducts = await stripe.products.list({
+  const reqActiveProducts = await stripe.products.list({
     active: true,
     expand: ['data.default_price'],
   });
 
-  const products = resProducts.data;
+  const activeProducts = reqActiveProducts.data;
+
+  const reqInactiveProducts = await stripe.products.list({
+    active: false,
+    expand: ['data.default_price'],
+  });
+
+  const inactiveProducts = reqInactiveProducts.data;
 
   return {
     props: {
-      products: products
+      active: activeProducts,
+      inactive: inactiveProducts,
     }
   }
 }
