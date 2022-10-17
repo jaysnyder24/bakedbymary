@@ -37,7 +37,7 @@ export default function ProductPage({product, active, inactive}) {
               </div>
               <div className='flex flex-col justify-start items-start mb-10'>
                 <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-5'>{cookie.name}</h1>
-                <span className='text-pink-500 text-xl font-serif font-extrabold'>$25 per dozen</span>
+                <span className='text-pink-500 text-xl font-serif font-extrabold'>{cookie.active ? "$20 per dozen" : "$25 per dozen"}</span>
               </div>
               <div className='flex flex-row justify-start items-center space-x-4 mb-10'>
                   <button onClick={() => {copyURL()}} className='bg-pink-500 p-4 rounded-full flex justify-center items-center hover:bg-pink-600 active:bg-active-700'>
