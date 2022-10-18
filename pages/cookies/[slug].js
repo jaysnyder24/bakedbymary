@@ -44,7 +44,7 @@ export default function ProductPage({product, active, inactive}) {
                     {clicked === true ? <span className='text-white font-bold text-xs mr-2 leading-none'>copied link</span> : <span className='text-white font-bold text-xs mr-2 leading-none'>share link</span>}
                     <LinkIcon className='text-white h-4 w-4' />
                   </button>
-                {/*<SpecialOrder />*/}
+                {<SpecialOrder />}
               </div>
               <p className='w-full text-black text-xl flex mb-5 font-light'><span className='text-pink-500 font-bold mr-2'>Available:</span> {cookie.metadata.available}</p>
               <p className='w-full text-black text-lg flex mb-10'>{cookie.description}</p>
