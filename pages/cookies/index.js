@@ -20,7 +20,7 @@ export default function AllCookies({active, inactive}) {
           active.map((product) => 
           <Link href={"/cookies/" + product.metadata.slug} passHref={true} key={product.id}>
             <a className="aspect-video w-full h-auto md:aspect-none md:h-[200px] md:w-[356px] mx-5 mb-10 grow relative rounded-lg overflow-hidden group transition-all col-span-1 bg-purple-200">
-              <div className='w-full h-full z-[202] absolute flex flex-col justify-center items-center top-0 opacity-0 group-hover:opacity-100 bg-pink-600 bg-opacity-0 group-hover:bg-opacity-60 transition-all ease-in-out flex-wrap p-10'>
+              <div className='w-full h-full z-[202] absolute flex flex-col justify-center items-center top-0 opacity-0 group-hover:opacity-100 bg-pink-600 bg-opacity-0 group-hover:bg-opacity-60 transition-all ease-in-out p-5'>
                 <span className='text-white font-serif font-bold text-2xl whitespace-pre-wrap text-center mb-5'>{product.name}</span>
                 <span className='px-4 py-2 rounded-full bg-white text-pink-500 text-sm font-bold'>Cookie Details</span>
               </div>
@@ -35,7 +35,7 @@ export default function AllCookies({active, inactive}) {
           inactive.map((product) => 
           <Link href={"/cookies/" + product.metadata.slug} passHref={true} key={product.id}>
             <a className="aspect-video w-full h-auto md:aspect-none md:h-[200px] md:w-[356px] mx-5 mb-10 grow relative rounded-lg overflow-hidden group transition-all col-span-1 bg-purple-200">
-              <div className='w-full h-full z-[202] absolute flex flex-col justify-center items-center top-0 opacity-0 group-hover:opacity-100 bg-pink-600 bg-opacity-0 group-hover:bg-opacity-60 transition-all ease-in-out flex-wrap p-10'>
+              <div className='w-full h-full z-[202] absolute flex flex-col justify-center items-center top-0 opacity-0 group-hover:opacity-100 bg-pink-600 bg-opacity-0 group-hover:bg-opacity-60 transition-all ease-in-out p-5'>
                 <span className='text-white font-serif font-bold text-2xl whitespace-pre-wrap text-center mb-5'>{product.name}</span>
                 <span className='px-4 py-2 rounded-full bg-white text-pink-500 text-sm font-bold'>Cookie Details</span>
               </div>
