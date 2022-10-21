@@ -131,18 +131,18 @@ export default function Nav(props) {
                     leaveFrom="transform opacity-100 -translate-x-0"
                     leaveTo="transform opacity-0 -translate-x-10"
                     >
-                      <Menu.Items className="mt-5 w-full rounded-2xl bg-white shadow-lg ring-1 ring-pink-200 p-5 flex flex-row justify-start flex-wrap items-center">
+                      <Menu.Items className="mt-5 w-full rounded-2xl bg-white shadow-lg ring-1 ring-pink-200 p-5 flex flex-row justify-start flex-wrap items-center outline-none">
                         <Menu.Item>
                           {({ active }) => (
                             <Link href={"/about-us"} passHref={true}>
-                              <a className="w-full h-full relative rounded-lg overflow-hidden group transition-all text-pink-500 font-bold text-center p-4">About Us</a>
+                              <a className="w-full h-full relative rounded-lg overflow-hidden group transition-all text-pink-500 font-bold text-center p-4 outline-none">About Us</a>
                             </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
                             <Link href={"/cookies"} passHref={true}>
-                              <a className="w-full h-full relative rounded-lg overflow-hidden group transition-all text-pink-500 font-bold text-center p-4">Cookies</a>
+                              <a className="w-full h-full relative rounded-lg overflow-hidden group transition-all text-pink-500 font-bold text-center p-4 outline-none">Cookies</a>
                             </Link>
                           )}
                         </Menu.Item>
