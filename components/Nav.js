@@ -13,7 +13,8 @@ import { useRouter } from 'next/router'
 export default function Nav(props) {
 
     const firstFour = props.inactiveProducts.filter((product, index) => index <= 3);
-    const nextFour = props.inactiveProducts.filter((product, index) => index >= 4 && index <= 7);
+    const nextThree = props.inactiveProducts.filter((product, index) => index >= 3 && index <= 5);
+    const firstThree = props.inactiveProducts.filter((product, index) => index <= 2);
     
     return (
         <div className='w-screen absolute top-0 z-30 bg-white md:bg-transparent'>
@@ -41,14 +42,14 @@ export default function Nav(props) {
                     leaveFrom="transform opacity-100 -translate-x-0"
                     leaveTo="transform opacity-0 -translate-x-10"
                     >
-                      <Menu.Items className="mt-5 w-full rounded-2xl bg-white shadow-lg ring-1 ring-pink-200 p-5 flex flex-row justify-between items-center space-x-5">
-                        <div className='flex flex-row justify-start items-start space-x-5 w-3/4 h-full'>
+                      <Menu.Items className="mt-5 w-full rounded-2xl bg-white shadow-lg ring-1 ring-pink-50 p-5 flex flex-row justify-between items-center space-x-5">
+                        <div className='flex flex-row justify-between items-start w-3/4 h-full grow'>
                           {!props.activeProducts.length ?
                             firstFour.map((product) => 
                             <Menu.Item key={product.id}>
                               {({ active }) => (
                                 <Link href={"/cookies/" + product.metadata.slug} passHref={true}>
-                                  <a className="aspect-square w-full h-full relative rounded-lg overflow-hidden group transition-all">
+                                  <a className="w-[23%] h-52 relative rounded-lg overflow-hidden group transition-all">
                                     <div className='w-full h-full z-[202] absolute flex justify-center items-center top-0 opacity-0 group-hover:opacity-100 bg-pink-600 bg-opacity-0 group-hover:bg-opacity-60 transition-all ease-in-out flex-wrap p-5'>
                                       <span className='text-white font-serif font-bold text-2xl whitespace-pre-wrap text-center'>{product.name}</span>
                                     </div>
@@ -63,7 +64,7 @@ export default function Nav(props) {
                             <Menu.Item key={product.id}>
                               {({ active }) => (
                                 <Link href={"/cookies/" + product.metadata.slug} passHref={true}>
-                                  <a className="aspect-square w-full shrink relative rounded-lg overflow-hidden group transition-all">
+                                  <a className="w-[23%] h-60 relative rounded-lg overflow-hidden group transition-all">
                                     <div className='w-full h-full z-[202] absolute flex justify-center items-center top-0 opacity-0 group-hover:opacity-100 bg-pink-600 bg-opacity-0 group-hover:bg-opacity-60 transition-all ease-in-out flex-wrap p-5'>
                                       <span className='text-white font-serif font-bold text-2xl whitespace-pre-wrap text-center'>{product.name}</span>
                                     </div>
@@ -75,35 +76,44 @@ export default function Nav(props) {
                             )
                           }
                         </div>
-                        <div className='flex flex-col justify-between items-start'>
+                        <div className='flex flex-col justify-between items-start h-52 w-1/4 shrink space-y-3'>
                          {props.activeProducts.length > 0 ?
-                         firstFour.map((product) => 
+                         firstThree.map((product) => 
                          <Menu.Item key={product.id}>
                          {({ active }) => (
                              <Link href={"/cookies/" + product.metadata.slug} passHref={true}>
-                               <a className='flex flex-row justify-start items-center w-full h-full p-2 rounded-lg hover:bg-pink-100 bg-white transition-all'>
-                                 <div className='aspect-square h-10 rounded-lg overflow-hidden relative mr-4'>
+                               <a className='flex flex-row justify-start items-center h-full rounded-lg transition-all group shrink'>
+                                 <div className='aspect-square h-10 rounded-lg overflow-hidden relative mr-4 group-hover:scale-110 transition-all'>
                                    <Image src={"/images/" + product.metadata.imageUnique + "One.jpg"} alt="cookie" layout="fill" objectFit='cover' sizes="5vw" objectPosition={"center"} />
                                  </div>
-                                 <span className='text-lg'>{product.name}</span>
+                                 <span className='text-base group-hover:text-pink-500 group-hover:font-medium transition-all whitespace-pre-wrap leading-tight'>{product.name}</span>
                                </a>
                              </Link>
                          )}
                          </Menu.Item>)
                          :
-                         nextFour.map((product) => 
+                         nextThree.map((product) => 
                           <Menu.Item key={product.id}>
                           {({ active }) => (
                               <Link href={"/cookies/" + product.metadata.slug} passHref={true}>
-                                <a className='flex flex-row justify-start items-center w-full h-full p-2 rounded-lg hover:bg-pink-100 bg-white transition-all'>
-                                  <div className='aspect-square h-10 rounded-lg overflow-hidden relative mr-4'>
+                                <a className='flex flex-row justify-start items-center h-full rounded-lg transition-all group shrink'>
+                                  <div className='aspect-square h-10 rounded-lg overflow-hidden relative mr-4 group-hover:scale-110 transition-all'>
                                     <Image src={"/images/" + product.metadata.imageUnique + "One.jpg"} alt="cookie" layout="fill" objectFit='cover' sizes="5vw" objectPosition={"center"} />
                                   </div>
-                                  <span className='text-xl font-light'>{product.name}</span>
+                                  <span className='text-base group-hover:text-pink-500 group-hover:font-medium transition-all whitespace-pre-wrap leading-tight'>{product.name}</span>
                                 </a>
                               </Link>
                           )}
                           </Menu.Item>)}
+                          <Menu.Item>
+                          {({ active }) => (
+                              <Link href={"/cookies"} passHref={true}>
+                                <a className='flex flex-row justify-center items-center w-full h-10 rounded-lg transition-all group grow bg-pink-500 text-white font-bold px-4 py-2 hover:bg-pink-600 active:bg-pink-700'>
+                                  See All Cookies
+                                </a>
+                              </Link>
+                          )}
+                          </Menu.Item>
                         </div>
                       </Menu.Items>
                     </Transition>
