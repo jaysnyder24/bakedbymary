@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 export default function Nav(props) {
 
     const firstFour = props.inactiveProducts.filter((product, index) => index <= 3);
-    const nextThree = props.inactiveProducts.filter((product, index) => index >= 3 && index <= 5);
+    const nextThree = props.inactiveProducts.filter((product, index) => index >= 4 && index <= 6);
     const firstThree = props.inactiveProducts.filter((product, index) => index <= 2);
     
     return (
