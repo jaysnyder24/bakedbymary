@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import SubscribeForm from './Form'
 import { Menu, Transition, Fragment } from '@headlessui/react'
 import ProductContext from '../context/ProductContext'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon, MenuIcon } from '@heroicons/react/solid'
 import { useRouter } from 'next/router'
 
 export default function Nav(props) {
@@ -19,10 +19,10 @@ export default function Nav(props) {
         <div className='w-screen absolute top-0 z-30 bg-white md:bg-transparent'>
             <nav className='w-full max-w-[1400px] flex flex-row justify-between items-center mx-auto px-10 py-5 relative'>
                 <div className='flex flex-row justify-start items-end'>
-                    <Link href="/" passHref={true}><a className='font-bold text-pink-500 mr-10'>baked by<span className='font-serif font-normal text-black text-3xl leading-0 ml-2'>Mary</span></a></Link>
-                    <Link href="/about-us" passHref={true}><a className='hidden md:flex h-full hover:underline hover:decoration-pink-500 hover:underline-offset-4 transition-all mr-5'>about us</a></Link>
-                    <Menu as="div" className="text-left whitespace-nowrap">
-                      <div className='text-amber-800 transition-all ease-in-out group'>
+                  <Link href="/" passHref={true}><a className='font-bold text-pink-500 mr-10'>baked by<span className='font-serif font-normal text-black text-3xl leading-0 ml-2'>Mary</span></a></Link>
+                  <Link href="/about-us" passHref={true}><a className='hidden md:flex h-full hover:underline hover:decoration-pink-500 hover:underline-offset-4 transition-all mr-5'>about us</a></Link>
+                  <Menu as="div" className="text-left whitespace-nowrap">
+                    <div className='text-amber-800 transition-all ease-in-out group'>
                       <Menu.Button className="hidden md:flex text-black flex-row justify-start items-center h-full hover:underline hover:decoration-pink-500 hover:underline-offset-4 transition-all mr-5">
                           cookies
                           <ChevronDownIcon
@@ -30,17 +30,17 @@ export default function Nav(props) {
                           aria-hidden="true"
                           />
                       </Menu.Button>
-                      </div>
-                      <Transition 
-                      className={"absolute w-full left-0 px-10 z-[200]"}
-                      as={Fragment}
-                      enter="transition ease-out duration-200 delay-200"
-                      enterFrom="transform opacity-0 -translate-x-10"
-                      enterTo="transform opacity-100 -translate-x-0"
-                      leave="transition ease-in duration-200"
-                      leaveFrom="transform opacity-100 -translate-x-0"
-                      leaveTo="transform opacity-0 -translate-x-10"
-                      >
+                    </div>
+                    <Transition 
+                    className={"absolute w-full left-0 px-10 z-[200]"}
+                    as={Fragment}
+                    enter="transition ease-out duration-200 delay-200"
+                    enterFrom="transform opacity-0 -translate-x-10"
+                    enterTo="transform opacity-100 -translate-x-0"
+                    leave="transition ease-in duration-200"
+                    leaveFrom="transform opacity-100 -translate-x-0"
+                    leaveTo="transform opacity-0 -translate-x-10"
+                    >
                       <Menu.Items className="mt-5 w-full rounded-2xl bg-white shadow-lg ring-1 ring-pink-200 p-5 flex flex-row justify-between items-center space-x-5">
                         <div className='flex flex-row justify-start items-start space-x-5 w-3/4 h-full'>
                           {!props.activeProducts.length ?
@@ -110,8 +110,45 @@ export default function Nav(props) {
                   </Menu>
                 </div>
                 <div className='flex flex-row justify-end items-center space-x-4'>
-                    <SubscribeForm />
-                    {props.activeProducts.length > 0 ? <Cart /> : ""}
+                  <SubscribeForm />
+                  {props.activeProducts.length > 0 ? <Cart /> : ""}
+                  <Menu as="div" className="text-left whitespace-nowrap">
+                    <div className='transition-all ease-in-out group'>
+                      <Menu.Button className="flex md:hidden bg-pink-500 flex-row justify-center items-center h-full p-3 rounded-full">
+                          <MenuIcon
+                          className="h-5 w-5 text-white"
+                          aria-hidden="true"
+                          />
+                      </Menu.Button>
+                    </div>
+                    <Transition 
+                    className={"absolute w-full left-0 px-10 z-[200]"}
+                    as={Fragment}
+                    enter="transition ease-out duration-200 delay-200"
+                    enterFrom="transform opacity-0 -translate-x-10"
+                    enterTo="transform opacity-100 -translate-x-0"
+                    leave="transition ease-in duration-200"
+                    leaveFrom="transform opacity-100 -translate-x-0"
+                    leaveTo="transform opacity-0 -translate-x-10"
+                    >
+                      <Menu.Items className="mt-5 w-full rounded-2xl bg-white shadow-lg ring-1 ring-pink-200 p-5 flex flex-row justify-start flex-wrap items-center">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link href={"/about-us"} passHref={true}>
+                              <a className="w-full h-full relative rounded-lg overflow-hidden group transition-all text-pink-500 font-bold text-center p-4">About Us</a>
+                            </Link>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link href={"/cookies"} passHref={true}>
+                              <a className="w-full h-full relative rounded-lg overflow-hidden group transition-all text-pink-500 font-bold text-center p-4">Cookies</a>
+                            </Link>
+                          )}
+                        </Menu.Item>
+                      </Menu.Items>
+                    </Transition>
+                  </Menu>
                 </div>
             </nav>
         </div>

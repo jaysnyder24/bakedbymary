@@ -32,8 +32,22 @@ export default function ProductPage({product, active, inactive}) {
         <div className="w-full h-full max-w-[1400px] inline-grid md:grid-cols-6 md:gap-20 grid-cols-2 md:grid-rows-6 px-10 z-10">
           <div className='w-full h-full flex flex-col justify-start items-start md:col-span-3 col-span-2 md:row-span-6 mb-5 md:mb-0'>
             <div className='w-full flex flex-col justify-start items-start flex-wrap grow md:pt-10'>
-              <div className='w-full relative h-[20vh] md:hidden mb-10 rounded-xl overflow-hidden'>
+              <div className='w-full relative h-[20vh] md:hidden mb-5 rounded-xl overflow-hidden'>
                 <Image src={"/images/" + cookie.metadata.imageUnique + image +".jpg"} layout='fill' objectFit='cover' objectPosition="center" alt="mary and jay snyder smiling into camera" priority />
+              </div>
+              <div className='flex md:hidden flex-row justify-start items-center space-x-4 grow h-10 w-full mb-10'>
+                <div onMouseEnter={() => setImage("Two")} className='relative w-full h-full rounded-lg overflow-hidden ring-0 ring-pink-500 hover:ring-2 group'>
+                  <Image src={'/images/' + cookie.metadata.imageUnique + 'Two.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' />
+                  <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300 placeholder="blur'></div>
+                </div>
+                <div onMouseEnter={() => setImage("One")} className='relative w-full h-full rounded-lg overflow-hidden ring-0 ring-pink-500 hover:ring-2 group'>
+                  <Image src={'/images/' + cookie.metadata.imageUnique + 'One.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' />
+                  <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300 placeholder="blur'></div>
+                </div>
+                <div onMouseEnter={() => setImage("Default")} className='relative w-full h-full rounded-lg overflow-hidden ring-0 ring-pink-500 hover:ring-2 group'>
+                  <Image src={'/images/' + cookie.metadata.imageUnique + 'Default.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' />
+                  <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300 placeholder="blur'></div>
+                </div>
               </div>
               <div className='flex flex-col justify-start items-start mb-10'>
                 <h1 className='w-full text-black font-serif font-extrabold leading-none text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-5'>{cookie.name}</h1>
@@ -48,7 +62,7 @@ export default function ProductPage({product, active, inactive}) {
               </div>
               <p className='w-full text-black text-xl flex mb-5 font-light'><span className='text-pink-500 font-bold mr-2'>Available:</span> {cookie.metadata.available}</p>
               <p className='w-full text-black text-lg flex mb-10'>{cookie.description}</p>
-              <div className='flex flex-row justify-start items-center space-x-4 grow h-10 w-full'>
+              <div className='hidden md:flex flex-row justify-start items-center space-x-4 grow h-10 w-full'>
                 <div onMouseEnter={() => setImage("Two")} className='relative w-full h-full rounded-lg overflow-hidden ring-0 ring-pink-500 hover:ring-2 group'>
                   <Image src={'/images/' + cookie.metadata.imageUnique + 'Two.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' />
                   <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300 placeholder="blur'></div>

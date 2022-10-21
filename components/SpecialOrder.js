@@ -45,7 +45,6 @@ export default function SpecialOrder() {
         console.log(error);
         return;
       }
-    console.log(name, email, cookies, date);
 
     closeModal();
   };
