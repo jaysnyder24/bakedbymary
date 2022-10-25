@@ -81,6 +81,7 @@ export async function getServerSideProps() {
   const reqInactiveProducts = await stripe.products.list({
     active: false,
     expand: ['data.default_price'],
+    limit: 100,
   });
 
   const inactiveProducts = reqInactiveProducts.data;
