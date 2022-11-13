@@ -28,7 +28,7 @@ export default function HeroItem(props) {
             <span className='font-bold font-serif text-xl md:text-2xl text-pink-600'>{props.name}</span>
             <span className='font-bold font text-lg md:text-xl text-pink-600'>${props.value}</span>
         </div>
-        <Image src={'/images/' + props.image + 'Default.jpg'} className="z-10 group-hover:scale-125 transition-all duration-300" layout="fill" objectFit='cover' objectPosition="center" size="15vw" priority alt='cookie' quality={50} />
+        <Image src={'/images/' + props.image + 'Default.jpg'} className="z-10 group-hover:scale-125 transition-all duration-300" layout="fill" objectFit='cover' objectPosition="center" size="15vw" priority alt='cookie' quality={40} />
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -59,18 +59,18 @@ export default function HeroItem(props) {
                 <Dialog.Panel className="flex flex-col justify-start items-start space-y-5 w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-10 text-left align-middle shadow-xl transition-all relative">
                   <div className='grid grid-cols-6 grid-rows-3 w-full min-h-20 gap-4'>
                     <div className='relative rounded-xl md:aspect-square aspect-video overflow-hidden col-span-6 row-span-2 md:col-span-4 md:row-span-3'>
-                      <Image src={"/images/" + props.image + image} layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookies'/>
+                      <Image src={"/images/" + props.image + image} layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookies' quality={50} />
                     </div>
                     <div onMouseEnter={() => setImage("Default.jpg")} className='relative rounded-xl overflow-hidden col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
-                      <Image src={"/images/" + props.image + "Default.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
+                      <Image src={"/images/" + props.image + "Default.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie'  quality={50} />
                       <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300 placeholder="blur'></div>
                     </div>
                     <div onMouseEnter={() => setImage("One.jpg")} className='relative rounded-xl overflow-hidden col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
-                      <Image src={"/images/" + props.image + "One.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
+                      <Image src={"/images/" + props.image + "One.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' quality={50}  />
                       <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300'></div>
                     </div>
                     <div onMouseEnter={() => setImage("Two.jpg")} className='relative rounded-xl overflow-hidden col-span-2 md:row-span-1 group ring-0 ring-pink-500 hover:ring-2 transition-all'>
-                      <Image src={"/images/" + props.image + "Two.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' />
+                      <Image src={"/images/" + props.image + "Two.jpg" } layout="fill" objectFit='cover' objectPosition='center' sizes='30vw' alt='cookie' quality={50}  />
                       <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300'></div>
                     </div>
                   </div>

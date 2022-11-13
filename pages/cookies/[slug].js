@@ -64,15 +64,15 @@ export default function ProductPage({product, active, inactive}) {
               <p className='w-full text-black text-lg flex mb-10'>{cookie.description}</p>
               <div className='hidden md:flex flex-row justify-start items-center space-x-4 grow h-10 w-full'>
                 <div onMouseEnter={() => setImage("Two")} className='relative w-full h-full rounded-lg overflow-hidden ring-0 ring-pink-500 hover:ring-2 group'>
-                  <Image src={'/images/' + cookie.metadata.imageUnique + 'Two.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' />
+                  <Image src={'/images/' + cookie.metadata.imageUnique + 'Two.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' quality={30} />
                   <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300 placeholder="blur'></div>
                 </div>
                 <div onMouseEnter={() => setImage("One")} className='relative w-full h-full rounded-lg overflow-hidden ring-0 ring-pink-500 hover:ring-2 group'>
-                  <Image src={'/images/' + cookie.metadata.imageUnique + 'One.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' />
+                  <Image src={'/images/' + cookie.metadata.imageUnique + 'One.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' quality={30} />
                   <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300 placeholder="blur'></div>
                 </div>
                 <div onMouseEnter={() => setImage("Default")} className='relative w-full h-full rounded-lg overflow-hidden ring-0 ring-pink-500 hover:ring-2 group'>
-                  <Image src={'/images/' + cookie.metadata.imageUnique + 'Default.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' />
+                  <Image src={'/images/' + cookie.metadata.imageUnique + 'Default.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' quality={30} />
                   <div className='w-full h-full absolute top-0 bg-pink-400 opacity-40 group-hover:opacity-0 transition-all duration-300 placeholder="blur'></div>
                 </div>
               </div>
@@ -81,7 +81,7 @@ export default function ProductPage({product, active, inactive}) {
         </div>
         <div className='md:w-5/12 md:h-[95%] h-1/6 w-full hidden md:flex md:mx-0 mx-auto absolute bottom-0 md:top-0 md:right-0 md:bottom-auto sm:top-auto sm:right-auto z-0 overflow-clip md:rounded-bl-2xl md:rounded-t-none rounded-t-2xl bg-pink-200'>
           <div className='relative w-full h-full'>
-            <Image src={'/images/' + cookie.metadata.imageUnique + image + '.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' />
+            <Image src={'/images/' + cookie.metadata.imageUnique + image + '.jpg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' quality={60} />
           </div>
           
         </div>

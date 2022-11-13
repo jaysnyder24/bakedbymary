@@ -24,7 +24,7 @@ export default function AllCookies({active, inactive}) {
                 <span className='text-white font-serif font-bold text-2xl whitespace-pre-wrap text-center mb-5'>{product.name}</span>
                 <span className='px-4 py-2 rounded-full bg-white text-pink-500 text-sm font-bold'>Cookie Details</span>
               </div>
-              <Image src={"/images/" + product.metadata.imageUnique + "Two.jpg"} alt="cookie" className="group-hover:scale-110 group-hover:blur-sm transition-all ease-in-out z-[201]" layout="fill" objectFit='cover' objectPosition={"center"} sizes={"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"} />
+              <Image src={"/images/" + product.metadata.imageUnique + "Two.jpg"} alt="cookie" className="group-hover:scale-110 group-hover:blur-sm transition-all ease-in-out z-[201]" layout="fill" objectFit='cover' objectPosition={"center"} sizes={"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"} quality={40} />
             </a>
           </Link>
           )
@@ -39,7 +39,7 @@ export default function AllCookies({active, inactive}) {
                 <span className='text-white font-serif font-bold text-2xl whitespace-pre-wrap text-center mb-5'>{product.name}</span>
                 <span className='px-4 py-2 rounded-full bg-white text-pink-500 text-sm font-bold'>Cookie Details</span>
               </div>
-              <Image src={"/images/" + product.metadata.imageUnique + "Two.jpg"} alt="cookie" className="group-hover:scale-110 group-hover:blur-sm transition-all ease-in-out z-[201]" layout="fill" objectFit='cover' objectPosition={"center"} sizes={"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"} />
+              <Image src={"/images/" + product.metadata.imageUnique + "Two.jpg"} alt="cookie" className="group-hover:scale-110 group-hover:blur-sm transition-all ease-in-out z-[201]" layout="fill" objectFit='cover' objectPosition={"center"} sizes={"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"} quality={40} />
             </a>
           </Link>
           )
