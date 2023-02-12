@@ -46,8 +46,8 @@ export default function HeroItemNew(props) {
             <div className="fixed inset-0 bg-pink-400 bg-opacity-40 z-40 backdrop-blur-sm" />
           </Transition.Child>
 
-          <div className="fixed inset-0 overflow-y-auto z-50">
-            <div className="flex flex-row w-full h-full items-center justify-center">
+          <div className="fixed inset-0 top-0 overflow-y-auto z-50">
+            <div className="flex flex-row w-full h-full items-start md:items-center justify-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
