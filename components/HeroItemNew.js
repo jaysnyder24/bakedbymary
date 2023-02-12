@@ -23,7 +23,7 @@ export default function HeroItemNew(props) {
 
   return (
     <>
-      <button onClick={() => (openModal(), console.log(props.type))} className={'h-full snap-always w-full snap-center flex-nowrap min-w-[250px] flex flex-col justify-start overflow-hidden items-center px-7 pt-7 space-y-6 rounded-[20px] shadow-md relative bg-pink-50 transition-all group'}>
+      <button onClick={() => (openModal(), console.log(props.type))} className={'h-full snap-always w-full snap-center flex-nowrap min-w-[250px] flex flex-col justify-start overflow-hidden items-center px-5 pt-5 space-y-6 rounded-[20px] shadow-md relative bg-pink-50 transition-all group'}>
           <span className='font-bold text-xl text-black w-full leading-none'>{props.name}</span>
           <span className='text-xl text-black flex leading-none'><span className='font-bold text-pink-600 mr-2'>${props.value}</span> per half dozen</span>
           <span className='text-xl font-bold text-white flex flex-row justify-center items-center bg-pink-600 w-full px-5 py-3 rounded-full leading-none'>Add To Cart</span>
