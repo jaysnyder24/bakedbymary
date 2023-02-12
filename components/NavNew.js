@@ -32,7 +32,7 @@ export default function NavNew(props) {
                       </Menu.Button>
                     </div>
                     <Transition 
-                    className={"absolute w-full left-0 px-10 z-[200]"}
+                    className={"absolute w-full left-0 px-10 z-50"}
                     as={Fragment}
                     enter="transition ease-out duration-200 delay-200"
                     enterFrom="transform opacity-0 -translate-x-10"
