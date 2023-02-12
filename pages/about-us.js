@@ -10,13 +10,13 @@ import { LinkIcon, MailIcon } from '@heroicons/react/solid'
 export default function AboutUs({lineup, special}) {
 
   return (
-    <div className='w-screen h-screen relative'>
+    <div className='w-screen relative'>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <title>Baked By Mary | CookiesMary & The Snyder Family</title>
       </Head>
       <NavNew activeProducts={lineup} inactiveProducts={special} />
-      <main className='w-full h-full md:flex md:flex-row flex-col md:justify-between max-w-[1400px] justify-start md:items-start items-center pt-[116px] lg:pt-[156px] px-10 pb-[147px] md:pb-20 md:mx-auto'>
+      <main className='w-full md:flex md:flex-row flex-col md:justify-between max-w-[1400px] justify-start md:items-start items-center pt-[116px] lg:pt-[156px] px-10 pb-[147px] md:pb-20 md:mx-auto'>
         <div className='flex flex-row md:flex-col justify-between md:justify-start items-center md:items-start h-1/4 md:h-full md:w-5/12 min-h-[180px] mb-10 md:mb-0 grow md:grow-0'>
           <div className='relative min-h-[180px] h-full md:h-auto w-auto md:w-full aspect-square rounded-full overflow-hidden z-10 md:mb-10 ring-8 ring-pink-600'><Image src="/images/aboutUsPhoto.jpg" layout="fill" objectFit='cover' objectPosition={"center"} /></div>
           <div className='flex flex-col md:flex-row justify-center items-end z-10 space-y-2 md:space-y-0 md:space-x-7 md:mx-auto'>
