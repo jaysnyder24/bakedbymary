@@ -53,7 +53,7 @@ export default function ProductPage({product, lineup, special}) {
         </div>
         <div className='flex flex-col justify-start items-start w-full z-50'>
           <h1 className='text-black font-playfair font-extrabold leading-none text-4xl lg:text-5xl xl:text-[60px] mb-5 md:mb-7'>{cookie.name}</h1>
-          <span className={'font-bold text-pink-600 text-xl leading-none ' + (cookie.metadata.type = "special" ? "mb-10" : "")}>${cookie.default_price.unit_amount / 100}{cookie.metadata.available = "special" ? "0" : ".00"} per half dozen</span>
+          <span className={'font-bold text-pink-600 text-xl leading-none ' + (cookie.metadata.type = "special" ? "mb-10" : "")}>${cookie.default_price.unit_amount / 100}{cookie.metadata.available === "special" ? "0" : ".00"} per half dozen</span>
           <div className={'flex-row justify-between md:justify-start items-center w-full my-5 md:my-10 ' + (cookie.metadata.type = "special" ? "hidden" : "flex")}>
             <div className='flex flex-row justify-between items-center mr-7'>
               <button onClick={() => (count > 0 ? setCount((count) => count - 1) : setCount(0))} className='rounded-full bg-pink-600 active:bg-pink-700 p-3 transition-all outline-none'><MinusIcon className='text-white h-4 w-4' /></button>
