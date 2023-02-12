@@ -33,7 +33,7 @@ export default function ProductPage({product, lineup, special}) {
         <title>{cookie.name} Cookies | Baked By Mary Cookies</title>
       </Head>
       <NavNew activeProducts={lineup} inactiveProducts={special} />
-      <main className='w-full h-screen max-w-[1400px] md:flex md:flex-row flex-col md:justify-between justify-start md:items-start items-center pt-[116px] md:pb-20 lg:pt-[156px] px-10 pb-[147px] mx-auto'>
+      <main className='w-full h-screen overflow-y-auto max-w-[1400px] md:flex md:flex-row flex-col md:justify-between justify-start md:items-start items-center pt-[116px] md:pb-20 lg:pt-[156px] px-10 pb-[147px] mx-auto'>
         <div className='flex flex-row md:flex-col justify-between items-start md:items-center w-full h-1/4 min-h-[180px] md:h-full mb-7 grow md:grow-0 mr-[10%]'>
           <div className={'relative h-full md:h-5/6 aspect-square rounded-full md:mr-10 z-10 ' + (image === "Circle.png" ? "overflow-visible" : "overflow-hidden")}><Image src={"/images/" + cookie.metadata.imageUnique + image} layout="fill" objectFit='cover' objectPosition={"center"} /></div>
           <div className='flex flex-col md:flex-row justify-center items-end md:items-baseline z-10 space-y-2 md:space-y-0 md:space-x-7'>
@@ -52,8 +52,8 @@ export default function ProductPage({product, lineup, special}) {
           </div>
         </div>
         <div className='flex flex-col justify-start items-start w-full z-50'>
-          <h1 className='text-black font-playfair font-extrabold leading-none text-4xl lg:text-5xl xl:text-[60px] mb-5 md:mb-7'>{cookie.name}</h1>
-          <span className={'font-bold text-pink-600 text-xl leading-none ' + (cookie.metadata.type = "special" ? "mb-10" : "")}>${cookie.default_price.unit_amount / 100}{cookie.metadata.available === "special" ? "0" : ".00"} per half dozen</span>
+          <h1 className='text-black font-playfair font-extrabold leading-none text-4xl lg:text-5xl xl:text-[60px] mb-5 md:mb-7 z-30'>{cookie.name}</h1>
+          <span className={'font-bold text-pink-600 text-xl leading-none z-30 ' + (cookie.metadata.type = "special" ? "mb-10" : "")}>${cookie.default_price.unit_amount / 100}{cookie.metadata.available === "special" ? "0" : ".00"} per half dozen</span>
           <div className={'flex-row justify-between md:justify-start items-center w-full my-5 md:my-10 ' + (cookie.metadata.type = "special" ? "hidden" : "flex")}>
             <div className='flex flex-row justify-between items-center mr-7'>
               <button onClick={() => (count > 0 ? setCount((count) => count - 1) : setCount(0))} className='rounded-full bg-pink-600 active:bg-pink-700 p-3 transition-all outline-none'><MinusIcon className='text-white h-4 w-4' /></button>
