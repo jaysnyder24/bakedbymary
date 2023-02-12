@@ -6,24 +6,25 @@ export function CartProvider({children}) {
 
     const [items, setItems] = useState([]);
 
-    const addToCart = ( name, price, value, quantity, image ) => {
-        let duplicateIndex = items.findIndex((item) => item.name == name);
+    const addToCart = ( name, price, value, quantity, image, type ) => {
+        let duplicateIndex = items.findIndex((item) => item.name === name && item.price === price);
 
         switch (true) {
             case (duplicateIndex != -1):
                 const prevState = [...items];
                 prevState[duplicateIndex] = {...prevState[duplicateIndex], quantity: prevState[duplicateIndex].quantity + quantity};
                 setItems(prevState);
-                console.log("updated duplicate");
+                console.log("updated item")
                 break;
 
             case (duplicateIndex == -1):
-                setItems(( prevState ) => [...prevState, {name: name, price: price, value: value, quantity: quantity, image: image}]);
+                setItems([...items, {name: name, price: price, value: value, quantity: quantity, image: image, type: type}]);
                 console.log("added item");
+                console.log({name: name, price: price, value: value, quantity: quantity, image: image, type: type})
                 break;
         
             default:
-                console.log(duplicateIndex);
+                console.log("something broke");
                 break;
         }
     }
