@@ -51,7 +51,7 @@ export default function Home({lineup, special}) {
             <Image src={'/images/cookieIcon.svg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' quality={30} />          
         </div>
       </main>
-      <div className='w-full bg-pink-50 flex flex-row justify-center items-center'>
+      <div className='w-full bg-pink-50 flex flex-row justify-center items-center pb-[147px] md:pb-20'>
         <div className='w-full flex flex-col md:flex-row p-10 md:px-10 md:py-20 justify-between items-center max-w-[1400px]'>
           <div className='w-8/12 aspect-square overflow-hidden ring-8 ring-pink-700 rounded-full relative mb-7 mr-[10%]'>
             <Image src="/images/aboutUsPhoto.jpg" layout='fill' objectFit='cover' objectPosition={"center"} />

@@ -12,7 +12,7 @@ export default function AllCookies({all, lineup, special}) {
         <title>Homemade, Specialty Cookies From Iowa | Baked By Mary Cookies</title>
       </Head>
       <NavNew activeProducts={lineup} inactiveProducts={special} />
-      <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative pt-[116px] pb-[147px]'>
+      <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative pt-[116px] pb-[147px] md:pb-20'>
         <div className="w-full h-full max-w-[1400px] flex flex-row flex-wrap justify-start md:justify-between items-center z-10 px-10">
           <h1 className='text-black font-playfair font-extrabold leading-none text-4xl lg:text-5xl xl:text-[60px] mb-5 z-20'>Mary's Homemade Cookies</h1>
           <p className='w-full text-xl mb-7 z-20'>While Mary's monthly lineup of cookies are only available in limited quantities and can only be picked up on a single day, we don't want anyone feeling left out! Check out all of Mary's specialty homemade cookies here and, if you find anything you like, submit a order request and we'll see if it work for her schedule. Enjoy!</p>
