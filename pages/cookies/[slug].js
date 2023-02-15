@@ -24,7 +24,7 @@ export default function ProductPage({product, lineup, special}) {
 
   const cookie = product[0];
 
-  console.log(cookie)
+  console.log(cookie);
 
   return (
     <div className='w-screen relative'>
@@ -33,7 +33,7 @@ export default function ProductPage({product, lineup, special}) {
         <title>{cookie.name} Cookies | Baked By Mary Cookies</title>
       </Head>
       <NavNew activeProducts={lineup} inactiveProducts={special} />
-      <main className='w-full h-screen overflow-y-auto max-w-[1400px] md:flex md:flex-row flex-col md:justify-between justify-start md:items-start items-center pt-[116px] md:pb-20 lg:pt-[156px] px-10 pb-[147px] mx-auto'>
+      <main className='w-full max-w-[1400px] md:flex md:flex-row flex-col md:justify-between justify-start md:items-start items-center pt-[116px] md:pb-20 lg:pt-[156px] px-10 pb-[147px] mx-auto'>
         <div className='flex flex-row md:flex-col justify-between items-start md:items-center w-full h-1/4 min-h-[180px] md:h-full mb-7 grow md:grow-0 mr-[10%]'>
           <div className={'relative h-full md:h-5/6 aspect-square rounded-full md:mr-10 z-10 ' + (image === "Circle.png" ? "overflow-visible" : "overflow-hidden")}><Image src={"/images/" + cookie.metadata.imageUnique + image} layout="fill" objectFit='cover' objectPosition={"center"} /></div>
           <div className='flex flex-col md:flex-row justify-center items-end md:items-baseline z-10 space-y-2 md:space-y-0 md:space-x-7'>
