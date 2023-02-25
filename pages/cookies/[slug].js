@@ -24,7 +24,15 @@ export default function ProductPage({product, lineup, special}) {
 
   const cookie = product[0];
 
-  const price = cookie.default_price.unit_amount / 100;
+  const getPrice = (cookie) => {
+    if (cookie.metadata.available === "special") {
+      return cookie.default_price.unit_amount / 100 * 2;
+    } else {
+      return cookie.default_price.unit_amount / 100;
+    }
+  }
+
+  const price = getPrice(cookie);
   const splicedPrice = price.toString().split("");
 
   return (
