@@ -15,7 +15,7 @@ export default function AllCookies({all, lineup, special}) {
       <main className='w-full md:h-screen md:flex md:flex-row flex-col md:justify-center justify-start md:items-start items-center relative pt-[116px] pb-[147px] md:pb-20'>
         <div className="w-full h-full max-w-[1400px] flex flex-row flex-wrap justify-start md:justify-between items-center z-10 px-10">
           <h1 className='text-black font-playfair font-extrabold leading-none text-4xl lg:text-5xl xl:text-[60px] mb-5 z-20'>Mary's Homemade Cookies</h1>
-          <p className='w-full text-xl mb-7 z-20'>While Mary's monthly lineup of cookies are only available in limited quantities and can only be picked up on a single day, we don't want anyone feeling left out! Check out all of Mary's specialty homemade cookies here and, if you find anything you like, submit a order request and we'll see if it works for Mary's schedule. Enjoy!</p>
+          <p className='w-full text-xl mb-7 z-20'>Every month Mary curates a lineup of select, discounted cookies for month pickup but that's not all she does. If you need cookies for an event, or just because, take a look at our full selection below and email us at <Link href="mailto:mary@bakedbymary.com"><a className='text-pink-700'>mary@bakedbymary.com</a></Link> with the cookies you want and when you need them. Minimum of one dozen per cookie type.</p>
           {all.map((product) => 
             <Link href={"/cookies/" + product.metadata.slug} passHref={true} key={product.id}>
               <a className="flex flex-row justify-end items-center w-full md:w-[32%] aspect-video relative rounded-xl overflow-hidden mb-7">
