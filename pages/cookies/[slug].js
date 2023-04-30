@@ -70,7 +70,7 @@ export default function ProductPage({product, lineup, special}) {
           <div className={'flex-row justify-between md:justify-start items-center w-full my-5 md:mb-10 flex'}>   
             <div className='flex flex-row justify-between items-center mr-7 space-x-2'>
               <button onClick={() => (count > 0 ? setCount((count) => count - 1) : setCount(0))} className='rounded-md bg-pink-50 active:bg-pink-100 p-2 transition-all outline-none focus:outline-none'><MinusIcon className='text-pink-600 h-5 w-5' /></button>
-              <span className='px-5 text-lg font-bold'>{count}</span>
+              <span className='px-2 text-lg font-bold'>{count}</span>
               <button onClick={() => setCount((count) => count + 1)} className='rounded-md bg-pink-50 active:bg-pink-100 p-2 transition-all outline-none focus:outline-none'><PlusIcon className='text-pink-600 h-5 w-5' /></button>
             </div>
             <button onClick={() => addToCart(cookie.name, cookie.default_price.id, cookie.default_price.unit_amount / 100, count, cookie.metadata.imageUnique)} className='flex flex-row grow md:grow-0 justify-center items-center px-4 md:px-4 py-2 text-white bg-pink-600 active:bg-pink-700 font-bold text-base rounded-full transition-all'><ShoppingCartIcon className='h-5 w-5 text-white mr-2' />Add To Cart</button>
