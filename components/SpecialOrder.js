@@ -51,10 +51,7 @@ export default function SpecialOrder() {
 
   return (
     <>
-        <button onClick={() => openModal()} className={'flex flex-row justify-start items-center p-4 rounded-full overflow-clip bg-pink-500 hover:bg-pink-600 active:bg-pink-700 transition-all group relative '}>
-        <span className='text-white font-bold text-xs mr-2 leading-none'>special order</span>
-          <ShoppingCartIcon className='h-4 w-4 text-white' />
-        </button>
+      <button onClick={() => openModal()} className='flex flex-row grow md:grow-0 justify-center items-center px-4 md:px-4 py-2 text-white bg-pink-600 active:bg-pink-700 font-bold text-base rounded-full transition-all'><ShoppingCartIcon className='h-5 w-5 text-white mr-2' />Special Order</button>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative" onClose={closeModal}>
           <Transition.Child
@@ -86,10 +83,9 @@ export default function SpecialOrder() {
                     </Dialog.Title>
                     <p className='mb-5'>Can't wait for next month's order period or not interested in this month's cookies? You're in the right place! A few things to know about special orders with Baked By Mary:</p>
                     <ul className='w-full list-disc ml-4 mb-10'>
-                      <li className='w-full'>Minimum of 4 dozen cookies</li>
+                      <li className='w-full'>Minimum of 3 dozen cookies</li>
                       <li className='w-full'>Orders are subject to scheduling</li>
                       <li className='w-full'>Request should be at least two weeks in advance of pickup</li>
-                      <li className='w-full'>Not all order requests will be accepted</li>
                     </ul>
                     <form onSubmit={handleSubmit} className='flex flex-col'>
                       <label htmlFor="name" className='font-bold ml-4 text-sm mb-2'>First & Last Name</label>
