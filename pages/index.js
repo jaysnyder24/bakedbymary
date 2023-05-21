@@ -28,7 +28,7 @@ export default function Home({lineup, special}) {
                 {lineup.length > 0 ? <p className='w-full md:w-1/2 text-black text-xl flex flex-row justify-start items-center mb-10'><span className='text-pink-600 font-bold leading-none mr-2'>Pickup Date:</span> Monday May 22nd, 2023</p> : ""}
               </div>
             </div>
-            <div className='w-10/12 grow md:grow-0 flex flex-row justify-start items-center px-10 overflow-x-scroll space-x-5 scroll-smooth relative snap-x snap-proximity'>
+            <div className='w-11/12 grow md:grow-0 flex flex-row justify-start items-center px-10 overflow-x-scroll space-x-5 scroll-smooth relative snap-x snap-proximity'>
               {lineup.length > 0 ?  
               
               lineup.map((product, index) => <HeroItemNew index={index} key={product.id} name={product.name} price={product.default_price.id} value={product.default_price.unit_amount_decimal / 100} image={product.metadata.imageUnique} description={product.description} type={product.metadata.available} />)
@@ -42,11 +42,11 @@ export default function Home({lineup, special}) {
               </div>
             </div>
           </div>
-          <div className='h-4/6 aspect-square absolute top-0 right-0 z-10 hidden md:flex md:top-[120px]'>
-            <Image src={lineup.length > 0 ? "/images/" + lineup[0].metadata.imageUnique + "Circle.png" : "/images/crumbs.jpg"} layout="fill" objectFit='cover' objectPosition={"center"} quality={100} />
-          </div>
         </div>
-        <div className='min-w-[260px] min-h-[260px] max-w-[360px] max-h-[360px] md:hidden w-4/12 aspect-square absolute -top-[0vh] -right-[1vw] z-0 fill-pink-50 overflow-visible'>
+        <div className='h-4/6 aspect-square absolute top-0 -right-24 z-0 hidden md:flex md:top-[120px]'>
+          <Image src={lineup.length > 0 ? "/images/" + lineup[0].metadata.imageUnique + "Circle.png" : "/images/crumbs.jpg"} layout="fill" objectFit='cover' objectPosition={"center"} quality={100} />
+        </div>
+        <div className='min-w-[260px] min-h-[260px] max-w-[500px] max-h-[500px] w-5/12 aspect-square absolute -top-[0vh] -right-[1vw] -z-10 fill-pink-50 overflow-visible'>
             <Image src={'/images/cookieIcon.svg'} className="z-0" layout="fill" objectFit='cover' objectPosition="center" alt="cookies" priority sizes='40vw' quality={30} />          
         </div>
       </main>
