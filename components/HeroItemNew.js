@@ -20,12 +20,13 @@ export default function HeroItemNew(props) {
 
   const [count, setCount] = useState(1);
   const [image, setImage] = useState("Default.jpg")
+  const splicedValue = props.value.toString().split("")
 
   return (
     <>
       <button onClick={() => (openModal(), console.log(props.type))} className={'h-full snap-always w-full snap-center flex-nowrap min-w-[250px] flex flex-col justify-start overflow-hidden items-center px-5 pt-5 space-y-6 rounded-[20px] shadow-md relative bg-pink-50 transition-all group'}>
           <span className='font-bold text-xl text-black w-full leading-none'>{props.name}</span>
-          <span className='text-xl text-black flex leading-none'><span className='font-bold text-pink-600 mr-2'>${props.value}</span> per half dozen</span>
+          <span className='text-xl text-black flex leading-none'><span className='font-bold text-pink-600 mr-2'>${props.value}{splicedValue[splicedValue.length - 2] === "." ? "0" : ""}</span> per half dozen</span>
           <span className='text-xl font-bold text-white flex flex-row justify-center items-center bg-pink-600 w-full px-5 py-3 rounded-full leading-none'>Add To Cart</span>
           <div className='relative aspect-square w-full min-w-[200px] min-h-[200px] overflow-hidden md:overflow-visible rounded-full z-10 transition-all duration-300'>
             <Image src={'/images/' + props.image + 'Circle.png'} layout="fill" objectFit='cover' objectPosition={"top"} size="30vw" priority alt='cookie' />
