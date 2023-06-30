@@ -61,18 +61,18 @@ export default function Homepage () {
                 <main className="h-full w-full relative">
                     <div className="w-full h-full px-20 py-12 flex flex-col justify-start items-center space-y-10">
                         <div className="flex flex-row justify-start items-start w-full">
-                            <div className="flex flex-col justify-start items-start shrink w-5/12">
+                            <div className="flex flex-col justify-start items-start shrink w-6/12">
                                 <h1 className="text-6xl leading-none font-serif mb-7 font-black">Welcome To Baked By Mary Cookies!</h1>
                                 <p className=" text-lg leading-none font-sans">Click the cookies to check out this month’s lineup.</p>
                             </div>
                             <CookieSelector cookies={cookies} />
                         </div>
-                        <div className="flex flex-row justify-start items-between w-full h-full">
-                            <div className="flex flex-row justify-start items-start h-full space-x-5 w-5/12 bg-green-100">
+                        <div className="flex flex-row justify-between items-center w-full h-full space-x-5">
+                            <div className="flex flex-row justify-start items-start h-full space-x-5 w-5/12 bg-green-100 shrink">
                                 <div className="h-full w-full grow rounded-xl relative">
                                     <Image src="/images/caramelCoconutDefault.jpg" className="object-cover rounded-xl" fill priority />
                                 </div>
-                                <div className="flex flex-col justify-between items-start space-y-5 h-full">
+                                <div className="flex flex-col justify-between items-start space-y-5 h-full w-auto relative">
                                     <div className="h-full aspect-square rounded-xl relative">
                                         <Image src="/images/caramelCoconutDefault.jpg" className="object-cover rounded-xl" fill priority />
                                     </div>
@@ -84,13 +84,16 @@ export default function Homepage () {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex flex-col justify-between items-start w-5/12 h-full bg-yellow-100">
+                            <div className="flex flex-col justify-between items-start w-1/2 h-full bg-yellow-100">
                                 <div className="w-full">
                                     <h2>Caramel, Coconut & Chocolate</h2>
                                     <p></p>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 aspect-square w-1/6 rotate-180 -z-10">
+                        <Image src="/images/headingCookie.svg" fill priority />
                     </div>
                 </main>
             </div>
