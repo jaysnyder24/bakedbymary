@@ -25,7 +25,7 @@ export default function Home({lineup, special}) {
               <div className='w-full h-full grow flex flex-col justify-start items-start z-10'>
                 {lineup.length > 0 ? <h1 className='w-full md:w-1/2 text-black font-playfair font-extrabold leading-none text-3xl lg:text-4xl xl:text-5xl mb-5 md:mb-7'>Welcome To <span className='text-pink-600'>Baked By Mary Cookies!</span></h1> : <h1 className='w-full md:w-1/2 text-black font-playfair font-extrabold leading-none text-3xl lg:text-4xl xl:text-5xl mb-5 md:mb-7'>Well crumbs... <span className='text-pink-600'>you missed out!</span></h1>}
                 {lineup.length > 0 ? <span className='w-full md:w-1/2 text-black text-xl inline-block mb-5'>If you’re tired of crummy cookies, you came to the right place!</span> : <span className='w-full text-black text-xl inline-block mb-7'>Don't fret! Mary will be back with a new curated bundle of delicious, seasonally relevant cookies in just a few weeks.</span>}
-                {lineup.length > 0 ? <p className='w-full md:w-1/2 text-black text-xl flex flex-row justify-start items-center mb-10'><span className='text-pink-600 font-bold leading-none mr-2'>Pickup Date:</span> Monday July 24th, 2023</p> : ""}
+                {lineup.length > 0 ? <p className='w-full md:w-1/2 text-black text-xl flex flex-row justify-start items-center mb-10'><span className='text-pink-600 font-bold leading-none mr-2'>Pickup Date:</span> Friday August 18th, 2023</p> : ""}
               </div>
             </div>
             <div className='w-11/12 grow md:grow-0 flex flex-row justify-start items-center px-10 overflow-x-scroll space-x-5 scroll-smooth relative snap-x snap-proximity'>
