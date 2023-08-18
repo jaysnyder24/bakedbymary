@@ -72,20 +72,22 @@ export default function Homepage () {
                 </nav>
                 <main className="h-full w-full relative">
                     <div className="w-full h-full px-20 py-12 flex flex-col justify-start items-center space-y-10">
-                        <div className="flex flex-row justify-start items-start w-full">
-                            <div className="flex flex-col justify-start items-start shrink w-6/12">
-                                <h1 className="text-7xl leading-none font-playfair mb-7 font-black">Welcome To Baked By Mary Cookies!</h1>
+                        <div className="flex flex-row justify-start space-x-10 items-start w-full">
+                            <div className="flex flex-col justify-start items-start shrink w-5/12">
+                                <h1 className="text-6xl leading-none font-playfair mb-7 font-black">Welcome To Baked By Mary Cookies!</h1>
                                 <p className=" text-lg leading-none font-sans">Click the cookies to check out this month’s lineup.</p>
                             </div>
-                            <div className="flex flex-row justify-between items-center grow w-3/12 relative h-full px-10">
-                                <div className={`absolute rounded-lg bottom-0 h-4/6 aspect-square bg-pink-500 z-0 transition-all ease-in-out duration-300 mr-10`} style={{'left': `${cookie * 23}%`}}></div>
-                                    {items.map((item, index) =>
-                                        <button key={index}  onMouseEnter={() => (setCookie(index), setImage("Default"))} className="flex flex-row justify-center items-center aspect-square h-3/4">
-                                            <div className={"h-full aspect-square relative outline-none transition-all ease-in-out z-10 " + (cookie === index ? "h-full" : "h-4/6")}>
-                                                <Image src={"/images/" + item.imageUnique + "Circle.png"} fill priority />
-                                            </div>
-                                        </button>
-                                    )}
+                            <div className="flex flex-row justify-between items-center grow w-7/12 relative h-full">
+                            <div className="flex flex-row justify-between items-center grow w-4/12 relative h-5/6 px-10">
+                                {items.map((item, index) =>
+                                    <button key={index}  onMouseEnter={() => setCookie(index)} className="flex flex-row justify-center items-center aspect-square h-full relative group">
+                                        <div className={"aspect-square relative outline-none transition-all ease-in-out z-10 " + (cookie === index ? "h-full" : "h-5/6")}>
+                                            <Image src={"/images/" + item.imageUnique + "Circle.png"} fill priority />
+                                        </div>
+                                        <div className={"absolute aspect-square rounded bg-pink-500 group-hover:h-3/4 group-hover:-bottom-5 group-hover:-left-5 group-hover:opacity-100 ease-in-out transition-all duration-300 " + (index === cookie ? "h-3/4 opacity-100 -bottom-5 -left-5" : "h-0 opacity-0 bottom-1/2 left-1/2")}></div>
+                                    </button>
+                                )}
+                            </div>
                             </div>
                         </div>
                         <div className="w-full h-full space-x-10 flex flex-row justify-between items-start">
@@ -128,8 +130,10 @@ export default function Homepage () {
                             </div>
                         </div>
                     </div>
-                    <div className="absolute bottom-0 left-0 aspect-square w-1/6 rotate-180 -z-10">
-                        <Image src="/images/headingCookie.svg" fill priority />
+                    <div className="absolute -bottom-[120px] left-0 w-1/6 h-3/4 -z-10">
+                        <div className="w-full h-full relative">
+                            <Image src="/images/sideCookie.svg" className="object-fill object-center" fill priority />
+                        </div>
                     </div>
                 </main>
             </div>

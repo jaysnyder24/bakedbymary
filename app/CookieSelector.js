@@ -7,23 +7,17 @@ export default function CookieSelector (props) {
 
     const items = props.cookies;
     const [cookie, setCookie] = useState(0);
-    const [position, setPosition] = useState(0)
-
-    useEffect(() => {
-      setPosition(cookie * 25);
-      console.log(position);
-    }, [cookie])
     
 
     return (
         
-        <div className="flex flex-row justify-between items-center grow w-3/12 relative h-full px-10">
-            <div className={`absolute rounded-lg bottom-0 h-4/6 aspect-square bg-pink-500 z-0 transition-all ease-in-out duration-300 mr-10`} style={{'left': `${cookie * 23}%`}}></div>
+        <div className="flex flex-row justify-between items-center grow w-4/12 relative h-5/6 px-10">
                 {items.map((item, index) =>
-                    <button key={index}  onMouseEnter={() => setCookie(index)} className="flex flex-row justify-center items-center aspect-square h-3/4">
-                        <div className={"h-full aspect-square relative outline-none transition-all ease-in-out z-10 " + (cookie === index ? "h-full" : "h-4/6")}>
+                    <button key={index}  onMouseEnter={() => setCookie(index)} className="flex flex-row justify-center items-center aspect-square h-full relative group">
+                        <div className={"aspect-square relative outline-none transition-all ease-in-out z-10 " + (cookie === index ? "h-full" : "h-5/6")}>
                             <Image src={"/images/" + item.imageUnique + "Circle.png"} fill priority />
                         </div>
+                        <div className={"absolute aspect-square rounded bg-pink-500 group-hover:h-3/4 group-hover:-bottom-5 group-hover:-left-5 group-hover:opacity-100 ease-in-out transition-all duration-300 " + (index === cookie ? "h-3/4 opacity-100 -bottom-5 -left-5" : "h-0 opacity-0 bottom-1/2 left-1/2")}></div>
                     </button>
                 )}
         </div>
