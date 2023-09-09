@@ -7,15 +7,12 @@ import { cookies } from "next/headers";
 
 async function getProducts() {
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-    const res = await stripe.products.search({
+    const products = await stripe.products.search({
         query: 'metadata[\'available\']:\'lineup\'',
+        expand: ['data.default_price'],
     });
 
-    const productData = res.data;
-
-    const products = productData.map((product, index) => product[index].price = stripe.prices.retrieve(product.default_price));
-
-    return products;
+    return products.data;
 
 }
 
@@ -76,7 +73,7 @@ export default async function Homepage () {
                                 <div key={product.id} className="group relative flex flex-row justify-between items-center w-full bg-repeat p-6 rounded-2xl shadow-md shadow-pink-200 hover:shadow-pink-200 hover:shadow-2xl transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}>
                                     <div className="flex flex-col justify-start items-start group-hover:space-y-6 transition-all duration-300">
                                         <span className="text-pink-950 font-playfair font-extrabold text-xl">{product.name}</span>
-                                        <span className="text-pink-950 font-poppins text-lg">$XX.XX / half dozen</span>
+                                        <span className="text-pink-950 font-poppins text-lg">${product.default_price.unit_amount / 100} / half dozen</span>
                                         <AddToCart item={{productName: "Product Name", productPrice: 10.00}} delay={true} theme={"dark"} />
                                     </div>
                                     <div className="h-[18vh] group-hover:delay-100 aspect-square absolute -right-10 group-hover:right-6 flex flex-row justify-center items-center my-auto inset-y-0 transition-all duration-300">
