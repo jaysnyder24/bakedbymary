@@ -1,4 +1,4 @@
-import { Heart, Search, ShoppingBagIcon } from "lucide-react";
+import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import AddToCart from "./addToCart";
@@ -23,19 +23,28 @@ export default async function Homepage () {
     const lineupProducts = products.slice(0, 3);
     const assortedProduct = products.pop();
 
-    console.log(lineupProducts);
-
     async function specialOrderForm(formData) {
         'use server'
 
-        const email = formData.get("email")
+        const sendgrid = require('@sendgrid/mail');
+        sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-        cookies().set("email", email);
-        
-        const emailCookie = cookies().get("email")?.value;
+        const email = formData.get("email");
 
-        console.log(emailCookie);
-        revalidatePath("/");
+        const message = {
+            to: email,
+            from: 'mary@bakedbymary.com',
+            subject: 'Special Order Request',
+            text: 'Thank you so much for the order request! Let\'s get a few of the details out of the way: what cookies would you like, how many of each kind and when would you like to pick them up?',
+            html: '<p>Thank you so much for the order request! Let\'s get a few of the details out of the way: what cookies would you like, how many of each kind and when would you like to pick them up?</p>',
+        }
+
+        sendgrid.send(message).then((response) => {
+            console.log(response[0].statusCode);
+            console.log(response[0].headers)
+        }).catch((error) => {
+            console.error(error);
+        })
     }
 
     return (
@@ -48,7 +57,7 @@ export default async function Homepage () {
                         <p className="font-poppins font-normal text-black">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure officiis minus quasi veniam quod aliquid quos ab incidunt unde, obcaecati ratione? Nesciunt voluptate ab iure ullam voluptatibus culpa! At, nisi.</p>
                     </div>
                     <div className="flex flex-col justify-center items-center w-4/12 h-full px-5 relative">
-                        <div className="rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-10 items-center px-10 py-20 group transition-transform duration-300" style={{backgroundImage: "url('/images/tileDark.png')"}}>
+                        <div className="rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-8 items-center px-10 py-20 group transition-transform duration-300" style={{backgroundImage: "url('/images/tileDark.png')"}}>
                             <div className="flex flex-row justify-center items-start -space-x-8 w-full h-auto">
                                 <div className="relative h-[100px] aspect-square w-auto mt-6 z-10 group-hover:scale-105 transition-transform duration-300">
                                     <Image src={"/images/" + products[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
@@ -60,8 +69,11 @@ export default async function Homepage () {
                                     <Image src={"/images/" + products[2].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
                                 </div>
                             </div>
-                            <h2 className="font-playfair w-full font-bold text-4xl text-white text-center">Can't decide? Get assorted boxes instead!</h2>
-                            <AddToCart item={{productName: "Product Name", productPrice: 10.00}} delay={false} theme={"light"} />
+                            <div className="flex flex-col justify-start items-center space-y-5">
+                                <h2 className="font-playfair w-full font-bold text-3xl text-white text-center">Can't decide? Get assorted boxes instead!</h2>
+                                <p className="text-white font-poppins text-lg">${assortedProduct.default_price.unit_amount / 100} / half dozen</p>
+                                <AddToCart item={{productName: "Product Name", productPrice: 10.00}} delay={false} theme={"light"} />
+                            </div>  
                         </div>
                         <Link href={"#"} className="absolute font-poppins font-bold flex flex-row justify-center items-center bottom-0 right-0 bg-pink-200 hover:bg-pink-300 hover:scale-110 text-pink-950 aspect-square h-1/5 w-auto rounded-full p-5 transition-all duration-300">
                             see all
@@ -118,12 +130,39 @@ export default async function Homepage () {
                 </div>
                 <div className="w-5/12 flex flex-col justify-center items-start space-y-6">
                     <h2 className="font-playfair font-extrabold text-5xl text-pink-950">Don't Want To Wait For The Delivery Date?</h2>
-                    <p className="font-poppins text-black">Every month we have several specials for all sorts of events, activities or strange justifications for needing a large number of cookies ordered on a certain date. You just need to muster up enough dough to order two dozen cookies, pick a date when we're available to make them and we're in business!</p>
+                    <p className="font-poppins text-black">Every month we have several specials for all sorts of events, activities or strange justifications for needing a large number of cookies ordered on a certain date. You just need to muster up enough dough to order <strong>at least</strong> two dozen cookies, pick a date when we're available to make them and we're in business!</p>
                     <p className="font-poppins text-black">Fill out the form below and we'll be in touch to get more details or your event!</p>
                     <form action={specialOrderForm} className="flex flex-row justify-start items-center space-x-5 overflow-visible w-full">
                         <input className="overflow-visible outline-none underline underline-offset-[6px] decoration-pink-600 focus:decoration-pink-700 font-poppins text-xl py-2" type="email" placeholder="jondoe@gmail.com" aria-label="email" name="email" />
                         <button className="bg-pink-700 hover:bg-pink-800 font-poppins text-lg font-bold px-6 py-2 text-white rounded-full" type="submit">submit</button>
                     </form>
+                </div>
+            </div>
+            <div className="flex flex-col justify-start items-center w-full py-[80px] px-14 h-[100vh] space-y-10">
+                <div className="flex flex-row justify-between items-center w-full">
+                    <h2 className="font-playfair w-full font-bold text-7xl text-pink-950">Popular Cookie Flavors</h2>
+                    <div className="flex flex-row justify-end items-center space-x-4">
+                        <button className="h-14 w-14 flex flex-row justify-center items-center bg-white rounded-full hover:scale-110 shadow-none hover:shadow-md transition-all duration-300"><MoveLeftIcon className="stroke-pink-700 hover:stroke-pink-800" size={28} /></button>
+                        <button className="h-14 w-14 flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={28} /></button>
+                    </div>
+                </div>
+                <div className="flex flex-row justify-between items-start w-full space-x-10 h-full">
+                    <Link href="#" className="flex flex-col justify-start items-center space-y-5 w-1/4 h-full group hover:scale-105 transition-all duration-300">
+                        <div className="relative aspect-square w-full">
+                            <div className="relative h-full w-full z-10">
+                                <Image src={"/images/" + lineupProducts[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
+                            </div>
+                            <div className="bg-repeat absolute w-full h-[60%] group-hover:h-[80%] my-auto inset-0 z-0 rounded-3xl transition-all duration-300" style={{backgroundImage: "url('/images/tileMedium.png')"}}></div>
+                        </div>
+                        <div className="flex flex-col justify-start items-center w-full">
+                            <p className="font-poppins font-bold text-2xl text-pink-950">Cookie Name</p>
+                            <p className="font-poppins text-lg text-pink-700 mb-4">$XX.XX / half dozen</p>
+                            <div className="flex flex-row justify-start text-pink-700 hover:text-pink-800 items-center space-x-2 hover:space-x-3 transition-all duration-300 group">
+                                <span className="font-poppins text-lg font-semibold underline">cookie details</span>
+                                <MoveRightIcon className="stroke-pink-700 group-hover:stroke-pink-800 transition-all duration-300" size={20} />
+                            </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>
