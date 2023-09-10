@@ -138,7 +138,7 @@ export default async function Homepage () {
                     </form>
                 </div>
             </div>
-            <div className="flex flex-col justify-start items-center w-full py-[80px] px-14 h-[100vh] space-y-10">
+            <div className="flex flex-col justify-start items-center w-full py-[80px] px-14 h-auto space-y-14">
                 <div className="flex flex-row justify-between items-center w-full">
                     <h2 className="font-playfair w-full font-bold text-7xl text-pink-950">Popular Cookie Flavors</h2>
                     <div className="flex flex-row justify-end items-center space-x-4">
@@ -148,19 +148,63 @@ export default async function Homepage () {
                 </div>
                 <div className="flex flex-row justify-between items-start w-full space-x-10 h-full">
                     <Link href="#" className="flex flex-col justify-start items-center space-y-5 w-1/4 h-full group hover:scale-105 transition-all duration-300">
-                        <div className="relative aspect-square w-full">
+                        <div className="relative aspect-square w-full p-4 flex flex-row justify-center items-center">
                             <div className="relative h-full w-full z-10">
                                 <Image src={"/images/" + lineupProducts[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
                             </div>
-                            <div className="bg-repeat absolute w-full h-[60%] group-hover:h-[80%] my-auto inset-0 z-0 rounded-3xl transition-all duration-300" style={{backgroundImage: "url('/images/tileMedium.png')"}}></div>
+                            <div className="bg-repeat absolute w-full h-[60%] group-hover:h-[80%] bottom-0 z-0 rounded-3xl transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}></div>
                         </div>
-                        <div className="flex flex-col justify-start items-center w-full">
-                            <p className="font-poppins font-bold text-2xl text-pink-950">Cookie Name</p>
-                            <p className="font-poppins text-lg text-pink-700 mb-4">$XX.XX / half dozen</p>
-                            <div className="flex flex-row justify-start text-pink-700 hover:text-pink-800 items-center space-x-2 hover:space-x-3 transition-all duration-300 group">
-                                <span className="font-poppins text-lg font-semibold underline">cookie details</span>
-                                <MoveRightIcon className="stroke-pink-700 group-hover:stroke-pink-800 transition-all duration-300" size={20} />
+                        <div className="flex flex-row justify-center items-center w-full px-3 space-x-7">
+                            <div className="flex flex-col justify-start items-center">
+                                <p className="font-poppins font-bold text-2xl text-pink-950">Cookie Name</p>
+                                <p className="font-poppins text-lg text-pink-700">$XX.XX / half dozen</p>
                             </div>
+                            <div className="h-10 w-10 aspect-square flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={20} /></div>
+                        </div>
+                    </Link>
+                    <Link href="#" className="flex flex-col justify-start items-center space-y-5 w-1/4 h-full group hover:scale-105 transition-all duration-300">
+                        <div className="relative aspect-square w-full p-4 flex flex-row justify-center items-center">
+                            <div className="relative h-full w-full z-10">
+                                <Image src={"/images/" + lineupProducts[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
+                            </div>
+                            <div className="bg-repeat absolute w-full h-[60%] group-hover:h-[80%] bottom-0 z-0 rounded-3xl transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}></div>
+                        </div>
+                        <div className="flex flex-row justify-center items-center w-full px-3 space-x-7">
+                            <div className="flex flex-col justify-start items-center">
+                                <p className="font-poppins font-bold text-2xl text-pink-950">Cookie Name</p>
+                                <p className="font-poppins text-lg text-pink-700">$XX.XX / half dozen</p>
+                            </div>
+                            <div className="h-10 w-10 aspect-square flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={20} /></div>
+                        </div>
+                    </Link>
+                    <Link href="#" className="flex flex-col justify-start items-center space-y-5 w-1/4 h-full group hover:scale-105 transition-all duration-300">
+                        <div className="relative aspect-square w-full p-4 flex flex-row justify-center items-center">
+                            <div className="relative h-full w-full z-10">
+                                <Image src={"/images/" + lineupProducts[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
+                            </div>
+                            <div className="bg-repeat absolute w-full h-[60%] group-hover:h-[80%] bottom-0 z-0 rounded-3xl transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}></div>
+                        </div>
+                        <div className="flex flex-row justify-center items-center w-full px-3 space-x-7">
+                            <div className="flex flex-col justify-start items-center">
+                                <p className="font-poppins font-bold text-2xl text-pink-950">Cookie Name</p>
+                                <p className="font-poppins text-lg text-pink-700">$XX.XX / half dozen</p>
+                            </div>
+                            <div className="h-10 w-10 aspect-square flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={20} /></div>
+                        </div>
+                    </Link>
+                    <Link href="#" className="flex flex-col justify-start items-center space-y-5 w-1/4 h-full group hover:scale-105 transition-all duration-300">
+                        <div className="relative aspect-square w-full p-4 flex flex-row justify-center items-center">
+                            <div className="relative h-full w-full z-10">
+                                <Image src={"/images/" + lineupProducts[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
+                            </div>
+                            <div className="bg-repeat absolute w-full h-[60%] group-hover:h-[80%] bottom-0 z-0 rounded-3xl transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}></div>
+                        </div>
+                        <div className="flex flex-row justify-center items-center w-full px-3 space-x-7">
+                            <div className="flex flex-col justify-start items-center">
+                                <p className="font-poppins font-bold text-2xl text-pink-950">Cookie Name</p>
+                                <p className="font-poppins text-lg text-pink-700">$XX.XX / half dozen</p>
+                            </div>
+                            <div className="h-10 w-10 aspect-square flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={20} /></div>
                         </div>
                     </Link>
                 </div>
