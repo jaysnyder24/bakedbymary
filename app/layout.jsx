@@ -20,7 +20,6 @@ export default function RootLayout ({children}) {
     return ( 
         <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
             <body>
-                <Nav />
                 {children}
             </body>
         </html>

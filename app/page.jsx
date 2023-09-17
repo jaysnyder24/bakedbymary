@@ -4,6 +4,7 @@ import Link from "next/link";
 import AddToCart from "./addToCart";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import Nav from "./nav";
 
 async function getProducts() {
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -49,6 +50,7 @@ export default async function Homepage () {
 
     return (
         <div className="mx-auto w-full max-w-[1400px]">
+            <Nav />
             <main className="flex flex-row justify-center items-start w-full px-14 pt-14 h-[80vh]">
                 <div className="flex flex-row justify-between items-start w-full h-full space-x-10">
                     <div className="flex flex-col justify-center items-start w-4/12 h-full space-y-6 pr-5">
@@ -86,7 +88,7 @@ export default async function Homepage () {
                                     <div className="flex flex-col justify-start items-start group-hover:space-y-6 transition-all duration-300">
                                         <span className="text-pink-950 font-playfair font-extrabold text-xl">{product.name}</span>
                                         <span className="text-pink-950 font-poppins text-lg">${product.default_price.unit_amount / 100} / half dozen</span>
-                                        <AddToCart item={{productName: "Product Name", productPrice: 10.00}} delay={true} theme={"dark"} />
+                                        <AddToCart item={product} delay={true} theme={"dark"} />
                                     </div>
                                     <div className="h-[18vh] group-hover:delay-100 aspect-square absolute -right-10 group-hover:right-6 flex flex-row justify-center items-center my-auto inset-y-0 transition-all duration-300">
                                         <div className="h-full w-full relative">
