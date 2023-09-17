@@ -1,8 +1,7 @@
 import { Heart, Search, ShoppingBagIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-import { cookies } from "next/headers";
+import CartNotice from "./cartNotice";
 
 export default function Nav () {
 
@@ -22,7 +21,7 @@ export default function Nav () {
                     <Link href={"#"} className="px-2 py-1"><Search className="hover:text-pink-400 transition-color duration-300" size={24} /></Link>
                     <Link href={"#"} className="px-2 py-1"><Heart className="hover:text-pink-400 transition-color duration-300" size={24} /></Link>
                     <Link href={"/cart"} className="px-2 py-1 relative group"><ShoppingBagIcon className="hover:text-pink-400 transition-color duration-300" size={24} />
-                        <div className={"absolute top-1 right-1 ring-4 ring-white bg-pink-400 rounded-full h-2 w-2 group-hover:bg-pink-700 transition-colors duration-300 " + cookies().has('cart') ? "opacity-100" : "opacity-0"}></div>
+                        <CartNotice />
                     </Link>
                 </div>
             </div>

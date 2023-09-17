@@ -50,7 +50,6 @@ export default async function Homepage () {
 
     return (
         <div className="mx-auto w-full max-w-[1400px]">
-            <Nav />
             <main className="flex flex-row justify-center items-start w-full px-14 pt-14 h-[80vh]">
                 <div className="flex flex-row justify-between items-start w-full h-full space-x-10">
                     <div className="flex flex-col justify-center items-start w-4/12 h-full space-y-6 pr-5">
