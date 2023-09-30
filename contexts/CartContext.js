@@ -1,11 +1,12 @@
-import { createContext, useState } from "react";
-import { getCart } from "../actions/getCart";
+"use client"
 
-const CartContext = createContext();
+import { createContext, useState, Provider } from "react";
 
-export async function CartProvider({children}) {
+export const CartContext = createContext();
 
-    const [items, setItems] = await useState(getCart());
+export default function CartProvider({children}) {
+
+    const [items, setItems] = useState([]);
 
     console.log(items);
 
@@ -52,5 +53,3 @@ export async function CartProvider({children}) {
         <CartContext.Provider value={{items, addToCart, removeFromCart, increaseQuantity, decreaseQuantity}}>{children}</CartContext.Provider>
     );
 }
-
-export default CartContext;

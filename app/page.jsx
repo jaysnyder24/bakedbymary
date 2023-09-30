@@ -1,9 +1,7 @@
 import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import AddToCart from "./addToCart";
-import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
+import AdjustCart from "./adjustCart";
 import Nav from "./nav";
 
 async function getProducts() {
@@ -73,7 +71,7 @@ export default async function Homepage () {
                             <div className="flex flex-col justify-start items-center space-y-5">
                                 <h2 className="font-playfair w-full font-bold text-3xl text-white text-center">Can't decide? Get assorted boxes instead!</h2>
                                 <p className="text-white font-poppins text-lg">${assortedProduct.default_price.unit_amount / 100} / half dozen</p>
-                                <AddToCart item={{productName: "Product Name", productPrice: 10.00}} delay={false} theme={"light"} />
+                                <AdjustCart item={{productName: "Product Name", productPrice: 10.00}} delay={false} theme={"light"} />
                             </div>  
                         </div>
                         <Link href={"#"} className="absolute font-poppins font-bold flex flex-row justify-center items-center bottom-0 right-0 bg-pink-200 hover:bg-pink-300 hover:scale-110 text-pink-950 aspect-square h-1/5 w-auto rounded-full p-5 transition-all duration-300">
@@ -87,7 +85,7 @@ export default async function Homepage () {
                                     <div className="flex flex-col justify-start items-start group-hover:space-y-6 transition-all duration-300">
                                         <span className="text-pink-950 font-playfair font-extrabold text-xl">{product.name}</span>
                                         <span className="text-pink-950 font-poppins text-lg">${product.default_price.unit_amount / 100} / half dozen</span>
-                                        <AddToCart item={product} delay={true} theme={"dark"} />
+                                        <AdjustCart item={product} delay={true} theme={"dark"} />
                                     </div>
                                     <div className="h-[18vh] group-hover:delay-100 aspect-square absolute -right-10 group-hover:right-6 flex flex-row justify-center items-center my-auto inset-y-0 transition-all duration-300">
                                         <div className="h-full w-full relative">

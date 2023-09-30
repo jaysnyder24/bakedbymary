@@ -1,6 +1,7 @@
 import styles from "./global.css";
 import { Poppins, Playfair_Display } from 'next/font/google'
 import Nav from "./nav";
+import CartProvider from "../contexts/CartContext";
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -20,8 +21,10 @@ export default function RootLayout ({children}) {
     return ( 
         <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
             <body>
-                <Nav />
-                {children}
+                <CartProvider>
+                    <Nav />
+                    {children}
+                </CartProvider>
             </body>
         </html>
     )
