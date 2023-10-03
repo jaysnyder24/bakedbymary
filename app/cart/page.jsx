@@ -5,6 +5,8 @@ import { useContext, useState, useEffect } from 'react';
 import { CartContext, CartProvider } from '../../contexts/CartContext'
 import Image from 'next/image';
 import { PlusIcon, MinusIcon } from 'lucide-react';
+import checkout from '../../actions/checkout';
+import { loadStripe } from '@stripe/stripe-js';
 
 export default function Cart () {
 
@@ -12,7 +14,17 @@ export default function Cart () {
 
     console.log("See Cart: " + items.length);
 
-    const total = items.reduce((accumulator, currentValue, index) => accumulator + (currentValue.value * currentValue.quantity), 0);    
+    const submitCheckoutWithPage = checkout.bind(null, )
+
+    const checkoutItems = [];
+
+    items.forEach((item) => {checkoutItems.push({price: item.price, quantity: item.quantity})});
+
+    const total = items.reduce((accumulator, currentValue, index) => accumulator + (currentValue.value * currentValue.quantity), 0);  
+    
+    const stripePromise = loadStripe(
+        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+      );
 
     return (
         <div className="mx-auto w-full max-w-[1400px]">
@@ -38,10 +50,11 @@ export default function Cart () {
                          
                     })}
                 </div>
-                <div className="flex flex-col justify-center items-start w-auto h-auto space-y-10 p-10 ring-1 ring-pink-200 shadow-md shadow-pink-200 rounded-xl bg-repeat sticky top-0" style={{backgroundImage: "url('/images/tileLight.png')"}}>
+                <form action={checkout} className="flex flex-col justify-center items-start w-auto h-auto space-y-10 p-10 ring-1 ring-pink-200 shadow-md shadow-pink-200 rounded-xl bg-repeat sticky top-0" style={{backgroundImage: "url('/images/tileLight.png')"}}>
                     <span className='font-playfair font-bold text-2xl text-pink-950'>Total ${total}</span>
-                    <button className='font-bold text-xl text-white w-full py-4 px-8 rounded-lg duration-300 bg-repeat hover:scale-105 transition-transform' style={{backgroundImage: "url('/images/tileDark.png')"}}>checkout</button>
-                </div>
+                    <input type="hidden" name='items' value={JSON.stringify(checkoutItems)} />
+                    <button type='submit' className='font-bold text-xl text-white w-full py-4 px-8 rounded-lg duration-300 bg-repeat hover:scale-105 transition-transform' style={{backgroundImage: "url('/images/tileDark.png')"}}>checkout</button>
+                </form>
             </main>
         </div>
     )
