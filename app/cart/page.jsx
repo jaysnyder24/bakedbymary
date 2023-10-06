@@ -7,14 +7,11 @@ import Image from 'next/image';
 import { PlusIcon, MinusIcon } from 'lucide-react';
 import checkout from '../../actions/checkout';
 import { loadStripe } from '@stripe/stripe-js';
+import { usePathname } from 'next/navigation';
 
 export default function Cart () {
 
     const {items, increaseQuantity, decreaseQuantity, removeFromCart} = useContext(CartContext);
-
-    console.log("See Cart: " + items.length);
-
-    const submitCheckoutWithPage = checkout.bind(null, )
 
     const checkoutItems = [];
 

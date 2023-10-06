@@ -20,7 +20,7 @@ const poppins = Poppins({
 export default function RootLayout ({children}) {
     return ( 
         <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
-            <body>
+            <body className="overflow-x-hidden">
                 <CartProvider>
                     <Nav />
                     {children}

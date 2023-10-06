@@ -3,11 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import AdjustCart from "./adjustCart";
 import Nav from "./nav";
+import CookieSlider from "./CookieSlider";
 
 async function getProducts() {
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
     const products = await stripe.products.search({
-        query: 'metadata[\'available\']:\'lineup\'',
+        query: `active:\'true\'`,
         expand: ['data.default_price'],
     });
 
@@ -18,9 +19,16 @@ async function getProducts() {
 export default async function Homepage () {
 
     const products = await getProducts();
+    const lineupProducts = products.filter(product => { 
+        return product.metadata.available = `lineup`;
+    });
+    const assortedProduct = lineupProducts.pop();
 
-    const lineupProducts = products.slice(0, 3);
-    const assortedProduct = products.pop();
+    const specialProducts = products.filter(product => { 
+        return product.metadata.available === `special`;
+    });
+
+    console.log(lineupProducts)
 
     async function specialOrderForm(formData) {
         'use server'
@@ -71,23 +79,23 @@ export default async function Homepage () {
                             <div className="flex flex-col justify-start items-center space-y-5">
                                 <h2 className="font-playfair w-full font-bold text-3xl text-white text-center">Can't decide? Get assorted boxes instead!</h2>
                                 <p className="text-white font-poppins text-lg">${assortedProduct.default_price.unit_amount / 100} / half dozen</p>
-                                <AdjustCart item={{productName: "Product Name", productPrice: 10.00}} delay={false} theme={"light"} />
+                                <AdjustCart item={{productName: "Product Name", productPrice: 10.00}} delay={false} theme={"light"} orientation={"col"} />
                             </div>  
                         </div>
                         <Link href={"#"} className="absolute font-poppins font-bold flex flex-row justify-center items-center bottom-0 right-0 bg-pink-200 hover:bg-pink-300 hover:scale-110 text-pink-950 aspect-square h-1/5 w-auto rounded-full p-5 transition-all duration-300">
                             see all
                         </Link>
                     </div>
-                    <div className="flex flex-col justify-center space-y-16 items-center w-4/12 h-full pl-5">
+                    <div className="flex flex-col justify-between items-start py-2 w-4/12 h-full pl-5">
                         {lineupProducts.map((product) => {
                             return (
-                                <div key={product.id} className="group relative flex flex-row justify-between items-center w-full bg-repeat p-6 rounded-2xl shadow-md shadow-pink-200 hover:shadow-pink-200 hover:shadow-2xl transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}>
-                                    <div className="flex flex-col justify-start items-start group-hover:space-y-6 transition-all duration-300">
+                                <div key={product.id} className="group relative flex flex-row justify-between items-center w-full bg-repeat p-6 rounded-2xl shadow-md ring-1 ring-pink-200 shadow-pink-200 transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}>
+                                    <div className="flex flex-col justify-start items-start w-[50%] space-y-2 transition-all duration-300">
                                         <span className="text-pink-950 font-playfair font-extrabold text-xl">{product.name}</span>
                                         <span className="text-pink-950 font-poppins text-lg">${product.default_price.unit_amount / 100} / half dozen</span>
-                                        <AdjustCart item={product} delay={true} theme={"dark"} />
+                                        <AdjustCart item={product} delay={true} theme={"dark"} orientation={"col"} />
                                     </div>
-                                    <div className="h-[18vh] group-hover:delay-100 aspect-square absolute -right-10 group-hover:right-6 flex flex-row justify-center items-center my-auto inset-y-0 transition-all duration-300">
+                                    <div className="w-[40%] group-hover:delay-100 aspect-square absolute -right-[20%] group-hover:right-6 flex flex-row justify-center items-center my-auto inset-y-0 transition-all duration-300">
                                         <div className="h-full w-full relative">
                                             <Image src={"/images/" + product.metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
                                         </div>
@@ -99,7 +107,7 @@ export default async function Homepage () {
                 </div>
             </main>
             <div className="flex flex-row justify-center items-center mt-20 px-14">
-                <div className="flex flex-row justify-between items-center w-full bg-repeat rounded-3xl py-10 shadow-2xl shadow-pink-200" style={{backgroundImage: "url('/images/tileLight.png')"}}>
+                <div className="flex flex-row justify-between items-center w-full bg-repeat rounded-3xl py-10 ring-1 ring-pink-200 shadow-2xl shadow-pink-200" style={{backgroundImage: "url('/images/tileLight.png')"}}>
                     <div className="w-4/12 px-10 h-full">
                         <h2 className="font-playfair font-extrabold text-5xl text-pink-950">How Monthly Cookie Orders Work</h2>
                     </div>
@@ -123,7 +131,7 @@ export default async function Homepage () {
                 <div className="w-6/12 h-full bg-repeat rounded-3xl relative shadow-xl shadow-pink-200" style={{backgroundImage: "url('/images/tileDark.png')"}}>
                     <div className="absolute -bottom-10 -right-10 h-full w-full rounded-3xl overflow-hidden">
                         <div className="relative h-full w-full">
-                            <Image src="/images/pecantwo.jpg" fill className="object-fill object-center" />
+                            <Image src="/images/pecanTwo.jpg" fill className="object-fill object-center" />
                         </div>
                     </div>
                 </div>
@@ -137,77 +145,7 @@ export default async function Homepage () {
                     </form>
                 </div>
             </div>
-            <div className="flex flex-col justify-start items-center w-full py-[80px] px-14 h-auto space-y-14">
-                <div className="flex flex-row justify-between items-center w-full">
-                    <h2 className="font-playfair w-full font-bold text-7xl text-pink-950">Popular Cookie Flavors</h2>
-                    <div className="flex flex-row justify-end items-center space-x-4">
-                        <button className="h-14 w-14 flex flex-row justify-center items-center bg-white rounded-full hover:scale-110 shadow-none hover:shadow-md transition-all duration-300"><MoveLeftIcon className="stroke-pink-700 hover:stroke-pink-800" size={28} /></button>
-                        <button className="h-14 w-14 flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={28} /></button>
-                    </div>
-                </div>
-                <div className="flex flex-row justify-between items-start w-full space-x-10 h-full">
-                    <Link href="#" className="flex flex-col justify-start items-center space-y-5 w-1/4 h-full group hover:scale-105 transition-all duration-300">
-                        <div className="relative aspect-square w-full p-4 flex flex-row justify-center items-center">
-                            <div className="relative h-full w-full z-10">
-                                <Image src={"/images/" + lineupProducts[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
-                            </div>
-                            <div className="bg-repeat absolute w-full h-[60%] group-hover:h-[80%] bottom-0 z-0 rounded-3xl transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}></div>
-                        </div>
-                        <div className="flex flex-row justify-center items-center w-full px-3 space-x-7">
-                            <div className="flex flex-col justify-start items-center">
-                                <p className="font-poppins font-bold text-2xl text-pink-950">Cookie Name</p>
-                                <p className="font-poppins text-lg text-pink-700">$XX.XX / half dozen</p>
-                            </div>
-                            <div className="h-10 w-10 aspect-square flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={20} /></div>
-                        </div>
-                    </Link>
-                    <Link href="#" className="flex flex-col justify-start items-center space-y-5 w-1/4 h-full group hover:scale-105 transition-all duration-300">
-                        <div className="relative aspect-square w-full p-4 flex flex-row justify-center items-center">
-                            <div className="relative h-full w-full z-10">
-                                <Image src={"/images/" + lineupProducts[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
-                            </div>
-                            <div className="bg-repeat absolute w-full h-[60%] group-hover:h-[80%] bottom-0 z-0 rounded-3xl transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}></div>
-                        </div>
-                        <div className="flex flex-row justify-center items-center w-full px-3 space-x-7">
-                            <div className="flex flex-col justify-start items-center">
-                                <p className="font-poppins font-bold text-2xl text-pink-950">Cookie Name</p>
-                                <p className="font-poppins text-lg text-pink-700">$XX.XX / half dozen</p>
-                            </div>
-                            <div className="h-10 w-10 aspect-square flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={20} /></div>
-                        </div>
-                    </Link>
-                    <Link href="#" className="flex flex-col justify-start items-center space-y-5 w-1/4 h-full group hover:scale-105 transition-all duration-300">
-                        <div className="relative aspect-square w-full p-4 flex flex-row justify-center items-center">
-                            <div className="relative h-full w-full z-10">
-                                <Image src={"/images/" + lineupProducts[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
-                            </div>
-                            <div className="bg-repeat absolute w-full h-[60%] group-hover:h-[80%] bottom-0 z-0 rounded-3xl transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}></div>
-                        </div>
-                        <div className="flex flex-row justify-center items-center w-full px-3 space-x-7">
-                            <div className="flex flex-col justify-start items-center">
-                                <p className="font-poppins font-bold text-2xl text-pink-950">Cookie Name</p>
-                                <p className="font-poppins text-lg text-pink-700">$XX.XX / half dozen</p>
-                            </div>
-                            <div className="h-10 w-10 aspect-square flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={20} /></div>
-                        </div>
-                    </Link>
-                    <Link href="#" className="flex flex-col justify-start items-center space-y-5 w-1/4 h-full group hover:scale-105 transition-all duration-300">
-                        <div className="relative aspect-square w-full p-4 flex flex-row justify-center items-center">
-                            <div className="relative h-full w-full z-10">
-                                <Image src={"/images/" + lineupProducts[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
-                            </div>
-                            <div className="bg-repeat absolute w-full h-[60%] group-hover:h-[80%] bottom-0 z-0 rounded-3xl transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}></div>
-                        </div>
-                        <div className="flex flex-row justify-center items-center w-full px-3 space-x-7">
-                            <div className="flex flex-col justify-start items-center">
-                                <p className="font-poppins font-bold text-2xl text-pink-950">Cookie Name</p>
-                                <p className="font-poppins text-lg text-pink-700">$XX.XX / half dozen</p>
-                            </div>
-                            <div className="h-10 w-10 aspect-square flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={20} /></div>
-                        </div>
-                    </Link>
-                </div>
-            </div>
+            <CookieSlider cookies={specialProducts} />
         </div>
     )
 }
