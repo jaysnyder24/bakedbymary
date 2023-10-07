@@ -1,7 +1,7 @@
 import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import AdjustCart from "./adjustCart.jsx";
+import AdjustCart from "./adjustCart";
 import Nav from "./nav";
 import CookieSlider from "./CookieSlider.jsx";
 
