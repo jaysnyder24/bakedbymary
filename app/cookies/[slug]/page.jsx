@@ -1,6 +1,4 @@
-import Image from 'next/image';
 import ImageSelector from './ImageSelector';
-import { StarIcon } from 'lucide-react';
 import AdjustCart from '../../adjustCart';
 
 async function getCookie(slug) {
