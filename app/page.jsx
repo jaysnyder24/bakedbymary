@@ -1,9 +1,9 @@
 import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import AdjustCart from "./adjustCart";
+import AdjustCart from "./adjustCart.jsx";
 import Nav from "./nav";
-import CookieSlider from "./CookieSlider";
+import CookieSlider from "./CookieSlider.jsx";
 
 async function getProducts() {
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
