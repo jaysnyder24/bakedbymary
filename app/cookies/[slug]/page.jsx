@@ -1,5 +1,5 @@
 import ImageSelector from './ImageSelector';
-import AdjustCart from '../../adjustCart';
+import AdjustCart from '../../AdjustCart';
 
 async function getCookie(slug) {
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
