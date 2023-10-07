@@ -1,6 +1,7 @@
 import styles from "./global.css";
 import { Poppins, Playfair_Display } from 'next/font/google'
 import Nav from "./nav";
+import Footer from "./footer";
 import CartProvider from "../contexts/CartContext";
 
 const poppins = Poppins({
@@ -24,6 +25,7 @@ export default function RootLayout ({children}) {
                 <CartProvider>
                     <Nav />
                     {children}
+                    <Footer />
                 </CartProvider>
             </body>
         </html>

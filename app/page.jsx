@@ -7,9 +7,10 @@ import CookieSlider from "./CookieSlider";
 
 async function getProducts() {
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-    const products = await stripe.products.search({
-        query: `active:\'true\'`,
+    const products = await stripe.products.list({
+        active: true,
         expand: ['data.default_price'],
+        limit: 100,
     });
 
     return products.data;
@@ -19,16 +20,15 @@ async function getProducts() {
 export default async function Homepage () {
 
     const products = await getProducts();
-    const lineupProducts = products.filter(product => { 
-        return product.metadata.available = `lineup`;
+    const lineupProducts = products.filter((item) => {
+        return item.metadata.available === "lineup";
     });
+
     const assortedProduct = lineupProducts.pop();
 
-    const specialProducts = products.filter(product => { 
-        return product.metadata.available === `special`;
+    const specialProducts = products.filter((item) => {
+        return item.metadata.available === "special";
     });
-
-    console.log(lineupProducts)
 
     async function specialOrderForm(formData) {
         'use server'
@@ -67,26 +67,26 @@ export default async function Homepage () {
                         <div className="rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-8 items-center px-10 py-20 group transition-transform duration-300" style={{backgroundImage: "url('/images/tileDark.png')"}}>
                             <div className="flex flex-row justify-center items-start -space-x-8 w-full h-auto">
                                 <div className="relative h-[100px] aspect-square w-auto mt-6 z-10 group-hover:scale-105 transition-transform duration-300">
-                                    <Image src={"/images/" + products[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
+                                    <Image src={"/images/" + lineupProducts[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
                                 </div>
                                 <div className="relative h-[100px] aspect-square w-auto z-20 group-hover:scale-125 transition-transform duration-300">
-                                    <Image src={"/images/" + products[1].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
+                                    <Image src={"/images/" + lineupProducts[1].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
                                 </div>
                                 <div className="relative h-[100px] aspect-square w-auto mt-6 z-10 group-hover:scale-105 transition-transform duration-300">
-                                    <Image src={"/images/" + products[2].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
+                                    <Image src={"/images/" + lineupProducts[2].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
                                 </div>
                             </div>
                             <div className="flex flex-col justify-start items-center space-y-5">
                                 <h2 className="font-playfair w-full font-bold text-3xl text-white text-center">Can't decide? Get assorted boxes instead!</h2>
                                 <p className="text-white font-poppins text-lg">${assortedProduct.default_price.unit_amount / 100} / half dozen</p>
-                                <AdjustCart item={{productName: "Product Name", productPrice: 10.00}} delay={false} theme={"light"} orientation={"col"} />
+                                <AdjustCart item={assortedProduct} delay={false} theme={"light"} orientation={"col"} />
                             </div>  
                         </div>
-                        <Link href={"#"} className="absolute font-poppins font-bold flex flex-row justify-center items-center bottom-0 right-0 bg-pink-200 hover:bg-pink-300 hover:scale-110 text-pink-950 aspect-square h-1/5 w-auto rounded-full p-5 transition-all duration-300">
+                        <Link href={"/cookies"} className="absolute font-poppins font-bold flex flex-row justify-center items-center bottom-0 right-0 bg-pink-200 hover:bg-pink-300 hover:scale-110 text-pink-950 aspect-square h-1/5 w-auto rounded-full p-5 transition-all duration-300">
                             see all
                         </Link>
                     </div>
-                    <div className="flex flex-col justify-between items-start py-2 w-4/12 h-full pl-5">
+                    <div className="flex flex-col justify-between items-start py-4 w-4/12 h-full pl-5">
                         {lineupProducts.map((product) => {
                             return (
                                 <div key={product.id} className="group relative flex flex-row justify-between items-center w-full bg-repeat p-6 rounded-2xl shadow-md ring-1 ring-pink-200 shadow-pink-200 transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}>
@@ -128,8 +128,8 @@ export default async function Homepage () {
                 </div>
             </div>
             <div className="flex flex-row justify-between items-center w-full py-[120px] px-14 h-[100vh]">
-                <div className="w-6/12 h-full bg-repeat rounded-3xl relative shadow-xl shadow-pink-200" style={{backgroundImage: "url('/images/tileDark.png')"}}>
-                    <div className="absolute -bottom-10 -right-10 h-full w-full rounded-3xl overflow-hidden">
+                <div className="w-6/12 h-full bg-repeat rounded-3xl relative shadow-xl shadow-pink-200 group" style={{backgroundImage: "url('/images/tileDark.png')"}}>
+                    <div className="absolute -bottom-10 -right-10 group-hover:-bottom-8 group-hover:-right-8 h-full w-full rounded-3xl overflow-hidden transition-all duration-300 ease-in-out">
                         <div className="relative h-full w-full">
                             <Image src="/images/pecanTwo.jpg" fill className="object-fill object-center" />
                         </div>
