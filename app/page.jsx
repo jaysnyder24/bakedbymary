@@ -30,6 +30,10 @@ export default async function Homepage () {
         return item.metadata.available === "special";
     });
 
+    const saleProducts = products.filter((item) => {
+        return item.metadata.available !== "other";
+    });
+
     async function specialOrderForm(formData) {
         'use server'
 
@@ -39,11 +43,11 @@ export default async function Homepage () {
         const email = formData.get("email");
 
         const message = {
-            to: email,
-            from: 'mary@bakedbymary.com',
+            to: "mary@bakedbymary.com",
+            from: "mary@bakedbymary.com",
             subject: 'Special Order Request',
-            text: 'Thank you so much for the order request! Let\'s get a few of the details out of the way: what cookies would you like, how many of each kind and when would you like to pick them up?',
-            html: '<p>Thank you so much for the order request! Let\'s get a few of the details out of the way: what cookies would you like, how many of each kind and when would you like to pick them up?</p>',
+            text: `${email} would like to place a special order. Please follow up.`,
+            html: `<p>${email} would like to place a special order. Please follow up.</p>`,
         }
 
         sendgrid.send(message).then((response) => {
@@ -56,16 +60,16 @@ export default async function Homepage () {
 
     return (
         <div className="mx-auto w-full max-w-[1400px]">
-            <main className="flex flex-row justify-center items-start w-full px-14 pt-14 h-[80vh]">
-                <div className="flex flex-row justify-between items-start w-full h-full space-x-10">
-                    <div className="flex flex-col justify-center items-start w-4/12 h-full space-y-6 pr-5">
-                        <h1 className="font-playfair font-bold text-8xl text-pink-950 space-y-0">Falling Into Fall Cookies</h1>
-                        <span className="font-poppins font-semibold text-base text-pink-500"><span className="font-extrabold">Next Pickup Day:</span> Monday September 11th</span>
-                        <p className="font-poppins font-normal text-black">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure officiis minus quasi veniam quod aliquid quos ab incidunt unde, obcaecati ratione? Nesciunt voluptate ab iure ullam voluptatibus culpa! At, nisi.</p>
+            <main className="flex flex-col md:flex-row justify-center items-start w-full px-5 md:px-14 pt-5 md:pt-14 h-screen md:h-[80vh]">
+                <div className="flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10">
+                    <div className="flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5">
+                        <h1 className="font-playfair font-bold text-4xl md:text-8xl text-pink-950">Spookily Good Cookies</h1>
+                        <span className="font-poppins font-semibold text-base text-pink-500"><span className="font-extrabold">Next Pickup Day:</span> Monday October 30th</span>
+                        <p className="font-poppins font-normal text-black">We've got a frighteningly tasty trio of treats for All Hallows' Eve. Don't be tricked by their scary good decorations - their bite is just as good as their bark... no fangs required.</p>
                     </div>
-                    <div className="flex flex-col justify-center items-center w-4/12 h-full px-5 relative">
-                        <div className="rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-8 items-center px-10 py-20 group transition-transform duration-300" style={{backgroundImage: "url('/images/tileDark.png')"}}>
-                            <div className="flex flex-row justify-center items-start -space-x-8 w-full h-auto">
+                    <div className="flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full px-5 relative">
+                        <div className="rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-2 md:space-y-8 items-center px-10 py-10 md:py-20 group transition-transform duration-300" style={{backgroundImage: "url('/images/tileDark.png')"}}>
+                            <div className="hidden md:flex flex-row justify-center items-start -space-x-6 md:-space-x-8 w-full h-auto">
                                 <div className="relative h-[100px] aspect-square w-auto mt-6 z-10 group-hover:scale-105 transition-transform duration-300">
                                     <Image src={"/images/" + lineupProducts[0].metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
                                 </div>
@@ -77,25 +81,28 @@ export default async function Homepage () {
                                 </div>
                             </div>
                             <div className="flex flex-col justify-start items-center space-y-5">
-                                <h2 className="font-playfair w-full font-bold text-3xl text-white text-center">Can't decide? Get assorted boxes instead!</h2>
-                                <p className="text-white font-poppins text-lg">${assortedProduct.default_price.unit_amount / 100} / half dozen</p>
+                                <div className="flex flex-col justify-start items-center space-y-5">
+                                    <h2 className="hidden md:flex font-playfair w-full font-bold text-3xl text-white text-center">Can't decide? Get assorted boxes instead!</h2>
+                                    <h2 className="flex md:hidden font-playfair w-full font-bold text-xl text-white text-center">Assorted Box</h2>
+                                    <p className="text-white font-poppins text-lg">${assortedProduct.default_price.unit_amount / 100} / half dozen</p>
+                                </div>
                                 <AdjustCart item={assortedProduct} delay={false} theme={"light"} orientation={"col"} />
                             </div>  
                         </div>
-                        <Link href={"/cookies"} className="absolute font-poppins font-bold flex flex-row justify-center items-center bottom-0 right-0 bg-pink-200 hover:bg-pink-300 hover:scale-110 text-pink-950 aspect-square h-1/5 w-auto rounded-full p-5 transition-all duration-300">
+                        <Link href={"/cookies"} className="absolute font-poppins font-bold hidden md:flex flex-row justify-center items-center bottom-0 right-0 bg-pink-200 hover:bg-pink-300 hover:scale-110 text-pink-950 aspect-square h-1/5 w-auto rounded-full p-5 transition-all duration-300">
                             see all
                         </Link>
                     </div>
-                    <div className="flex flex-col justify-between items-start py-4 w-4/12 h-full pl-5">
+                    <div className="flex flex-col justify-between items-start py-8 w-full md:w-4/12 h-full pl-5 pr-5">
                         {lineupProducts.map((product) => {
                             return (
-                                <div key={product.id} className="group relative flex flex-row justify-between items-center w-full bg-repeat p-6 rounded-2xl shadow-md ring-1 ring-pink-200 shadow-pink-200 transition-all duration-300" style={{backgroundImage: "url('/images/tileLight.png')"}}>
+                                <div key={product.id} className="group relative flex flex-row justify-between items-center w-full bg-repeat p-6 rounded-2xl shadow-md ring-1 ring-pink-200 shadow-pink-200 transition-all duration-300 hover:-pr-10" style={{backgroundImage: "url('/images/tileLight.png')"}}>
                                     <div className="flex flex-col justify-start items-start w-[50%] space-y-2 transition-all duration-300">
                                         <span className="text-pink-950 font-playfair font-extrabold text-xl">{product.name}</span>
                                         <span className="text-pink-950 font-poppins text-lg">${product.default_price.unit_amount / 100} / half dozen</span>
                                         <AdjustCart item={product} delay={true} theme={"dark"} orientation={"col"} />
                                     </div>
-                                    <div className="w-[40%] group-hover:delay-100 aspect-square absolute -right-[20%] group-hover:right-6 flex flex-row justify-center items-center my-auto inset-y-0 transition-all duration-300">
+                                    <div className="w-[40%] group-hover:delay-100 aspect-square relative md:absolute md:-right-[20%] md:group-hover:right-6 flex flex-row justify-center items-center my-auto inset-y-0 transition-all duration-300">
                                         <div className="h-full w-full relative">
                                             <Image src={"/images/" + product.metadata.imageUnique + "Circle.png"} className="object-fill object-center" fill />
                                         </div>
@@ -145,7 +152,7 @@ export default async function Homepage () {
                     </form>
                 </div>
             </div>
-            <CookieSlider cookies={specialProducts} />
+            <CookieSlider cookies={saleProducts} />
         </div>
     )
 }

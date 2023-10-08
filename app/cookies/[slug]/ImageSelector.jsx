@@ -14,12 +14,12 @@ export default function ImageSelector (props) {
     return (
         
         <div className="flex flex-col justify-start items-start w-1/3 h-full">
-            <div className="flex flex-row justify-start items-center space-x-1 mb-3 font-poppins text-pink-600 transition-colors duration-300">
+            <div className={"flex-row justify-start items-center space-x-1 mb-3 font-poppins text-pink-600 transition-colors duration-300 " + (props.breadcrumb ? "flex" : "hidden")}>
                 <Link href="/" className="hover:text-pink-700 no-underline hover:underline underline-offset-4">home</Link>
                 <span>/</span>
                 <Link href="/cookies" className="hover:text-pink-700 no-underline hover:underline underline-offset-4">cookies</Link>
                 <span>/</span>
-                <Link href={"/cookies/" + slug} className="hover:text-pink-700 no-underline hover:underline underline-offset-4 lowercase">{name}</Link>
+                <Link href={"/cookies/" + slug} className="hover:text-pink-700 no-underline hover:underline underline-offset-4 lowercase">{name} cookie</Link>
             </div>
             <div className="w-full h-auto aspect-square flex-shrink-0 relative rounded-xl overflow-hidden mb-5">
                 <Image src={`/images/${image}Default.jpg`} fill priority className={`object-cover object-center transition-all duration-500 ${selected === "Default" ? 'opacity-100' : 'opacity-0'}`} />

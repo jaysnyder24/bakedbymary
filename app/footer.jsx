@@ -10,6 +10,8 @@ export default function Footer () {
                 <div className="flex flex-row justify-start items-center space-x-5">
                     <Link href={"/"} className="bg-pink-600 hover:bg-pink-700 w-14 h-14 rounded-full flex flex-row justify-center items-center transition-colors duration-300"><Image src="/images/logo.svg" className="fill-white stroke-white text-white" width={32} height={32} alt="baked by mary cookies logo" /></Link>
                     <Link href={"/cookies"} className="px-2 py-1 text-pink-600 hover:text-pink-700 font-poppins font-semibold underline-offset-8 decoration-4 transition-all duration-300">cookies</Link>
+                    <Link href={"/about-us"} className="px-2 py-1 text-pink-600 hover:text-pink-700 font-poppins font-semibold underline-offset-8 decoration-4 transition-all duration-300">about us</Link>
+
                 </div>
                 <div className="flex flex-row justify-end items-center space-x-5">
                     <Link href={"https://www.facebook.com/bakedbymarycookies"} className="px-2 py-1 no-underline hover:underline decoration-pink-400 underline-offset-8 decoration-4"><FacebookIcon className="fill-pink-600 hover:fill-pink-700 stroke-none" size={28} /></Link>

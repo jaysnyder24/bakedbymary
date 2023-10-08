@@ -24,7 +24,7 @@ export default function Cart () {
       );
 
     return (
-        <div className="mx-auto w-full max-w-[1400px]">
+        <div className="mx-auto w-full max-w-[1400px] h-full min-h-[80vh]">
             <main className="flex flex-row justify-center items-start w-full px-14 py-14 h-full space-x-10 relative">
                 <div className="flex flex-col justify-center items-center w-auto h-auto space-y-10 p-10 ring-1 ring-pink-200 shadow-md shadow-pink-200 rounded-xl">
                     {items.map((item, index) => {
