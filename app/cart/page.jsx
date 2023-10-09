@@ -25,11 +25,11 @@ export default function Cart () {
 
     return (
         <div className="mx-auto w-full max-w-[1400px] h-full min-h-[80vh]">
-            <main className="flex flex-row justify-center items-start w-full px-14 py-14 h-full space-x-10 relative">
-                <div className="flex flex-col justify-center items-center w-auto h-auto space-y-10 p-10 ring-1 ring-pink-200 shadow-md shadow-pink-200 rounded-xl">
+            <main className="flex md:flex-row flex-col-reverse justify-start items-center md:justify-center md:items-start w-full px-10 md:px-14 pt-10 pb-[140px] md:py-14 h-full space-y-5 md:space-y-0 md:space-x-10 relative">
+                <div className="flex flex-col justify-start md:justify-center items-center w-auto h-auto space-y-10 p-10 ring-1 ring-pink-200 shadow-md shadow-pink-200 rounded-xl">
                     {items.map((item, index) => {
                         return  <div key={item.name} className="flex flex-row justify-start items-center space-x-5 w-full h-auto">
-                                    <div className='relative h-40 aspect-square'>
+                                    <div className='relative h-32 md:h-40 aspect-square'>
                                         <Image src={'/images/' + item.image + 'Circle.png'} className="object-cover object-center" fill alt={"cookie image"} />
                                     </div>
                                     <div className='flex flex-col justify-center items-start space-y-2 py-5'>
@@ -47,7 +47,7 @@ export default function Cart () {
                          
                     })}
                 </div>
-                <form action={checkout} className="flex flex-col justify-center items-start w-auto h-auto space-y-10 p-10 ring-1 ring-pink-200 shadow-md shadow-pink-200 rounded-xl bg-repeat sticky top-0" style={{backgroundImage: "url('/images/tileLight.png')"}}>
+                <form action={checkout} className="flex flex-col justify-center items-start mb-5 md:mb-0 w-auto h-auto space-y-10 p-10 ring-1 ring-pink-200 shadow-md shadow-pink-200 rounded-xl bg-repeat sticky top-5 md:top-0" style={{backgroundImage: "url('/images/tileLight.png')"}}>
                     <span className='font-playfair font-bold text-2xl text-pink-950'>Total ${total}</span>
                     <input type="hidden" name='items' value={JSON.stringify(checkoutItems)} />
                     <button type='submit' className='font-bold text-xl text-white w-full py-4 px-8 rounded-lg duration-300 bg-repeat hover:scale-105 transition-transform' style={{backgroundImage: "url('/images/tileDark.png')"}}>checkout</button>

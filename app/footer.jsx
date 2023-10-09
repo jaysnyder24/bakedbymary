@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Footer () {
 
     return (
-        <footer className="font-poppins text-lg text-black flex flex-row justify-center items-start w-full h-auto mx-auto px-14 py-5 pt-5 bg-repeat" style={{backgroundImage: "url('/images/tileLight.png')"}}>
+        <footer className="font-poppins text-lg text-black hidden md:flex flex-row justify-center items-start w-full h-auto mx-auto px-14 py-5 pt-5 bg-repeat" style={{backgroundImage: "url('/images/tileLight.png')"}}>
             <div className="flex flex-row justify-between items-center py-2 px-5 w-full max-w-[1400px] mx-auto rounded-full">
                 <div className="flex flex-row justify-start items-center space-x-5">
                     <Link href={"/"} className="bg-pink-600 hover:bg-pink-700 w-14 h-14 rounded-full flex flex-row justify-center items-center transition-colors duration-300"><Image src="/images/logo.svg" className="fill-white stroke-white text-white" width={32} height={32} alt="baked by mary cookies logo" /></Link>
