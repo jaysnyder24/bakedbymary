@@ -17,6 +17,11 @@ async function getProducts() {
 
 }
 
+export const metadata = {
+    title: "Baked By Mary | Homemade, Specialty Cookies Made In Ankeny, Iowa",
+    description: "Looking For Local Cookies Shops In Central Iowa? Your Search Is Over! We have 40+ Cookie Flavors For Any Occassion."
+}
+
 export default async function Homepage () {
 
     const products = await getProducts();

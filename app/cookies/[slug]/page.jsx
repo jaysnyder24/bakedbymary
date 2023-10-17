@@ -1,5 +1,6 @@
 import ImageSelector from './ImageSelector';
 import AdjustCart from '../../AdjustCart';
+import { Metadata } from 'next';
 
 async function getCookie(slug) {
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -10,6 +11,22 @@ async function getCookie(slug) {
 
     return products.data[0];
 }
+
+export async function generateMetadata({ params }) {
+    // read route params
+    const slug = params.slug
+   
+    // fetch data
+    const product = await getCookie(slug)
+   
+    return {
+      title: `${product.name} Cookies | Baked By Mary`,
+      description: product.description,
+      openGraph: {
+        images: [`/images/${product.metadata.imageUnique}Default.jpg`],
+      },
+    }
+  }
 
 export default async function Cookie ({params}) {
 
