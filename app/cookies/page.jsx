@@ -16,7 +16,11 @@ async function getProducts() {
 
 export const metadata = {
     title: "Full Menu Of Specialty Cookies | Baked By Mary",
-    description: "Whether you're looking for one of our monthly cookies or you need a huge order for your event, we've got the flavor for you!"
+    description: "Whether you're looking for one of our monthly cookies or you need a huge order for your event, we've got the flavor for you!",
+    metadataBase: new URL('https://www.bakedbymary.com'),
+    alternates: {
+        canonical: "/cookies"
+    }
 }
 
 export default async function Cookie ({params}) {

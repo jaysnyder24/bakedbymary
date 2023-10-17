@@ -21,7 +21,7 @@ export default function ImageSelector (props) {
                 <span>/</span>
                 <Link href={"/cookies/" + slug} className="hover:text-pink-700 no-underline hover:underline underline-offset-4 lowercase">{name} cookie</Link>
             </div>
-            <div className="w-full h-auto aspect-square flex-shrink-0 relative rounded-xl overflow-hidden mb-5">
+            <div className="w-full h-auto aspect-video md:aspect-square flex-shrink-0 relative rounded-xl overflow-hidden mb-5">
                 <Image src={`/images/${image}Default.jpg`} fill priority className={`object-cover object-center transition-all duration-500 ${selected === "Default" ? 'opacity-100' : 'opacity-0'}`} />
                 <Image src={`/images/${image}One.jpg`} fill className={`object-cover object-center transition-all duration-500 ${selected === "One" ? 'opacity-100' : 'opacity-0'}`} />
                 <Image src={`/images/${image}Two.jpg`} fill className={`object-cover object-center transition-all duration-500 ${selected === "Two" ? 'opacity-100' : 'opacity-0'}`} />

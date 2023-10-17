@@ -1,6 +1,5 @@
 import ImageSelector from './ImageSelector';
 import AdjustCart from '../../AdjustCart';
-import { Metadata } from 'next';
 
 async function getCookie(slug) {
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -22,9 +21,13 @@ export async function generateMetadata({ params }) {
     return {
       title: `${product.name} Cookies | Baked By Mary`,
       description: product.description,
+      metadataBase: new URL('https://www.bakedbymary.com'),
       openGraph: {
         images: [`/images/${product.metadata.imageUnique}Default.jpg`],
       },
+      alternates: {
+        canonical: `/cookies/${slug}`
+      }
     }
   }
 

@@ -2,6 +2,15 @@ import { FacebookIcon, InstagramIcon, MailIcon } from 'lucide-react';
 import ImageSelector from '../cookies/[slug]/ImageSelector';
 import Link from 'next/link';
 
+export const metadata = {
+    title: "About Mary & The Snyder | Baked By Mary",
+    description: "There's no radioactive spider bite in this origin story, thankfully. Just loving women who taught Mary to love baking & family.",
+    metadataBase: new URL('https://www.bakedbymary.com'),
+    alternates: {
+        canonical: "/about-us"
+    }
+}
+
 export default async function AboutUs () {
 
     return (
