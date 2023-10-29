@@ -24,8 +24,8 @@ export default function CookieSlider (props) {
             <div className="flex flex-col md:flex-row justify-start space-y-5 md:space-y-0 md:justify-between items-start md:items-center w-full">
                 <h2 className="font-playfair w-full font-bold text-3xl md:text-7xl text-pink-950">Popular Cookie Flavors</h2>
                 <div className="flex flex-row justify-end items-center space-x-4">
-                    <button onClick={() => (position < 0 ? setPosition(prevPosition => prevPosition + 100) : setPosition(0))} className="h-14 w-14 flex flex-row justify-center items-center bg-white rounded-full hover:scale-110 shadow-none hover:shadow-md transition-all duration-300"><MoveLeftIcon className="stroke-pink-700 hover:stroke-pink-800" size={28} /></button>
-                    <button onClick={() => ((position / 100 * -1) < (cookies.length / 4) - 1 ? setPosition(position - 100) : setPosition(0))} className="h-14 w-14 flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={28} /></button>
+                    <button onClick={() => (position < 0 ? setPosition(prevPosition => prevPosition + 25) : setPosition(0))} className="h-14 w-14 flex flex-row justify-center items-center bg-white rounded-full hover:scale-110 shadow-none hover:shadow-md transition-all duration-300"><MoveLeftIcon className="stroke-pink-700 hover:stroke-pink-800" size={28} /></button>
+                    <button onClick={() => ((position / 25 * -1) < (cookies.length) - 1 ? setPosition(position - 25) : setPosition(0))} className="h-14 w-14 flex flex-row justify-center items-center bg-pink-700 hover:bg-pink-800 rounded-full hover:scale-110 shadow-none hover:shadow-md hover:shadow-pink-200 transition-all duration-300"><MoveRightIcon className="stroke-white" size={28} /></button>
                 </div>
             </div>
             <div className={`flex flex-row w-full h-full overflow-x-visible transition-transform duration-500 ease-in-out`} style={{transform: `translate(${position}%, 0%)`}}>
