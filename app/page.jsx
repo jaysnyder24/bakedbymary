@@ -152,7 +152,7 @@ export default async function Homepage () {
                     </div>
                 </div>
                 <div className="w-full md:w-6/12 flex flex-col justify-center items-start space-y-6">
-                    <h2 className="font-playfair font-extrabold text-5xl text-pink-950">Don't Want To Wait For The Delivery Date?</h2>
+                    <h2 className="font-playfair font-extrabold text-5xl text-pink-950">Don't Want To Wait For The Pickup Date?</h2>
                     <p className="font-poppins text-black">Every month we have several specials for all sorts of events, activities or strange justifications for needing a large number of cookies ordered on a certain date. You just need to muster up enough dough to order <strong>at least</strong> two dozen cookies, pick a date when we're available to make them and we're in business!</p>
                     <p className="font-poppins text-black">Fill out the form below and we'll be in touch to get more details or your event!</p>
                     <form action={specialOrderForm} className="flex flex-col md:flex-row justify-start items-center space-y-6 md:space-y-0 md:space-x-5 overflow-visible w-full">
