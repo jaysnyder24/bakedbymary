@@ -4,6 +4,7 @@ import Link from "next/link";
 import AdjustCart from "./AdjustCart";
 import Nav from "./nav";
 import CookieSlider from "./CookieSlider.jsx";
+import ImageSelector from "./cookies/[slug]/ImageSelector.jsx";
 
 async function getProducts() {
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -38,6 +39,10 @@ export default async function Homepage () {
     const specialProducts = products.filter((item) => {
         return item.metadata.available === "special";
     });
+
+    const limitedProducts = products.filter ((item) => {
+        return item.metadata.available === "limited";
+    })
 
     const saleProducts = products.filter((item) => {
         return item.metadata.available !== "other";
@@ -122,6 +127,27 @@ export default async function Homepage () {
                     </div>
                 </div>
             </main>
+            <div className="flex flex-col md:flex-row justify-start md:justify-between items-center w-full mt-20 px-10 md:px-14">
+            <div className="mx-auto w-full max-w-[1400px]">
+                <div className="flex flex-col-reverse md:flex-row justify-start items-center md:justify-center w-full px-10 pt-10 pb-[140px] md:p-14 md:h-[90vh] md:space-x-14 relative">
+                    <div className="w-full md:w-1/2 h-auto flex flex-col justify-start items-center md:items-start space-y-5 md:space-y-6">
+                        <div className="w-full flex flex-col justify-start items-center md:items-start space-y-4">
+                            <h2 className="font-extrabold font-playfair text-5xl text-pink-950">Thanksgiving Special <span className=" italic">Addition</span> Cookie</h2>
+                            <span className="w-full font-poppins font-bold text-2xl text-pink-800 flex flex-row justify-start items-center">{limitedProducts[0].name}</span>
+                            <span className="w-full font-poppins font-medium text-lg text-pink-600 flex flex-row justify-start items-center">${limitedProducts[0].default_price.unit_amount / 100}{limitedProducts[0].default_price.unit_amount / 100 > 2 ? "0" : ".00"} / half dozen</span>
+                        </div>
+                        <div className="w-full flex flex-col justify-start items-center md:items-start space-y-4">
+                            <p className='w-full font-poppins text-lg'>Alright, we heard you already! We get it! Pumpkin pie is the most consumed dessert at Thanksgiving AND it was a huge mistake not to turn this delicious delicacy into a cream-topped cookie. Due to popular demand we have made our <Link href="/cookies/pumpkin-pie-cookie" className="font-semibold text-pink-600 underline underline-offset-4">Pumpkin Pie Cookie available for the November 20th pickup date</Link>.</p>
+                            <p className='w-full font-poppins text-lg'>These will, however, not be included in assorted boxes. Enjoy!</p>
+                        </div>
+                        <AdjustCart item={limitedProducts[0]} delay={false} theme={"dark"} orientation={"col"} />
+                    </div>
+                    <div className="relative w-full mb-5 md:mb-0 md:w-1/2 aspect-square rounded-2xl overflow-hidden">
+                        <Image src={`/images/${limitedProducts[0].metadata.imageUnique}One.jpg`} fill priority className={`object-cover object-center`} />
+                    </div>
+                </div>
+            </div>
+            </div>
             <div className="flex flex-row justify-center items-center mt-20 px-10 md:px-14">
                 <div className="flex flex-col md:flex-row justify-between md:justify-start items-center space-y-5 md:space-y-0 w-full bg-repeat rounded-3xl py-10 ring-1 ring-pink-200 shadow-2xl shadow-pink-200" style={{backgroundImage: "url('/images/tileLight.png')"}}>
                     <div className="w-full md:w-4/12 px-10 h-full">
