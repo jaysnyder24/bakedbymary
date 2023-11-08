@@ -73,7 +73,7 @@ export default async function Cookie ({params}) {
                         <span className="w-full font-poppins font-medium text-lg text-pink-600 flex flex-row justify-start items-center">${priceDecimal}{priceSplit.length > 2 ? "0" : ".00"} / half dozen</span>
                     </div>
                     <p className='w-full font-poppins text-lg'>{cookie.description}</p>
-                    {cookie.metadata.available === "lineup" ?
+                    {cookie.metadata.available === "lineup" || "limited" ?
                         <AdjustCart item={cookie} delay={false} theme={"dark"} orientation={"row"} />
                         : 
                         <form action={specialOrderForm} className="flex flex-row justify-start items-center space-x-5 overflow-visible w-full">
