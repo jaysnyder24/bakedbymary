@@ -137,7 +137,7 @@ export default async function Homepage () {
                             <span className="w-full font-poppins font-medium text-lg text-pink-600 flex flex-row justify-start items-center">${limitedProducts[0].default_price.unit_amount / 100}{limitedProducts[0].default_price.unit_amount / 100 > 2 ? "0" : ".00"} / half dozen</span>
                         </div>
                         <div className="w-full flex flex-col justify-start items-center md:items-start space-y-4">
-                            <p className='w-full font-poppins text-lg'>Alright, we heard you already! We get it! Pumpkin pie is the most consumed dessert at Thanksgiving AND it was a huge mistake not to turn this delicious delicacy into a cream-topped cookie. Due to popular demand we have made our <Link href="/cookies/pumpkin-pie-cookie" className="font-semibold text-pink-600 underline underline-offset-4">Pumpkin Pie Cookie available for the November 20th pickup date</Link>.</p>
+                            <p className='w-full font-poppins text-lg'>Alright, we heard you already! We get it! Pumpkin pie is the most consumed dessert at Thanksgiving AND it was a huge mistake not to turn this delicious delicacy into a cream-topped cookie. Due to popular demand we have made our <Link href="/cookies/pumpkin-pie-cookies" className="font-semibold text-pink-600 underline underline-offset-4">Pumpkin Pie Cookie available for the November 20th pickup date</Link>.</p>
                             <p className='w-full font-poppins text-lg'>These will, however, not be included in assorted boxes. Enjoy!</p>
                         </div>
                         <AdjustCart item={limitedProducts[0]} delay={false} theme={"dark"} orientation={"col"} />
