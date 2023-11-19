@@ -77,9 +77,9 @@ export default async function Homepage () {
             <main className="flex flex-col md:flex-row justify-center items-start w-full px-10 md:px-14 pt-10 md:pt-14 h-auto md:h-[80vh]">
                 <div className="flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10">
                     <div className="flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5">
-                        <h1 className="font-playfair font-bold text-6xl md:text-8xl text-pink-950">It's Fall Y'all Cookies</h1>
-                        <span className="font-poppins font-semibold text-base text-pink-500"><span className="font-extrabold">Next Pickup Day:</span> Monday November 20th</span>
-                        <p className="font-poppins font-normal text-black">Leaves are falling, footballs are flying and pumpkin spice is in the air. What's more comforting than your puffy vest and a warm fall drink? A box of cozy cookies, that's what!</p>
+                        <h1 className="font-playfair font-bold text-6xl md:text-8xl text-pink-950">Breakfast Club Cookies</h1>
+                        <span className="font-poppins font-semibold text-base text-pink-500"><span className="font-extrabold">Next Pickup Day:</span> Monday, December 4th</span>
+                        <p className="font-poppins font-normal text-black">Need a reason to get out of bed during these frosty cold mornings? We've got just the thing... cookies for breakfast. We asked the Breakfast Club if these were up to par but they just stared at us until one guy threw on his aviators and walked away with his fist in the air... it was really weird.</p>
                     </div>
                     <div className="flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative">
                         <div className="rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-2 md:space-y-8 items-center px-10 py-10 md:py-20 group transition-transform duration-300" style={{backgroundImage: "url('/images/tileDark.png')"}}>
@@ -128,7 +128,7 @@ export default async function Homepage () {
                 </div>
             </main>
             <div className="flex flex-col md:flex-row justify-start md:justify-between items-center w-full mt-20 px-10 md:px-14">
-            <div className="mx-auto w-full max-w-[1400px]">
+            {/*<div className="mx-auto w-full max-w-[1400px]">
                 <div className="flex flex-col-reverse md:flex-row justify-start items-center md:justify-center w-full px-10 pt-10 pb-[140px] md:p-14 md:h-[90vh] md:space-x-14 relative">
                     <div className="w-full md:w-1/2 h-auto flex flex-col justify-start items-center md:items-start space-y-5 md:space-y-6">
                         <div className="w-full flex flex-col justify-start items-center md:items-start space-y-4">
@@ -146,7 +146,7 @@ export default async function Homepage () {
                         <Image src={`/images/${limitedProducts[0].metadata.imageUnique}One.jpg`} fill priority className={`object-cover object-center`} />
                     </div>
                 </div>
-            </div>
+            </div>*/}
             </div>
             <div className="flex flex-row justify-center items-center mt-20 px-10 md:px-14">
                 <div className="flex flex-col md:flex-row justify-between md:justify-start items-center space-y-5 md:space-y-0 w-full bg-repeat rounded-3xl py-10 ring-1 ring-pink-200 shadow-2xl shadow-pink-200" style={{backgroundImage: "url('/images/tileLight.png')"}}>
