@@ -98,7 +98,7 @@ export default async function Homepage () {
                                 <div className="flex flex-col justify-start items-center space-y-5">
                                     <h2 className="hidden md:flex font-playfair w-full font-bold text-3xl text-white text-center">Can't decide? Get assorted boxes instead!</h2>
                                     <h2 className="flex md:hidden font-playfair w-full font-bold text-xl text-white text-center">Assorted Box</h2>
-                                    <p className="text-white font-poppins text-lg">${assortedProduct.default_price.unit_amount / 100}{assortedProduct.default_price.unit_amount / 100} / half dozen</p>
+                                    <p className="text-white font-poppins text-lg">${assortedProduct.default_price.unit_amount / 100} / half dozen</p>
                                 </div>
                                 <AdjustCart item={assortedProduct} delay={false} theme={"light"} orientation={"col"} />
                             </div>  
