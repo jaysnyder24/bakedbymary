@@ -35,6 +35,8 @@ export default async function Cookie ({params}) {
 
     const cookie = await getCookie(params.slug);
 
+    console.log(cookie);
+
     const priceDecimal = cookie.default_price.unit_amount / 100;
 
     const priceSplit = priceDecimal.toString().split("");
@@ -73,14 +75,14 @@ export default async function Cookie ({params}) {
                         <span className="w-full font-poppins font-medium text-lg text-pink-600 flex flex-row justify-start items-center">${priceDecimal}{priceSplit.length > 2 ? "0" : ".00"} / half dozen</span>
                     </div>
                     <p className='w-full font-poppins text-lg'>{cookie.description}</p>
-                    {cookie.metadata.available === "lineup" || "limited" ?
-                        <AdjustCart item={cookie} delay={false} theme={"dark"} orientation={"row"} />
-                        : 
+                    {cookie.metadata.available === "special" ?
                         <form action={specialOrderForm} className="flex flex-row justify-start items-center space-x-5 overflow-visible w-full">
                             <span className='font-poppins font-bold text-lg text-pink-700'>special order:</span>
                             <input className="overflow-visible outline-none underline underline-offset-[6px] decoration-pink-600 focus:decoration-pink-700 font-poppins py-2" type="email" placeholder="jondoe@gmail.com" aria-label="email" name="email" />
                             <button className="bg-pink-700 hover:bg-pink-800 font-poppins text-sm font-bold px-4 py-2 text-white rounded-full" type="submit">submit</button>
                         </form>
+                        : 
+                        <AdjustCart item={cookie} delay={false} theme={"dark"} orientation={"row"} />
                     }
                     {/*<div className="w-full flex flex-col justify-start items-start space-y-5">
                         <h2 className="font-semibold font-playfair text-2xl text-black">Pairs Well With...</h2>
