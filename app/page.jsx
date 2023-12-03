@@ -79,7 +79,7 @@ export default async function Homepage () {
                     <div className="flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5">
                         <h1 className="font-playfair font-bold text-6xl md:text-8xl text-pink-950">'Tis The Season Cookies</h1>
                         <span className="font-poppins font-semibold text-base text-pink-500"><span className="font-extrabold">Next Pickup Day:</span> Friday, December 22nd</span>
-                        <p className="font-poppins font-normal text-black">It's the most wonderful time of the year! What could make it EVEN MORE wonderful, you ask?! Christmas cookies, that's what! Whether for your family or the big man coming down the chimney, they're sure to put a smile on someone's face this holiday season.</p>
+                        <p className="font-poppins font-normal text-black">It's the most wonderful time of the year! What could make it EVEN MORE wonderful, you ask?! Christmas cookies, that's what! Whether they're for your family or the big man coming down the chimney, these are sure to put a smile on someone's face this holiday season.</p>
                     </div>
                     <div className="flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative">
                         <div className="rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-2 md:space-y-8 items-center px-10 py-10 md:py-20 group transition-transform duration-300" style={{backgroundImage: "url('/images/tileDark.png')"}}>
