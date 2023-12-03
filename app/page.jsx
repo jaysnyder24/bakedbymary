@@ -77,9 +77,9 @@ export default async function Homepage () {
             <main className="flex flex-col md:flex-row justify-center items-start w-full px-10 md:px-14 pt-10 md:pt-14 h-auto md:h-[80vh]">
                 <div className="flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10">
                     <div className="flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5">
-                        <h1 className="font-playfair font-bold text-6xl md:text-8xl text-pink-950">Breakfast Club Cookies</h1>
-                        <span className="font-poppins font-semibold text-base text-pink-500"><span className="font-extrabold">Next Pickup Day:</span> Monday, December 4th</span>
-                        <p className="font-poppins font-normal text-black">Need a reason to get out of bed during these frosty cold mornings? We've got just the thing... cookies for breakfast. We asked the Breakfast Club if these were up to par but they just stared at us until one guy threw on his aviators and walked away with his fist in the air... it was really weird.</p>
+                        <h1 className="font-playfair font-bold text-6xl md:text-8xl text-pink-950">'Tis The Season Cookies</h1>
+                        <span className="font-poppins font-semibold text-base text-pink-500"><span className="font-extrabold">Next Pickup Day:</span> Friday, December 22nd</span>
+                        <p className="font-poppins font-normal text-black">It's the most wonderful time of the year! What could make it EVEN MORE wonderful, you ask?! Christmas cookies, that's what! Whether for your family or the big man coming down the chimney, they're sure to put a smile on someone's face this holiday season.</p>
                     </div>
                     <div className="flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative">
                         <div className="rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-2 md:space-y-8 items-center px-10 py-10 md:py-20 group transition-transform duration-300" style={{backgroundImage: "url('/images/tileDark.png')"}}>

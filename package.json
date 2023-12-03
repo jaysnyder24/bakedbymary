@@ -11,8 +11,8 @@
   "dependencies": {
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^1.0.6",
-    "@sendgrid/client": "^7.7.0",
-    "@sendgrid/mail": "^7.7.0",
+    "@sendgrid/client": "^6.5.5",
+    "@sendgrid/mail": "^6.5.5",
     "@stripe/react-stripe-js": "^1.10.0",
     "@stripe/stripe-js": "^1.35.0",
     "heroicons": "^2.0.18",
@@ -21,7 +21,7 @@
     "next": "^13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sharp": "^0.31.0",
+    "sharp": "^0.33.0",
     "stripe": "^10.7.0"
   },
   "devDependencies": {
