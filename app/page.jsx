@@ -77,9 +77,9 @@ export default async function Homepage () {
             <main className="flex flex-col md:flex-row justify-center items-start w-full px-10 md:px-14 pt-10 md:pt-14 h-auto md:h-[80vh]">
                 <div className="flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10">
                     <div className="flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5">
-                        <h1 className="font-playfair font-bold text-6xl md:text-8xl text-pink-950">People's Choice Cookies</h1>
-                        <span className="font-poppins font-semibold text-base text-pink-500"><span className="font-extrabold">Next Pickup Day:</span> Monday, January 15th</span>
-                        <p className="font-poppins font-normal text-black">To celebrate an amazing year, and in hopes of an even better 2024, we've put together a lineup of some of the most popular, best-selling cookies of 2023. Consider it a thank you for being the most amazing friends and customers. Enjoy!</p>
+                        <h1 className="font-playfair font-bold text-6xl md:text-8xl text-pink-950">That's Amoré Cookies</h1>
+                        <span className="font-poppins font-semibold text-base text-pink-500"><span className="font-extrabold">Next Pickup Day:</span> Monday, February 12th</span>
+                        <p className="font-poppins font-normal text-black">Indulge in the sweet symphony of romance with this lineup of Valentine's Day cookies that dance on your taste buds. From heart-shaped frosting to decadent coconut-chocolate delights, each cookie in this collection whispers love in every delicate crumb. 😘</p>
                     </div>
                     <div className="flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative">
                         <div className="rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-2 md:space-y-8 items-center px-10 py-10 md:py-20 group transition-transform duration-300" style={{backgroundImage: "url('/images/tileDark.png')"}}>
