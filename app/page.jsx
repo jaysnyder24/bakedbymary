@@ -80,18 +80,19 @@ export default async function Homepage() {
         <div className="flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10">
           <div className="flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5">
             <h1 className="font-playfair font-bold text-6xl md:text-8xl text-pink-950">
-              Pie Day Cookies
+              Happy Easter Cookies
             </h1>
             <span className="font-poppins font-semibold text-base text-pink-500">
               <span className="font-extrabold">Next Pickup Day:</span> Monday,
-              March 4th
+              March 29th
             </span>
             <p className="font-poppins font-normal text-black">
-              Get ready to "circle" around the flavor wheel with our Pi Day
-              Cookie Collection, featuring a slice of sweetness in every bite!
-              From tangy twists to creamy delights, our lineup celebrates the
-              irrational fun of March 14th with a tantalizing trio that's as
-              infinite as π itself.
+              Spring is hopping in, and along with it comes the hunt for the
+              sweetest treats! Dive into delightfully rich carrot cake cookies,
+              peck at adorable chick-shaped sugar cookies, and unearth a
+              delightful surprise with our dirt cup cookies - complete with
+              gummy worm! Celebrate with these egg-cellent treats and make your
+              Easter basket the envy of the coop! 🪱
             </p>
           </div>
           <div className="flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative">
