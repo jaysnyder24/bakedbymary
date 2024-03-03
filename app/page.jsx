@@ -149,7 +149,7 @@ export default async function Homepage() {
                       .toString()
                       .split("").length > 2
                       ? "0"
-                      : "00"}{" "}
+                      : ".00"}{" "}
                     / half dozen
                   </p>
                 </div>
@@ -186,7 +186,7 @@ export default async function Homepage() {
                         .toString()
                         .split("").length > 2
                         ? "0"
-                        : "00"}{" "}
+                        : ".00"}{" "}
                       / half dozen
                     </span>
                     <AdjustCart
