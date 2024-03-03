@@ -1,0 +1,58 @@
+"use client"
+
+import deleteCart from '../../actions/deleteCart';
+import { useContext, useState, useEffect } from 'react';
+import { CartContext, CartProvider } from '../../contexts/CartContext'
+import Image from 'next/image';
+import { PlusIcon, MinusIcon } from 'lucide-react';
+import checkout from '../../actions/checkout';
+import { loadStripe } from '@stripe/stripe-js';
+import { usePathname } from 'next/navigation';
+
+export default function Cart () {
+
+    const {items, increaseQuantity, decreaseQuantity, removeFromCart} = useContext(CartContext);
+
+    const checkoutItems = [];
+
+    items.forEach((item) => {checkoutItems.push({price: item.price, quantity: item.quantity})});
+
+    const total = items.reduce((accumulator, currentValue, index) => accumulator + (currentValue.value * currentValue.quantity), 0);  
+    
+    const stripePromise = loadStripe(
+        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+      );
+
+    return (
+        <div className="mx-auto w-full max-w-[1400px] h-full min-h-[80vh]">
+            <main className="flex md:flex-row flex-col-reverse justify-start items-center md:justify-center md:items-start w-full px-10 md:px-14 pt-10 pb-[140px] md:py-14 h-full space-y-5 md:space-y-0 md:space-x-10 relative">
+                <div className="flex flex-col justify-start md:justify-center items-center w-auto h-auto space-y-10 p-10 ring-1 ring-pink-200 shadow-md shadow-pink-200 rounded-xl">
+                    {items.map((item, index) => {
+                        return  <div key={item.name} className="flex flex-row justify-start items-center space-x-5 w-full h-auto">
+                                    <div className='relative h-32 md:h-40 aspect-square'>
+                                        <Image src={'/images/' + item.image + 'Circle.png'} className="object-cover object-center" fill alt={"cookie image"} />
+                                    </div>
+                                    <div className='flex flex-col justify-center items-start space-y-2 py-5'>
+                                        <span className='font-playfair font-bold text-lg text-pink-950'>{item.name}</span>
+                                        <span className='font-poppins text-pink-950'>${item.value} / half dozen</span>
+                                        <div className="flex flex-row justify-between items-center space-x-2">
+                                            <button onClick={() => (decreaseQuantity(index))} disabled={item.quantity < 2 ? true : false} className={"p-2 rounded-full bg-pink-700 hover:bg-pink-800"}><MinusIcon color={"white"} size={12} /></button>
+                                            <span className={"font-medium h-full text-center font-poppins text-pink-950 w-10"}>{item.quantity}</span>
+                                            <button onClick={() => (increaseQuantity(index))} className={"p-2 rounded-full bg-pink-700 hover:bg-pink-800"}><PlusIcon color={"white"} size={12} /></button>
+                                        </div>
+                                        <button onClick={() => (removeFromCart(item.name))} className=' underline underline-offset-4 text-pink-600 hover:text-pink-700'>remove</button>
+                                    </div>
+                                </div>
+                            
+                         
+                    })}
+                </div>
+                <form action={checkout} className="flex flex-col justify-center items-start mb-5 md:mb-0 w-auto h-auto space-y-10 p-10 ring-1 ring-pink-200 shadow-md shadow-pink-200 rounded-xl bg-repeat sticky top-5 md:top-0" style={{backgroundImage: "url('/images/tileLight.png')"}}>
+                    <span className='font-playfair font-bold text-2xl text-pink-950'>Total ${total}</span>
+                    <input type="hidden" name='items' value={JSON.stringify(checkoutItems)} />
+                    <button type='submit' className='font-bold text-xl text-white w-full py-4 px-8 rounded-lg duration-300 bg-repeat hover:scale-105 transition-transform' style={{backgroundImage: "url('/images/tileDark.png')"}}>checkout</button>
+                </form>
+            </main>
+        </div>
+    )
+}
