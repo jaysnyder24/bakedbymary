@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/ui/navigation/InteractiveNavMenu.jsx"  ],
   "exclude": [
     "node_modules"
   ]

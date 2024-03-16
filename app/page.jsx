@@ -99,41 +99,6 @@ export default async function Homepage() {
               className="rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-2 md:space-y-8 items-center px-10 py-10 md:py-20 group transition-transform duration-300"
               style={{ backgroundImage: "url('/images/tileDark.png')" }}
             >
-              <div className="hidden md:flex flex-row justify-center items-start -space-x-6 md:-space-x-8 w-full h-auto">
-                <div className="relative h-[100px] aspect-square w-auto mt-6 z-10 group-hover:scale-105 transition-transform duration-300">
-                  <Image
-                    src={
-                      "/images/" +
-                      lineupProducts[0].metadata.imageUnique +
-                      "Circle.png"
-                    }
-                    className="object-fill object-center"
-                    fill
-                  />
-                </div>
-                <div className="relative h-[100px] aspect-square w-auto z-20 group-hover:scale-125 transition-transform duration-300">
-                  <Image
-                    src={
-                      "/images/" +
-                      lineupProducts[1].metadata.imageUnique +
-                      "Circle.png"
-                    }
-                    className="object-fill object-center"
-                    fill
-                  />
-                </div>
-                <div className="relative h-[100px] aspect-square w-auto mt-6 z-10 group-hover:scale-105 transition-transform duration-300">
-                  <Image
-                    src={
-                      "/images/" +
-                      lineupProducts[2].metadata.imageUnique +
-                      "Circle.png"
-                    }
-                    className="object-fill object-center"
-                    fill
-                  />
-                </div>
-              </div>
               <div className="flex flex-col justify-start items-center space-y-5">
                 <div className="flex flex-col justify-start items-center space-y-5">
                   <h2 className="hidden md:flex font-playfair w-full font-bold text-3xl text-white text-center">

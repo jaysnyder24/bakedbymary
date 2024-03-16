@@ -1,11 +1,7 @@
 import {
-  ShoppingBagIcon,
-  FacebookIcon,
-  InstagramIcon,
-  HomeIcon,
-  CookieIcon,
   ChevronDownIcon,
   ArrowRightIcon,
+  ShoppingCartIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,13 +26,11 @@ export default async function Nav() {
     return item.metadata.available === "lineup";
   });
 
-  console.log(lineupProducts);
-
-  const assortedProduct = lineupProducts.pop();
-
   const specialProducts = products.filter((item) => {
     return item.metadata.available === "special";
   });
+
+  specialProducts.length = 9;
 
   const limitedProducts = products.filter((item) => {
     return item.metadata.available === "limited";
@@ -47,8 +41,8 @@ export default async function Nav() {
   });
 
   return (
-    <nav className="w-full px-10 md:px-16 flex justify-center items-center">
-      <section className="w-full max-w-7xl flex justify-between items-center py-7">
+    <nav className="w-full px-10 md:px-16 flex justify-center items-center relative">
+      <section className="w-full max-w-7xl flex justify-between items-center py-7 z-10">
         <ul className="flex justify-start items-center">
           <li className="mr-14">
             <Link
@@ -72,7 +66,10 @@ export default async function Nav() {
               cookies
               <ChevronDownIcon className="text-pink-500 h-4 w-4 ml-1 group-hover/nav-parent:-rotate-180 transition-all duration-300 ease-in-out" />
             </Link>
-            <InteractiveNavMenu products={lineupProducts} />
+            <InteractiveNavMenu
+              lineupProducts={lineupProducts}
+              specialProducts={specialProducts}
+            />
           </li>
           <li className="mr-7 relative group/nav-parent">
             <Link
@@ -91,7 +88,7 @@ export default async function Nav() {
                   >
                     <span className="font-poppins font-bold text-stone-500 text-sm group-hover/lineup-cookies:text-white flex justify-start items-center">
                       Special Orders
-                      <ArrowRightIcon className="h-3 w-3 ml-2" />
+                      <ArrowRightIcon className="h-3 w-3 ml-2 group-hover/lineup-cookies:ml-3 transition-all duration-300 ease-in-out" />
                     </span>
                     <span className="font-poppins text-stone-500 text-xs group-hover/lineup-cookies:text-white">
                       Not interested in this month’s cookies? No problem!
@@ -103,7 +100,7 @@ export default async function Nav() {
                   >
                     <span className="font-poppins font-bold text-stone-500 text-sm group-hover/lineup-cookies:text-white flex justify-start items-center">
                       Weddings & Receptions
-                      <ArrowRightIcon className="h-3 w-3 ml-2" />
+                      <ArrowRightIcon className="h-3 w-3 ml-2 group-hover/lineup-cookies:ml-3 transition-all duration-300 ease-in-out" />
                     </span>
                     <span className="font-poppins text-stone-500 text-xs group-hover/lineup-cookies:text-white">
                       We’d love to put sprinkles on top of your special day.
@@ -115,7 +112,7 @@ export default async function Nav() {
                   >
                     <span className="font-poppins font-bold text-stone-500 text-sm group-hover/lineup-cookies:text-white flex justify-start items-center">
                       Corporate Events
-                      <ArrowRightIcon className="h-3 w-3 ml-2" />
+                      <ArrowRightIcon className="h-3 w-3 ml-2 group-hover/lineup-cookies:ml-3 transition-all duration-300 ease-in-out" />
                     </span>
                     <span className="font-poppins text-stone-500 text-xs group-hover/lineup-cookies:text-white">
                       What’s more fun than charts & graphs? Cookies.
@@ -134,7 +131,27 @@ export default async function Nav() {
             </Link>
           </li>
         </ul>
+        <ul className="z-50">
+          <li>
+            <Link href={`#`}></Link>
+          </li>
+          <li>
+            <Link
+              href={`/cart`}
+              className="text-pink-700 hover:text-pink-950 transition-all duration-100 ease-in-out group"
+            >
+              <ShoppingCartIcon className="h-6 w-6 fill-pink-700 group-hover:fill-pink-950 transition-all duration-300 ease-in-out" />
+            </Link>
+          </li>
+        </ul>
       </section>
+      <Image
+        src={`/images/navTile.svg`}
+        className="w-1/4 h-auto absolute top-0 right-0"
+        width={800}
+        height={1000}
+        alt="something"
+      ></Image>
     </nav>
   );
 }
