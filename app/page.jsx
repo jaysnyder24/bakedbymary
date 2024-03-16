@@ -83,7 +83,7 @@ export default async function Homepage() {
               Happy Easter Cookies
             </h1>
             <span className="font-poppins font-semibold text-base text-pink-500">
-              <span className="font-extrabold">Next Pickup Day:</span> Monday,
+              <span className="font-extrabold">Next Pickup Day:</span> Friday,
               March 29th
             </span>
             <p className="font-poppins font-normal text-black">
