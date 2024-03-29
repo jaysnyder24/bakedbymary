@@ -91,7 +91,7 @@ export default async function Homepage() {
               cookies and cream, and delicate flower sugar cookies. Each bite
               promises a symphony of flavors, from rich indulgence to elegant
               sweetness. Get ready for a satisfying experience that will satisfy
-              every cookie craving
+              every cookie craving.
             </p>
           </div>
           <div className='flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative'>
