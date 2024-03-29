@@ -87,15 +87,11 @@ export default async function Homepage() {
               April 15th
             </span>
             <p className='font-poppins font-normal text-black'>
-              Indulge in a trio of tantalizing treats that will satisfy every
-              cookie craving. Dive into the creamy richness of cookie dough,
-              where every bite promises a burst of nostalgia. Delight in the
-              classic allure of cookies and cream, where luscious chocolate
-              crumbs mingle with delicate, crumbly goodness. And for a touch of
-              elegance, savor the delicate sweetness of flower sugar cookies,
-              adorned with petals of perfection. Each bite is a journey through
-              layers of flavor, making this trio an irresistible symphony of
-              sweetness.
+              Indulge in a trio of cookie delights: creamy cookie dough, classic
+              cookies and cream, and delicate flower sugar cookies. Each bite
+              promises a symphony of flavors, from rich indulgence to elegant
+              sweetness. Get ready for a satisfying experience that will satisfy
+              every cookie craving
             </p>
           </div>
           <div className='flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative'>
