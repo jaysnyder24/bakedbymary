@@ -80,18 +80,19 @@ export default async function Homepage() {
         <div className='flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10'>
           <div className='flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5'>
             <h1 className='font-playfair font-bold text-6xl md:text-8xl text-pink-950'>
-              Spring Treat Cookies
+              Fan Favorite Cookies
             </h1>
             <span className='font-poppins font-semibold text-base text-pink-500'>
               <span className='font-extrabold'>Next Pickup Day:</span> Monday,
-              April 15th
+              May 20th
             </span>
             <p className='font-poppins font-normal text-black'>
-              Indulge in a trio of cookie delights: creamy cookie dough, classic
-              cookies and cream, and delicate flower sugar cookies. Each bite
-              promises a symphony of flavors, from rich indulgence to elegant
-              sweetness. Get ready for a satisfying experience that will satisfy
-              every cookie craving.
+              Calling all cookie connoisseurs! We're celebrating our greatest
+              hits with a lineup of fan-favorite flavors you won't want to miss.
+              Sink your teeth into our delightful, Cinco De Mayo churro cookie.
+              Then, dive into decadence with our cream-filled chocolate cookies.
+              Finally, savor the classic charm of our cream cheese frosted
+              almond cookies.
             </p>
           </div>
           <div className='flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative'>
