@@ -30,7 +30,7 @@ export default async function Nav() {
     return item.metadata.available === 'special';
   });
 
-  specialProducts.length = 9;
+  specialProducts.length = 6;
 
   const limitedProducts = products.filter((item) => {
     return item.metadata.available === 'limited';
@@ -84,14 +84,14 @@ export default async function Nav() {
                 <div className='flex flex-col justify-start items-start space-y-3'>
                   <Link
                     href={`#`}
-                    className="bg-repeat bg-white hover:bg-[url('/images/tileDark.png')] p-5 rounded-lg space-y-3 flex flex-col justify-start items-start min-w-[260px] group/lineup-cookies transition-all duration-300 ease-in-out"
+                    className="bg-repeat hover:bg-[url('/images/tileDark.png')] p-5 rounded-lg space-y-3 flex flex-col justify-start items-start min-w-[260px] group/lineup-cookies transition-all duration-300 ease-in-out"
                   >
                     <span className='font-poppins font-bold text-stone-500 text-sm group-hover/lineup-cookies:text-white flex justify-start items-center'>
                       Special Orders
                       <ArrowRightIcon className='h-3 w-3 ml-2 group-hover/lineup-cookies:ml-3 transition-all duration-300 ease-in-out' />
                     </span>
                     <span className='font-poppins text-stone-500 text-xs group-hover/lineup-cookies:text-white'>
-                      Not interested in this month’s cookies? No problem!
+                      No special occassion for cookies? No problem!
                     </span>
                   </Link>
                   <Link
