@@ -80,19 +80,18 @@ export default async function Homepage() {
         <div className='flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10'>
           <div className='flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5'>
             <h1 className='font-playfair font-bold text-6xl md:text-8xl text-pink-950'>
-              Fan Favorite Cookies
+              Fourth of July Cookies
             </h1>
             <span className='font-poppins font-semibold text-base text-pink-500'>
               <span className='font-extrabold'>Next Pickup Day:</span> Monday,
-              May 20th
+              July 1st
             </span>
             <p className='font-poppins font-normal text-black'>
-              Calling all cookie connoisseurs! We're celebrating our greatest
-              hits with a lineup of fan-favorite flavors you won't want to miss.
-              Sink your teeth into our delightful, Cinco De Mayo churro cookie.
-              Then, dive into decadence with our cream-filled chocolate cookies.
-              Finally, savor the classic charm of our cream cheese frosted
-              almond cookies.
+              This 4th of July, celebrate with a cookie party that's bursting
+              with flavor! We've got firecracker-ing good sugar cookies,
+              star-spangled birthday cake cookies, and monster cookies so good,
+              they'll definitely be on the guest list. Don't let your party be a
+              dud, light up the taste buds with our delicious cookie lineup!
             </p>
           </div>
           <div className='flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative'>
