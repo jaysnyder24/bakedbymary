@@ -80,7 +80,7 @@ export default async function Nav() {
               <ChevronDownIcon className='text-pink-500 h-4 w-4 ml-1 group-hover/nav-parent:-rotate-180 transition-all duration-300 ease-in-out' />
             </Link>
             <div className='absolute overflow-hidden group-hover/nav-parent:overflow-visible flex h-0 group-hover/nav-parent:h-auto top-full pt-2 z-[100]'>
-              <div className='bg-white rounded-lg p-5 ring-0 group-hover/nav-parent:ring-1 ring-stone-100 flex justify-start items-start space-x-5 shadow-none group-hover/nav-parent:shadow-lg opacity-0 -translate-y-4 group-hover/nav-parent:opacity-100 group-hover/nav-parent:translate-y-0 delay-200 transition-all duration-300 ease-in-out'>
+              <div className='bg-white rounded-lg p-5 ring-0 group-hover/nav-parent:ring-1 ring-pink-100 flex justify-start items-start space-x-5 shadow-none group-hover/nav-parent:shadow-lg opacity-0 -translate-y-4 group-hover/nav-parent:opacity-100 group-hover/nav-parent:translate-y-0 delay-200 transition-all duration-300 ease-in-out'>
                 <div className='flex flex-col justify-start items-start space-y-3'>
                   <Link
                     href={`#`}
@@ -125,7 +125,7 @@ export default async function Nav() {
           <li className='mr-7'>
             <Link
               href={`/about-us`}
-              className='font-poppins font-semibold text-black flex justify-start items-center'
+              className='font-poppins font-semibold text-black flex justify-start items-center underline decoration-white underline-offset-4 hover:decoration-pink-500 transition-colors duration-200 ease-in'
             >
               about
             </Link>

@@ -7,7 +7,7 @@ export default function InteractiveNavMenu(props) {
 
   return (
     <div className='absolute overflow-hidden group-hover/nav-parent:overflow-visible flex h-0 group-hover/nav-parent:h-auto top-full pt-2 z-[100]'>
-      <div className='bg-white rounded-lg p-5 ring-0 group-hover/nav-parent:ring-1 ring-stone-100 flex justify-start items-start space-x-10 shadow-none group-hover/nav-parent:shadow-lg opacity-0 -translate-y-4 group-hover/nav-parent:opacity-100 group-hover/nav-parent:translate-y-0 delay-200 transition-all duration-300 ease-in-out'>
+      <div className='bg-white rounded-lg p-5 ring-0 group-hover/nav-parent:ring-1 ring-pink-100 flex justify-start items-start space-x-10 shadow-none group-hover/nav-parent:shadow-lg opacity-0 -translate-y-4 group-hover/nav-parent:opacity-100 group-hover/nav-parent:translate-y-0 delay-200 transition-all duration-300 ease-in-out'>
         <div className='flex flex-col justify-start items-start h-full'>
           <Link
             href={`/cookies`}
@@ -21,7 +21,7 @@ export default function InteractiveNavMenu(props) {
                 alt='baked by mary cookies logo'
                 height={62}
               ></Image>
-              <span className='font-poppins font-semibold text-lg text-white flex justify-start items-center'>
+              <span className='font-poppins font-medium text-lg text-white flex justify-start items-center'>
                 All Cookies
                 <ArrowRightIcon
                   className={`h-4 w-4 group-hover/lineup-cookies:ml-3 ml-2
