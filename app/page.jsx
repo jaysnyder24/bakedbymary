@@ -91,8 +91,8 @@ export default async function Homepage() {
               Get ready to sink your teeth into our autumnal assortment: fluffy
               snickerdoodles dusted with cinnamon sunshine, buckeyes bursting
               with peanut butter cheer, and candy corn cookies so cute they'll
-              make you leaf with glee! Just like fall, these cookies will gone
-              before you know it so get your's today!
+              make you leaf with glee! Just like fall, these cookies will be
+              gone before you know it so get yours today!
             </p>
           </div>
           <div className='flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative'>
