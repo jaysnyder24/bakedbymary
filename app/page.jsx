@@ -80,18 +80,19 @@ export default async function Homepage() {
         <div className='flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10'>
           <div className='flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5'>
             <h1 className='font-playfair font-bold text-6xl md:text-8xl text-pink-950'>
-              Fourth of July Cookies
+              Welcome To Fall Cookies
             </h1>
             <span className='font-poppins font-semibold text-base text-pink-500'>
               <span className='font-extrabold'>Next Pickup Day:</span> Monday,
-              July 1st
+              September 16th
             </span>
             <p className='font-poppins font-normal text-black'>
-              This 4th of July, celebrate with a cookie party that's bursting
-              with flavor! We've got firecracker-ing good sugar cookies,
-              star-spangled birthday cake cookies, and monster cookies so good,
-              they'll definitely be on the guest list. Don't let your party be a
-              dud, light up the taste buds with our delicious cookie lineup!
+              Crisp air, cozy sweaters, and cookies that scream "fall is here!"
+              Get ready to sink your teeth into our autumnal assortment: fluffy
+              snickerdoodles dusted with cinnamon sunshine, buckeyes bursting
+              with peanut butter cheer, and candy corn cookies so cute they'll
+              make you leaf with glee! Just like fall, these cookies will gone
+              before you know it so get your's today!
             </p>
           </div>
           <div className='flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative'>
