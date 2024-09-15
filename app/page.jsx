@@ -80,19 +80,18 @@ export default async function Homepage() {
         <div className='flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10'>
           <div className='flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5'>
             <h1 className='font-playfair font-bold text-6xl md:text-8xl text-pink-950'>
-              Welcome To Fall Cookies
+              Trick or Treat Cookies
             </h1>
             <span className='font-poppins font-semibold text-base text-pink-500'>
               <span className='font-extrabold'>Next Pickup Day:</span> Monday,
-              September 16th
+              October 28th
             </span>
             <p className='font-poppins font-normal text-black'>
-              Crisp air, cozy sweaters, and cookies that scream "fall is here!"
-              Get ready to sink your teeth into our autumnal assortment: fluffy
-              snickerdoodles dusted with cinnamon sunshine, buckeyes bursting
-              with peanut butter cheer, and candy corn cookies so cute they'll
-              make you leaf with glee! Just like fall, these cookies will be
-              gone before you know it so get yours today!
+              Craving a sweet Halloween treat? Indulge in our Trick-or-Treat
+              Cookies! Unwrap a mummy and spiderweb sugar cookie for a spooky
+              surprise. Sip on the enchanting flavor of Butter Beer Cookies,
+              inspired by the wizarding world. Finally, sink your teeth into our
+              Dirt Cake Cookies, complete with a wiggly gummy worm.
             </p>
           </div>
           <div className='flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative'>
