@@ -180,8 +180,8 @@ export default async function Homepage() {
                       {product.name}
                     </span>
                     <span className='text-pink-950 font-poppins text-lg'>
-                      ${assortedProduct.default_price.unit_amount / 100}
-                      {(assortedProduct.default_price.unit_amount / 100)
+                      ${product.default_price.unit_amount / 100}
+                      {(product.default_price.unit_amount / 100)
                         .toString()
                         .split('').length > 2
                         ? '0'
