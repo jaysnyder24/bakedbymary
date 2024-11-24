@@ -80,18 +80,18 @@ export default async function Homepage() {
         <div className='flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10'>
           <div className='flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5'>
             <h1 className='font-playfair font-bold text-6xl md:text-8xl text-pink-950'>
-              Giving Thanks Cookies
+              Christmas Time Cookies
             </h1>
             <span className='font-poppins font-semibold text-base text-pink-500'>
               <span className='font-extrabold'>Next Pickup Day:</span> Monday,
-              November 25th
+              December 16th
             </span>
             <p className='font-poppins font-normal text-black'>
-              Gobble up these goodies! Our Thanksgiving cookie lineup is a feast
-              for the eyes and the taste buds. From creamy pumpkin cream cheese
-              cookies to crunchy pecan pie cookies and adorable
-              pumpkin-decorated sugar cookies, there’s something for every
-              hungry holiday guest.
+              A trio of tasty treats awaits! Our Christmas cookie lineup
+              includes classic gingerbread, festive sugar cookies, and our
+              signature ho-ho-ly delicious chocolate cookie. Whether you're
+              feeling ginger-bread or sugar-high, there's a cookie for everyone
+              on your nice list.
             </p>
           </div>
           <div className='flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative'>
