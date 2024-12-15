@@ -76,7 +76,7 @@ export default async function Homepage() {
 
   return (
     <div className='mx-auto w-full max-w-[1400px]'>
-      <main className='flex flex-col md:flex-row justify-center items-start w-full px-10 md:px-14 pt-10 md:pt-14 h-auto md:h-[80vh]'>
+      <main className='flex flex-col md:flex-row justify-center items-start w-full px-10 md:px-14 pt-0 md:pt-14 h-auto md:h-[80vh]'>
         {lineupProducts.length > 0 ? (
           <div className='flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10'>
             <div className='flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5'>
@@ -215,12 +215,12 @@ export default async function Homepage() {
             </div>
           </div>
         ) : (
-          <div className='flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10'>
-            <div className='flex flex-col justify-center items-start w-full md:w-6/12 h-full space-y-6 pr-5'>
-              <h1 className='font-playfair font-bold text-6xl md:text-8xl text-pink-950'>
+          <div className='flex flex-col-reverse md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10'>
+            <div className='flex flex-col justify-center items-center md:items-start w-full md:w-6/12 h-full space-y-6 pr-5'>
+              <h1 className='font-playfair font-bold text-6xl md:text-8xl text-pink-950 text-center md:text-left'>
                 Cookies For Every Occassion
               </h1>
-              <p className='font-poppins font-normal text-black'>
+              <p className='font-poppins font-normal text-black text-center md:text-left'>
                 Warning: Extreme cookie deliciousness ahead! 🍪✨ Indulge in a
                 symphony of flavors with over 30 unique cookie creations, from
                 classic chocolate chip to whimsical masterpieces. We bake joy
@@ -237,7 +237,7 @@ export default async function Homepage() {
               </Link>
             </div>
             <div className='flex flex-col justify-center items-center w-full md:w-5/12 h-auto md:h-full md:px-5 relative'>
-              <div className='h-full w-auto aspect-square relative'>
+              <div className='w-full h-auto md:h-full md:w-auto aspect-square relative'>
                 <Image
                   src={`/images/heroCookies.jpg`}
                   className='absolute w-full h-full'
