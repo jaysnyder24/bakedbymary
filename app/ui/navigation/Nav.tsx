@@ -147,7 +147,7 @@ export default async function Nav() {
       </section>
       <Image
         src={`/images/navTile.svg`}
-        className='w-1/4 h-auto absolute top-0 right-0'
+        className='w-1/3 h-auto absolute top-0 right-0'
         width={800}
         height={1000}
         alt='something'

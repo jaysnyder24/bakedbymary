@@ -75,7 +75,7 @@ export default async function Homepage() {
   }
 
   return (
-    <div className='w-full'>
+    <div className='w-full px-5 md:px-14'>
       <main className='w-full flex justify-center items-start relative h-[80vh]'>
         <section className='max-w-7xl w-full h-full flex justify-start gap-20'>
           <div className='w-7/12 h-full flex flex-col justify-center items-start gap-10'>
