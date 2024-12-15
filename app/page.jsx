@@ -77,142 +77,178 @@ export default async function Homepage() {
   return (
     <div className='mx-auto w-full max-w-[1400px]'>
       <main className='flex flex-col md:flex-row justify-center items-start w-full px-10 md:px-14 pt-10 md:pt-14 h-auto md:h-[80vh]'>
-        <div className='flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10'>
-          <div className='flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5'>
-            <h1 className='font-playfair font-bold text-6xl md:text-8xl text-pink-950'>
-              Christmas Time Cookies
-            </h1>
-            <span className='font-poppins font-semibold text-base text-pink-500'>
-              <span className='font-extrabold'>Next Pickup Day:</span> Monday,
-              December 16th
-            </span>
-            <p className='font-poppins font-normal text-black'>
-              A trio of tasty treats awaits! Our Christmas cookie lineup
-              includes classic gingerbread, festive sugar cookies, and our
-              signature ho-ho-ly delicious chocolate cookie. Whether you're
-              feeling ginger-bread or sugar-high, there's a cookie for everyone
-              on your nice list.
-            </p>
-          </div>
-          <div className='flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative'>
-            <div
-              className='rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-2 md:space-y-8 items-center px-10 py-10 md:py-20 group transition-transform duration-300'
-              style={{ backgroundImage: "url('/images/tileDark.png')" }}
-            >
-              <div className='hidden md:flex flex-row justify-center items-start -space-x-6 md:-space-x-8 w-full h-auto'>
-                <div className='relative h-[100px] aspect-square w-auto mt-6 z-10 group-hover:scale-105 transition-transform duration-300'>
-                  <Image
-                    src={
-                      '/images/' +
-                      lineupProducts[0].metadata.imageUnique +
-                      'Circle.png'
-                    }
-                    className='object-fill object-center'
-                    fill
-                  />
-                </div>
-                <div className='relative h-[100px] aspect-square w-auto z-20 group-hover:scale-125 transition-transform duration-300'>
-                  <Image
-                    src={
-                      '/images/' +
-                      lineupProducts[1].metadata.imageUnique +
-                      'Circle.png'
-                    }
-                    className='object-fill object-center'
-                    fill
-                  />
-                </div>
-                <div className='relative h-[100px] aspect-square w-auto mt-6 z-10 group-hover:scale-105 transition-transform duration-300'>
-                  <Image
-                    src={
-                      '/images/' +
-                      lineupProducts[2].metadata.imageUnique +
-                      'Circle.png'
-                    }
-                    className='object-fill object-center'
-                    fill
-                  />
-                </div>
-              </div>
-              <div className='flex flex-col justify-start items-center space-y-5'>
-                <div className='flex flex-col justify-start items-center space-y-5'>
-                  <h2 className='hidden md:flex font-playfair w-full font-bold text-3xl text-white text-center'>
-                    Can't decide? Get assorted boxes instead!
-                  </h2>
-                  <h2 className='flex md:hidden font-playfair w-full font-bold text-xl text-white text-center'>
-                    Assorted Box
-                  </h2>
-                  <p className='text-white font-poppins text-lg'>
-                    ${assortedProduct.default_price.unit_amount / 100}
-                    {(assortedProduct.default_price.unit_amount / 100)
-                      .toString()
-                      .split('').length > 2
-                      ? '0'
-                      : '.00'}{' '}
-                    / half dozen
-                  </p>
-                </div>
-                <AdjustCart
-                  item={assortedProduct}
-                  delay={false}
-                  theme={'light'}
-                  orientation={'col'}
-                />
-              </div>
+        {lineupProducts.length > 0 ? (
+          <div className='flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10'>
+            <div className='flex flex-col justify-center items-start w-full md:w-4/12 h-full space-y-6 pr-5'>
+              <h1 className='font-playfair font-bold text-6xl md:text-8xl text-pink-950'>
+                Christmas Time Cookies
+              </h1>
+              <span className='font-poppins font-semibold text-base text-pink-500'>
+                <span className='font-extrabold'>Next Pickup Day:</span> Monday,
+                December 16th
+              </span>
+              <p className='font-poppins font-normal text-black'>
+                A trio of tasty treats awaits! Our Christmas cookie lineup
+                includes classic gingerbread, festive sugar cookies, and our
+                signature ho-ho-ly delicious chocolate cookie. Whether you're
+                feeling ginger-bread or sugar-high, there's a cookie for
+                everyone on your nice list.
+              </p>
             </div>
-            <Link
-              href={'/cookies'}
-              className='absolute font-poppins font-bold hidden md:flex flex-row justify-center items-center bottom-0 right-0 bg-pink-200 hover:bg-pink-300 hover:scale-110 text-pink-950 aspect-square h-1/5 w-auto rounded-full p-5 transition-all duration-300'
-            >
-              see all
-            </Link>
-          </div>
-          <div className='flex flex-col justify-between items-start space-y-4 md:space-y-0 md:py-8 w-full md:w-4/12 h-full md:pl-5 md:pr-5'>
-            {lineupProducts.map((product) => {
-              return (
-                <div
-                  key={product.id}
-                  className='group relative flex flex-col-reverse justify-start md:flex-row md:justify-between items-center w-full bg-repeat px-6 py-6 md:py-2 md:hover:py-6 rounded-2xl shadow-md ring-1 ring-pink-200 shadow-pink-200 transition-all duration-300 hover:-pr-10'
-                  style={{ backgroundImage: "url('/images/tileLight.png')" }}
-                >
-                  <div className='flex flex-col justify-start items-center md:items-start w-full md:w-1/2 space-y-2 transition-all duration-300'>
-                    <span className='text-pink-950 font-playfair font-extrabold text-xl'>
-                      {product.name}
-                    </span>
-                    <span className='text-pink-950 font-poppins text-lg'>
-                      ${product.default_price.unit_amount / 100}
-                      {(product.default_price.unit_amount / 100)
+            <div className='flex flex-col justify-center items-center w-full md:w-4/12 h-auto md:h-full md:px-5 relative'>
+              <div
+                className='rounded-full bg-pink-100 h-full w-full hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-pink-200 shadow-pink-200 bg-repeat flex flex-col justify-center space-y-2 md:space-y-8 items-center px-10 py-10 md:py-20 group transition-transform duration-300'
+                style={{ backgroundImage: "url('/images/tileDark.png')" }}
+              >
+                <div className='hidden md:flex flex-row justify-center items-start -space-x-6 md:-space-x-8 w-full h-auto'>
+                  <div className='relative h-[100px] aspect-square w-auto mt-6 z-10 group-hover:scale-105 transition-transform duration-300'>
+                    <Image
+                      src={
+                        '/images/' +
+                        lineupProducts[0].metadata.imageUnique +
+                        'Circle.png'
+                      }
+                      className='object-fill object-center'
+                      fill
+                    />
+                  </div>
+                  <div className='relative h-[100px] aspect-square w-auto z-20 group-hover:scale-125 transition-transform duration-300'>
+                    <Image
+                      src={
+                        '/images/' +
+                        lineupProducts[1].metadata.imageUnique +
+                        'Circle.png'
+                      }
+                      className='object-fill object-center'
+                      fill
+                    />
+                  </div>
+                  <div className='relative h-[100px] aspect-square w-auto mt-6 z-10 group-hover:scale-105 transition-transform duration-300'>
+                    <Image
+                      src={
+                        '/images/' +
+                        lineupProducts[2].metadata.imageUnique +
+                        'Circle.png'
+                      }
+                      className='object-fill object-center'
+                      fill
+                    />
+                  </div>
+                </div>
+                <div className='flex flex-col justify-start items-center space-y-5'>
+                  <div className='flex flex-col justify-start items-center space-y-5'>
+                    <h2 className='hidden md:flex font-playfair w-full font-bold text-3xl text-white text-center'>
+                      Can't decide? Get assorted boxes instead!
+                    </h2>
+                    <h2 className='flex md:hidden font-playfair w-full font-bold text-xl text-white text-center'>
+                      Assorted Box
+                    </h2>
+                    <p className='text-white font-poppins text-lg'>
+                      ${assortedProduct.default_price.unit_amount / 100}
+                      {(assortedProduct.default_price.unit_amount / 100)
                         .toString()
                         .split('').length > 2
                         ? '0'
                         : '.00'}{' '}
                       / half dozen
-                    </span>
-                    <AdjustCart
-                      item={product}
-                      delay={true}
-                      theme={'dark'}
-                      orientation={'col'}
-                    />
+                    </p>
                   </div>
-                  <div className='md:w-[40%] w-2/3 group-hover:delay-100 mb-5 md:mb-0 aspect-square relative md:-mr-[20%] md:group-hover:mr-0 flex flex-row justify-center items-center transition-all duration-300'>
-                    <div className='h-full w-full relative'>
-                      <Image
-                        src={
-                          '/images/' +
-                          product.metadata.imageUnique +
-                          'Circle.png'
-                        }
-                        className='object-fill object-center'
-                        fill
+                  <AdjustCart
+                    item={assortedProduct}
+                    delay={false}
+                    theme={'light'}
+                    orientation={'col'}
+                  />
+                </div>
+              </div>
+              <Link
+                href={'/cookies'}
+                className='absolute font-poppins font-bold hidden md:flex flex-row justify-center items-center bottom-0 right-0 bg-pink-200 hover:bg-pink-300 hover:scale-110 text-pink-950 aspect-square h-1/5 w-auto rounded-full p-5 transition-all duration-300'
+              >
+                see all
+              </Link>
+            </div>
+            <div className='flex flex-col justify-between items-start space-y-4 md:space-y-0 md:py-8 w-full md:w-4/12 h-full md:pl-5 md:pr-5'>
+              {lineupProducts.map((product) => {
+                return (
+                  <div
+                    key={product.id}
+                    className='group relative flex flex-col-reverse justify-start md:flex-row md:justify-between items-center w-full bg-repeat px-6 py-6 md:py-2 md:hover:py-6 rounded-2xl shadow-md ring-1 ring-pink-200 shadow-pink-200 transition-all duration-300 hover:-pr-10'
+                    style={{ backgroundImage: "url('/images/tileLight.png')" }}
+                  >
+                    <div className='flex flex-col justify-start items-center md:items-start w-full md:w-1/2 space-y-2 transition-all duration-300'>
+                      <span className='text-pink-950 font-playfair font-extrabold text-xl'>
+                        {product.name}
+                      </span>
+                      <span className='text-pink-950 font-poppins text-lg'>
+                        ${product.default_price.unit_amount / 100}
+                        {(product.default_price.unit_amount / 100)
+                          .toString()
+                          .split('').length > 2
+                          ? '0'
+                          : '.00'}{' '}
+                        / half dozen
+                      </span>
+                      <AdjustCart
+                        item={product}
+                        delay={true}
+                        theme={'dark'}
+                        orientation={'col'}
                       />
                     </div>
+                    <div className='md:w-[40%] w-2/3 group-hover:delay-100 mb-5 md:mb-0 aspect-square relative md:-mr-[20%] md:group-hover:mr-0 flex flex-row justify-center items-center transition-all duration-300'>
+                      <div className='h-full w-full relative'>
+                        <Image
+                          src={
+                            '/images/' +
+                            product.metadata.imageUnique +
+                            'Circle.png'
+                          }
+                          className='object-fill object-center'
+                          fill
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className='flex flex-col md:flex-row justify-start items-center md:justify-between md:items-start w-full h-full space-y-10 md:space-y-0 md:space-x-10'>
+            <div className='flex flex-col justify-center items-start w-full md:w-6/12 h-full space-y-6 pr-5'>
+              <h1 className='font-playfair font-bold text-6xl md:text-8xl text-pink-950'>
+                Cookies For Every Occassion
+              </h1>
+              <p className='font-poppins font-normal text-black'>
+                Warning: Extreme cookie deliciousness ahead! 🍪✨ Indulge in a
+                symphony of flavors with over 30 unique cookie creations, from
+                classic chocolate chip to whimsical masterpieces. We bake joy
+                for every occasion, whether it's surprising your team with a
+                sweet corporate treat, adding a touch of sweetness to your
+                wedding day, or showing your clients some extra love with a
+                thoughtful gift. Let's get baking!
+              </p>
+              <Link
+                className='bg-pink-700 hover:bg-pink-800 font-poppins text-md font-regular px-6 py-2 text-white rounded-full'
+                href={`/cookies`}
+              >
+                see all cookies
+              </Link>
+            </div>
+            <div className='flex flex-col justify-center items-center w-full md:w-5/12 h-auto md:h-full md:px-5 relative'>
+              <div className='h-full w-auto aspect-square relative'>
+                <Image
+                  src={`/images/heroCookies.jpg`}
+                  className='absolute w-full h-full'
+                  alt='circle of cookies'
+                  fill
+                  priority
+                ></Image>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
       <div className='flex flex-col md:flex-row justify-start md:justify-between items-center w-full mt-20 px-10 md:px-14'>
         {/*<div className="mx-auto w-full max-w-[1400px]">
