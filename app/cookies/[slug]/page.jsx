@@ -1,5 +1,6 @@
 import ImageSelector from './ImageSelector';
 import AdjustCart from '../../AdjustCart';
+import { redirect } from 'next/navigation';
 
 async function getCookie(slug) {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -65,6 +66,8 @@ export default async function Cookie({ params }) {
       .catch((error) => {
         console.error(error);
       });
+
+    redirect('/thank-you');
   }
 
   return (

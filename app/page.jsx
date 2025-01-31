@@ -5,6 +5,7 @@ import AdjustCart from './AdjustCart';
 import Nav from './nav';
 import CookieSlider from './CookieSlider.jsx';
 import ImageSelector from './cookies/[slug]/ImageSelector.jsx';
+import { redirect } from 'next/navigation.js';
 
 async function getProducts() {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -72,6 +73,8 @@ export default async function Homepage() {
       .catch((error) => {
         console.error(error);
       });
+
+    redirect('/thank-you');
   }
 
   return (
