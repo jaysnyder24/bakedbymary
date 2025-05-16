@@ -58,7 +58,7 @@ export default async function Homepage() {
 
     const message = {
       to: 'mary@bakedbymary.com',
-      from: 'mary@bakedbymary.com',
+      from: `${email}`,
       subject: 'Special Order Request',
       text: `${email} would like to place a special order. Please follow up.`,
       html: `<p>${email} would like to place a special order. Please follow up.</p>`,
