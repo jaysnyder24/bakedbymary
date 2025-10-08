@@ -374,7 +374,7 @@ export default async function Homepage() {
           </form>
         </div>
       </div>
-      <CookieSlider cookies={saleProducts} />
+      <CookieSlider cookies={specialProducts} />
     </div>
   );
 }
