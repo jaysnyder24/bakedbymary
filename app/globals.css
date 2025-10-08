@@ -1,6 +1,45 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-bebas: var(--font-bebas-neue);
+  --font-poppins: var(--font-poppins);
 }
+
+.bg-pink-light-sm {
+  background-image: url('/lightSmallTile.svg');
+  background-size: 50px 50px;
+}
+.bg-pink-light-md {
+  background-image: url('/lightMediumTile.svg');
+  background-size: 100px 100px;
+}
+.bg-pink-light-lg {
+  background-image: url('/lightLargeTile.svg');
+  background-size: 150px 150px;
+}
+.bg-pink-dark-sm {
+  background-image: url('/darkSmallTile.svg');
+  background-size: 50px 50px;
+}
+.bg-pink-dark-md {
+  background-image: url('/darkMediumTile.svg');
+  background-size: 100px 100px;
+}
+.bg-pink-dark-lg {
+  background-image: url('/darkLargeTile.svg');
+  background-size: 150px 150px;
+}
+.bg-pink-middle-sm {
+  background-image: url('/middleSmallTile.svg');
+  background-size: 50px 50px;
+}
+.bg-pink-middle-md {
+  background-image: url('/middleMediumTile.svg');
+  background-size: 100px 100px;
+}
+.bg-pink-middle-lg {
+  background-image: url('/middleLargeTile.svg');
+  background-size: 150px 150px;
+}
+
+
