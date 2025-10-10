@@ -6,6 +6,7 @@ import Nav from './nav';
 import CookieSlider from './CookieSlider.jsx';
 import ImageSelector from './cookies/[slug]/ImageSelector.jsx';
 import { redirect } from 'next/navigation.js';
+import { Resend } from 'resend';
 
 async function getProducts() {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -51,28 +52,15 @@ export default async function Homepage() {
   async function specialOrderForm(formData) {
     'use server';
 
-    const sendgrid = require('@sendgrid/mail');
-    sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
-
     const email = formData.get('email');
 
-    const message = {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    resend.emails.send({
       to: 'mary@bakedbymary.com',
-      from: `mary@bakedbymary.com`,
       subject: 'Special Order Request',
-      text: `${email} would like to place a special order. Please follow up.`,
       html: `<p>${email} would like to place a special order. Please follow up.</p>`,
-    };
-
-    sendgrid
-      .send(message)
-      .then((response) => {
-        console.log(response[0].statusCode);
-        console.log(response[0].headers);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      text: `${email} would like to place a special order. Please follow up.`,
+    });
 
     redirect('/thank-you');
   }
