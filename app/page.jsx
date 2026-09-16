@@ -312,7 +312,7 @@ export default async function Homepage() {
           </div>
         </div>
       </div>
-      <div className='flex flex-col md:flex-row md:justify-between justify-start items-center w-full py-20 md:py-[120px] px-10 md:px-14 h-auto md:h-[100vh]'>
+      <div className='flex flex-col md:flex-row md:justify-between justify-start items-center w-full py-20 md:py-[120px] px-10 md:px-14 h-auto md:h-screen'>
         <div
           className='w-full aspect-square hidden md:flex md:w-5/12 h-auto bg-repeat rounded-3xl relative shadow-xl shadow-pink-200 group'
           style={{ backgroundImage: "url('/images/tileDark.png')" }}

@@ -23,8 +23,8 @@ export default function Nav() {
               width={40}
               height={40}
             />
-            <span className='font-bebas text-3xl text-pink-950'>
-              Baked By Mary
+            <span className='font-poppins text-xl font-bold text-pink-950'>
+              baked by mary
             </span>
           </Link>
           <NavMenu>
@@ -75,7 +75,7 @@ export default function Nav() {
                 className='text-pink-950
                  group-hover:text-pink-700
                   fill-pink-700/0
-                  group-hover:fill-pink-700/100
+                  group-hover:fill-pink-700
                   transition-colors
                   duration-300
                   h-6
