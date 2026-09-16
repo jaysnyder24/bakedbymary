@@ -37,8 +37,6 @@ export async function generateMetadata({ params }) {
 export default async function Cookie({ params }) {
   const cookie = await getCookie(params.slug);
 
-  console.log(cookie);
-
   const priceDecimal = cookie.default_price.unit_amount / 100;
 
   const priceSplit = priceDecimal.toString().split('');
