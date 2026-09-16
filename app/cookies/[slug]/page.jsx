@@ -1,6 +1,8 @@
 import ImageSelector from './ImageSelector';
 import AdjustCart from '../../AdjustCart';
 import { redirect } from 'next/navigation';
+import { Resend } from 'resend';
+import SpecialOrderForm from '../../components/SpecialOrderForm';
 
 async function getCookie(slug) {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -41,31 +43,38 @@ export default async function Cookie({ params }) {
 
   const priceSplit = priceDecimal.toString().split('');
 
-  async function specialOrderForm(formData) {
+  async function specialOrderForm(prevState, formData) {
     'use server';
-
-    const sendgrid = require('@sendgrid/mail');
-    sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
     const email = formData.get('email');
 
-    const message = {
-      to: 'mary@bakedbymary.com',
-      from: `mary@bakedbymary.com`,
-      subject: 'Special Order Request',
-      text: `${email} would like to place a special order. Please follow up.`,
-      html: `<p>${email} would like to place a special order for ${cookie.name} cookies. Please follow up.</p>`,
-    };
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
-    sendgrid
-      .send(message)
-      .then((response) => {
-        console.log(response[0].statusCode);
-        console.log(response[0].headers);
-      })
-      .catch((error) => {
-        console.error(error);
+    let sendError = null;
+
+    try {
+      const { error } = await resend.emails.send({
+        to: 'mary@bakedbymary.com',
+        from: 'Baked By Mary <mary@bakedbymary.com>',
+        replyTo: email,
+        subject: 'Special Order Request',
+        text: `${email} would like to place a special order for ${cookie.name} cookies. Please follow up.`,
+        html: `<p>${email} would like to place a special order for ${cookie.name} cookies. Please follow up.</p>`,
       });
+
+      sendError = error;
+    } catch (thrown) {
+      sendError = thrown;
+    }
+
+    if (sendError) {
+      console.error('Special order email failed to send:', sendError);
+
+      return {
+        error:
+          "Sorry, we couldn't send that just now. Please try again or email mary@bakedbymary.com directly.",
+      };
+    }
 
     redirect('/thank-you');
   }
@@ -91,27 +100,13 @@ export default async function Cookie({ params }) {
           </div>
           <p className='w-full font-poppins text-lg'>{cookie.description}</p>
           {cookie.metadata.available === 'special' ? (
-            <form
+            <SpecialOrderForm
               action={specialOrderForm}
-              className='flex flex-row justify-start items-center space-x-5 overflow-visible w-full'
-            >
-              <span className='font-poppins font-bold text-lg text-pink-700'>
-                special order:
-              </span>
-              <input
-                className='overflow-visible outline-none underline underline-offset-[6px] decoration-pink-600 focus:decoration-pink-700 font-poppins py-2'
-                type='email'
-                placeholder='jondoe@gmail.com'
-                aria-label='email'
-                name='email'
-              />
-              <button
-                className='bg-pink-700 hover:bg-pink-800 font-poppins text-sm font-bold px-4 py-2 text-white rounded-full'
-                type='submit'
-              >
-                submit
-              </button>
-            </form>
+              label='special order:'
+              formClassName='flex flex-row justify-start items-center space-x-5 overflow-visible w-full'
+              inputClassName='overflow-visible outline-none underline underline-offset-[6px] decoration-pink-600 focus:decoration-pink-700 font-poppins py-2'
+              buttonClassName='bg-pink-700 hover:bg-pink-800 disabled:opacity-60 font-poppins text-sm font-bold px-4 py-2 text-white rounded-full'
+            />
           ) : (
             <AdjustCart
               item={cookie}

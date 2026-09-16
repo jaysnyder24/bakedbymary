@@ -7,6 +7,7 @@ import CookieSlider from './CookieSlider.jsx';
 import ImageSelector from './cookies/[slug]/ImageSelector.jsx';
 import { redirect } from 'next/navigation.js';
 import { Resend } from 'resend';
+import SpecialOrderForm from './components/SpecialOrderForm';
 
 async function getProducts() {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -49,18 +50,38 @@ export default async function Homepage() {
     return item.metadata.available !== 'other';
   });
 
-  async function specialOrderForm(formData) {
+  async function specialOrderForm(prevState, formData) {
     'use server';
 
     const email = formData.get('email');
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    resend.emails.send({
-      to: 'mary@bakedbymary.com',
-      subject: 'Special Order Request',
-      html: `<p>${email} would like to place a special order. Please follow up.</p>`,
-      text: `${email} would like to place a special order. Please follow up.`,
-    });
+
+    let sendError = null;
+
+    try {
+      const { error } = await resend.emails.send({
+        to: 'mary@bakedbymary.com',
+        from: 'Baked By Mary <mary@bakedbymary.com>',
+        replyTo: email,
+        subject: 'Special Order Request',
+        html: `<p>${email} would like to place a special order. Please follow up.</p>`,
+        text: `${email} would like to place a special order. Please follow up.`,
+      });
+
+      sendError = error;
+    } catch (thrown) {
+      sendError = thrown;
+    }
+
+    if (sendError) {
+      console.error('Special order email failed to send:', sendError);
+
+      return {
+        error:
+          "Sorry, we couldn't send that just now. Please try again or email mary@bakedbymary.com directly.",
+      };
+    }
 
     redirect('/thank-you');
   }
@@ -342,24 +363,12 @@ export default async function Homepage() {
             Fill out the form below and we'll be in touch to get more details or
             your event!
           </p>
-          <form
+          <SpecialOrderForm
             action={specialOrderForm}
-            className='flex flex-col md:flex-row justify-start items-center space-y-6 md:space-y-0 md:space-x-5 overflow-visible w-full'
-          >
-            <input
-              className='overflow-visible w-full text-center outline-none placeholder:underline underline-offset-[6px] decoration-pink-600 focus:decoration-pink-700 font-poppins text-xl py-2'
-              type='email'
-              placeholder='jondoe@gmail.com'
-              aria-label='email'
-              name='email'
-            />
-            <button
-              className='bg-pink-700 hover:bg-pink-800 font-poppins text-lg font-bold px-6 py-2 text-white rounded-full'
-              type='submit'
-            >
-              submit
-            </button>
-          </form>
+            formClassName='flex flex-col md:flex-row justify-start items-center space-y-6 md:space-y-0 md:space-x-5 overflow-visible w-full'
+            inputClassName='overflow-visible w-full text-center outline-none placeholder:underline underline-offset-[6px] decoration-pink-600 focus:decoration-pink-700 font-poppins text-xl py-2'
+            buttonClassName='bg-pink-700 hover:bg-pink-800 disabled:opacity-60 font-poppins text-lg font-bold px-6 py-2 text-white rounded-full'
+          />
         </div>
       </div>
       <CookieSlider cookies={specialProducts} />
